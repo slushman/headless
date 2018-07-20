@@ -1,0 +1,104 @@
+.screen-reader-text {
+	background-color: var(--color-lt-gray);
+	border: 0;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(var(--color-dark-gray), 0.6);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	color: var(--color-dark-gray);
+	display: block;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: 1px;
+	line-height: normal;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	text-decoration: none;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	clip: auto !important;
+	clip-path: none;
+	height: auto;
+	padding: 15px 23px 14px;
+	width: 100%;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+.gallery {
+	display: grid;
+	grid-gap: 1em;
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	margin: 0;
+}
+
+.gallery-columns-3 {
+	grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+.gallery-caption,
+.wp-caption-text {
+	font-size: 1rem;
+	font-style: italic;
+}
+
+
+
+
+.alignnone,
+a img.alignnone,
+.wp-caption.alignnone {
+    margin: 0.25em 1.125em 1.125em 0;
+}
+
+.aligncenter,
+div.aligncenter,
+a img.aligncenter {
+    display: block;
+    margin: 0.25em auto 0.25em auto;
+}
+
+.alignright,
+a img.alignright,
+.wp-caption.alignright {
+    float: right;
+    margin: 0.25em 0 1.125em 1.125em;
+}
+
+.alignleft,
+a img.alignleft,
+.wp-caption.alignleft {
+    float: left;
+    margin: 0.25em 1.125em 1.125em 0;
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 0.25em 0.125em 0.5em;
+    text-align: center;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
