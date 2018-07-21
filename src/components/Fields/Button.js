@@ -7,6 +7,10 @@ const ButtonWrap = styled.li`
 	justify-content: ${props => 'right' === props.position ? 'flex-end' : 'flex-start' };
 	margin: 0;
 	padding: 0;
+
+	@media screen and (max-width: 559px) {
+		flex-direction: column;
+	}
 `;
 
 const ButtonElement = styled.button`
@@ -25,6 +29,7 @@ const ButtonElement = styled.button`
 	color: var(--color);
 	cursor: pointer;
 	font-size: 1em;
+	max-width: 50vw;
 	padding: 0.25em 1em;
 	text-shadow: none;
 	transition: 0.4s ease;

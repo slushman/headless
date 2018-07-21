@@ -45,15 +45,7 @@ const MenuItemLink = styled(NavLink)`
 
 	&:before {
 		--height: 2px;
-		--underlinkcolor: ${props => {
-			if ('/blog' === props.page) {
-				return 'var(--color-charcoal)';
-			} else if( '/' !== props.page || 'footer' === props.menulocation ) {
-				return 'var(--color-light)';
-			} else {
-				return 'var(--color-blue)';
-			 }
-		}};
+		--underlinkcolor: var(--color-light);
 		--transform: scale(0);
 		--transition: all 0.3s ease-in-out;
 		--vis: hidden;
@@ -70,18 +62,34 @@ const MenuItemLink = styled(NavLink)`
 		visibility: var(--vis);
 		width: 100%;
 		z-index: var(--zindex);
+
+		@media screen and (min-width: 560px) {
+			--underlinkcolor: ${props => {
+				if ('/blog' === props.page) {
+					return 'var(--color-charcoal)';
+				} else if ('/' !== props.page || 'footer' === props.menulocation) {
+					return 'var(--color-light)';
+				} else {
+					return 'var(--color-blue)';
+				}
+			}};
+		}
 	}
 
 	&:hover {
-		--link-color: ${props => {
-			if ('/' === props.page) {
-				return 'var(--color-dark-blue)';
-			} else if ('/blog' === props.page) {
-				return 'var(--color-charcoal)';
-			} else {
-				return 'var(--color-light)';
-			}
-		}};
+		--link-color: var(--color-light);
+
+		@media screen and (min-width: 560px) {
+			--link-color: ${props => {
+				if ('/' === props.page) {
+					return 'var(--color-dark-blue)';
+				} else if ('/blog' === props.page) {
+					return 'var(--color-charcoal)';
+				} else {
+					return 'var(--color-light)';
+				}
+			}};
+		}
 	}
 
 	&:hover:before {
@@ -106,25 +114,38 @@ const MenuItemLink = styled(NavLink)`
 	}
 
 	&.${activeClassName} {
-		--link-color: ${props => '/blog' === props.page ? 'var(--color-light)' : 'var(--color-dark-blue)'};
+		--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-dark)'};
 		--zindex: 1;
 
+		@media screen and (min-width: 560px) {
+			--link-color: ${props => '/blog' === props.page ? 'var(--color-light)' : 'var(--color-dark)'};
+		}
+
 		&:hover {
-			--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
+			--link-color: var(--color-light);
+
+			@media screen and (min-width: 560px) {
+				--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
+			}
 		}
 
 		&:before {
 			--height: 100%;
 			--transform: none;
 			--transition: all 1s ease;
-			--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
+			--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-med-gray)' : 'var(--color-lt-blue)'};
 			--vis: visible;
 			--zindex: -1;
+
+			@media screen and (min-width: 560px) {
+				--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-lt-blue)'};
+			}
 		}
 
 		&:hover:before {
 			--bgcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
 			--height: 2px;
+			--underlinkcolor: var(--color-light);
 		}
 	}
 `;

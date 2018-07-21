@@ -13,6 +13,8 @@ import { getColorClass } from '../../functions';
 
 import '../Excerpt/ExcerptColors.css';
 
+const transitionName = 'test';
+
 const ArchiveWrapper = styled.div`
 	position: relative;
 
@@ -22,16 +24,39 @@ const ArchiveWrapper = styled.div`
 `;
 
 const ArchiveHeader = styled.header`
-	--bgcolor: var(--color-dark-blue);
+	--bgcolor: var(--color-med-gray);
 	
 	align-items: center;
 	background-color: var(--bgcolor);
-	color: var(--color-light);
+	color: var(--color-charcoal);
 	display: flex;
 	height: var(--height);
 	justify-content: center;
 	margin: 0;
 	padding: 1em;
+
+	@media screen and (min-width: 560px) {
+		--bgcolor: var(--color-dark-blue);
+		color: var(--color-light);
+	}
+
+	.${transitionName}-enter {
+		opacity: 0;
+	}
+
+	.${transitionName}-enter.${transitionName}-enter-active {
+		opacity: 1;
+		transition: all 2s ease;
+	}
+
+	.${transitionName}-exit {
+		opacity: 1;
+	}
+
+	.${transitionName}-exit.${transitionName}-exit-active {
+		opacity: 0;
+		transition: all 2s ease;
+	}
 `;
 
 const ArchiveTitle = styled.h1`
@@ -83,9 +108,19 @@ const Archive = props => {
 				<link rel="canonical" href="" />
 				<title>{props.title}</title>
 			</Helmet>
-			<ArchiveHeader>
-				<ArchiveTitle>{props.title}</ArchiveTitle>
-			</ArchiveHeader>
+			<TransitionGroup component={null}>
+				<CSSTransition
+					classNames={transitionName}
+					timeout={{
+						enter: 2000,
+						exit: 1000
+					}}
+				>
+					<ArchiveHeader transitionName="test">
+						<ArchiveTitle>{props.title}</ArchiveTitle>
+					</ArchiveHeader>
+				</CSSTransition>
+			</TransitionGroup>
 			<ArchiveList>
 				<TransitionGroup component={null}>
 					{
@@ -96,7 +131,10 @@ const Archive = props => {
 								<CSSTransition
 									key={i}
 									classNames='fade'
-									timeout={1000}
+									timeout={{
+										enter: 2000,
+										exit: 1000
+									}}
 								>
 									<ErrorBoundry key={i}>
 										<Excerpt post={post} listItemClass={[colorClass]} />

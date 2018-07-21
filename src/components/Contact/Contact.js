@@ -9,9 +9,7 @@ import IconGithub from '../Icons/Github';
 import IconTwitter from '../Icons/Twitter';
 import Footer from '../Footer/Footer';
 
-const ContactWrapper = styled.div`
-	position: relative;
-`;
+const ContactWrapper = styled.div``;
 
 const ContactArticle = styled.article`
 	transition: all 0.5s ease;

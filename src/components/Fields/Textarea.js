@@ -6,6 +6,10 @@ const FieldContainer = styled.li`
 	display: flex;
 	margin: 0;
 	padding: 0;
+
+	@media screen and (max-width: 559px) {
+		flex-direction: column;
+	}
 `;
 
 const Label = styled.label`
@@ -38,7 +42,7 @@ const Field = styled.textarea`
 	color: var(--color);
 	font-size: 1.25em;
 	line-height: 1.5;
-	padding: 0.25em
+	padding: 0.25em;
 
 	&:disabled {
 		--bgcolor: var(--color-light);
@@ -110,7 +114,7 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
-	cols: 50,
+	cols: 10,
 	rows: 10,
 	required: true
 }

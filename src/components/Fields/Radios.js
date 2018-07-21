@@ -6,6 +6,10 @@ const FieldContainer = styled.li`
 	display: flex;
 	margin: 0 0 1.5em;
 	padding: 0;
+
+	@media screen and (max-width: 559px) {
+		flex-direction: column;
+	}
 `;
 
 const FieldLabel = styled.div`

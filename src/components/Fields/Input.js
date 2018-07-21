@@ -12,6 +12,10 @@ const FieldContainer = styled.li`
 	display: flex;
 	margin: 0;
 	padding: 0;
+
+	@media screen and (max-width: 559px) {
+		flex-direction: column;
+	}
 `;
 
 const Label = styled.label`
@@ -59,10 +63,6 @@ const Field = styled.input`
 		--color: var(--color-dark-gray);
 
 		cursor: not-allowed;
-	}
-
-	&:not(:required) {
-
 	}
 `;
 

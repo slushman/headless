@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import he from 'he';
 import styled from 'styled-components';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Footer from '../Footer/Footer';
 
-const PageWrapper = styled.div`
-	position: relative;
-`;
+const PageWrapper = styled.div``;
 
 const PageArticle = styled.article`
 	@media screen and (min-width: 560px) {
@@ -48,8 +47,8 @@ const PageContent = styled.div`
 	}
 `;
 
-const Page = ({ page }) => {
-	//console.log(page)
+const Page = ({ page, pathname }) => {
+	//console.log(props)
 
 	return (
 		<PageWrapper>
@@ -81,9 +80,9 @@ const Page = ({ page }) => {
 						"description": "${page.excerpt.rendered}"
 					}`}</script>
 				</Helmet>
-				<PageHeader>
-					<PageTitle>{page.title.rendered}</PageTitle>
-				</PageHeader>
+					<PageHeader>
+						<PageTitle>{page.title.rendered}</PageTitle>
+					</PageHeader>
 				<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
 			</PageArticle>
 			<Footer />

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import WPMenu from '../WPMenu/WPMenu';
 
+const transitionName = 'header';
+
 const SiteHeader = styled.header`
 	--bgcolor: var(--color-light);
 	--flexdir: column;
@@ -25,14 +27,12 @@ const SiteHeader = styled.header`
 	padding-right: var(--padsides);
 	position: var(--pos);
 	top: 0;
-	transition: background-color 0.4s ease;
+	transition: background-color 1s ease;
 	width: 100%;
 	z-index: 99;
 
 	@media screen and (min-width: 560px) {
 		--bgcolor: ${props => {
-
-			console.log(props)
 
 		if ('/blog' === props.page) {
 
@@ -55,7 +55,7 @@ const SiteHeader = styled.header`
 	}
 `;
 
-const TitleHome = styled.h1`
+const Title = styled.p`
 	--top-marg: 0.25em;
 
 	margin: 0;
@@ -66,15 +66,8 @@ const TitleHome = styled.h1`
 	}
 `;
 
-const Title = styled.p`
-	--top-marg: 0.25em;
-
-	margin: 0;
-	margin-top: var(--top-marg);
-
-	@media screen and (min-width: 560px) {
-		--top-marg: 0;
-	}
+const TitleHome = styled.h1`
+	display: none;
 `;
 
 const StyledLink = styled(Link)`
@@ -105,11 +98,9 @@ const Header = props => {
 	//console.log(props)
 
 	return (
-		<SiteHeader page={props.pathname}>
-			{'/' === props.pathname 
-				? <TitleHome><TitleContent {...props} /></TitleHome> 
-				: <Title><TitleContent {...props} /></Title>
-			}
+		<SiteHeader page={props.pathname} transitionName="header">
+			<Title><TitleContent {...props} /></Title>
+			{'/' === props.pathname && <TitleHome>Slushman</TitleHome>}
 			<WPMenu menuId={127} page={props.pathname} />
 		</SiteHeader>
 	);
