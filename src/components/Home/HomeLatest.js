@@ -10,7 +10,7 @@ const PostLatest = styled.div`
 	padding-bottom: var(--padbot);
 	padding-top: var(--padtop);
 	background: linear-gradient(rgba(255,255,255,0.85),rgba(255,255,255,0.85)), url(${props => props.image});
-	transition: 1s ease;
+	transition: all 5s ease;
 
 	@media screen and (min-width: 560px) {
 		--padbot: 3em;

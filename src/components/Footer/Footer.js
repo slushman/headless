@@ -11,10 +11,6 @@ const SiteFooter = styled.footer`
 	justify-content: space-between;
 	padding: 2em 1em;
 	transition: background-color 0.5s ease;
-
-	& a {
-		color: var(--color-light);
-	}
 `;
 
 const Copyright = styled.div``;

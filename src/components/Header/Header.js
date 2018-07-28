@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 
 import WPMenu from '../WPMenu/WPMenu';
 
-const transitionName = 'header';
-
 const SiteHeader = styled.header`
 	--bgcolor: var(--color-light);
 	--flexdir: column;
 	--height: var(--site-header-height);
 	--padsides: 0;
-	--pos: relative;
+	--pos: ${props => props.page.startsWith('/post') ? 'fixed' : 'relative'};
 
 	align-items: center;
 	background-color: var(--bgcolor);
@@ -34,20 +32,20 @@ const SiteHeader = styled.header`
 	@media screen and (min-width: 560px) {
 		--bgcolor: ${props => {
 
-		if ('/blog' === props.page) {
+			if ('/blog' === props.page) {
 
-			return 'var(--color-med-gray)';
+				return 'var(--color-med-gray)';
 
-		} else if ('/' === props.page) {
+			} else if ('/' === props.page) {
 
-			return 'transparent';
+				return 'transparent';
 
-		} else {
+			} else {
 
-			return 'var(--color-dark-blue)';
+				return 'var(--color-dark-blue)';
 
-		}
-	}};
+			}
+		}};
 
 		--flexdir: row;
 		--padsides: 1em;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 import Input from '../Fields/Input';
 import Textarea from '../Fields/Textarea';
@@ -61,6 +62,11 @@ class ContactForm extends Component {
 		.catch(error => alert(error));
 
 		event.preventDefault();
+		
+		ReactGA.event({
+			category: 'ContactForm',
+			action: 'Clicked Submit'
+		})
 	}
 
 	handleChange = event => this.setState({ [event.target.name]: event.target.value })

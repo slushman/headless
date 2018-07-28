@@ -5,10 +5,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
+import './globalStyles.js';
+import ReactGA from 'react-ga';
+import './globalStyles.js';
 
-import './index.css';
-import './WordPress.css';
-import './Transitions.css';
+ReactGA.initialize(`${process.env.GATRACKING}`);
 
 WebFont.load({
 	google: {
@@ -16,12 +17,16 @@ WebFont.load({
 	}
 });
 
+const fireTracking = () => {
+	ReactGA.pageview(window.location.hash)
+}
+
 /**
  * Render function in top Route comes from this article about page transitions:
  * https://blog.etch.team/react-page-transitions-make-your-website-feel-native-bf2804b011dc
  */
 render(
-	<BrowserRouter>
+	<BrowserRouter onUpdate={fireTracking}>
 		<Route to="/" render={
 			({location,match}) => {
 				const { pathname } = location;

@@ -13,7 +13,7 @@ import { getColorClass } from '../../functions';
 
 import '../Excerpt/ExcerptColors.css';
 
-const transitionName = 'test';
+const transitionName = 'zoom';
 
 const ArchiveWrapper = styled.div`
 	position: relative;
@@ -45,17 +45,22 @@ const ArchiveHeader = styled.header`
 	}
 
 	.${transitionName}-enter.${transitionName}-enter-active {
+		height: 100vh;
 		opacity: 1;
-		transition: all 2s ease;
+		transition: all 5s ease;
+		width: 100vw;
 	}
 
 	.${transitionName}-exit {
+		height: 100vh;
 		opacity: 1;
+		transform: scale(10);
+		width: 100vw;
 	}
 
 	.${transitionName}-exit.${transitionName}-exit-active {
 		opacity: 0;
-		transition: all 2s ease;
+		transition: all 5s ease;
 	}
 `;
 
@@ -108,19 +113,9 @@ const Archive = props => {
 				<link rel="canonical" href="" />
 				<title>{props.title}</title>
 			</Helmet>
-			<TransitionGroup component={null}>
-				<CSSTransition
-					classNames={transitionName}
-					timeout={{
-						enter: 2000,
-						exit: 1000
-					}}
-				>
-					<ArchiveHeader transitionName="test">
-						<ArchiveTitle>{props.title}</ArchiveTitle>
-					</ArchiveHeader>
-				</CSSTransition>
-			</TransitionGroup>
+			<ArchiveHeader transitionName="test">
+					<ArchiveTitle>{props.title}</ArchiveTitle>
+				</ArchiveHeader>
 			<ArchiveList>
 				<TransitionGroup component={null}>
 					{
@@ -130,10 +125,10 @@ const Archive = props => {
 							return (
 								<CSSTransition
 									key={i}
-									classNames='fade'
+									classNames={transitionName}
 									timeout={{
-										enter: 2000,
-										exit: 1000
+										enter: 5000,
+										exit: 5000
 									}}
 								>
 									<ErrorBoundry key={i}>

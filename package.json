@@ -11,6 +11,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-flip-toolkit": "^3.0.5",
+    "react-ga": "^2.5.3",
     "react-helmet": "^5.2.0",
     "react-lazyload": "^2.3.0",
     "react-loadable": "^5.4.0",

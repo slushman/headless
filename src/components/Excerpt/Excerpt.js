@@ -6,6 +6,8 @@ import he from 'he';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
+const transitionName = 'zoom';
+
 const ExcerptListItem = styled.li`
 	display: flex;
 	flex-direction: column;
@@ -24,6 +26,30 @@ const ExcerptListItem = styled.li`
 	&:focus-within a:focus {
 		outline: none;
 		text-decoration: none;
+	}
+
+	.${transitionName}-enter {
+		opacity: 0;
+	}
+
+	.${transitionName}-enter.${transitionName}-enter-active {
+		height: 100vh;
+		opacity: 1;
+		transition: all 5s ease;
+		width: 100vw;
+	}
+
+	.${transitionName}-exit {
+		height: 100vh;
+		opacity: 1;
+		transform: scale(10);
+		width: 100vw;
+	}
+
+	.${transitionName}-exit.${transitionName}-exit-active {
+		opacity: 0;
+		transform: scale(10);
+		transition: all 5s ease;
 	}
 `;
 

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { cachedFetch } from '../../functions';
 import styled from 'styled-components';
 
@@ -91,29 +90,18 @@ class App extends Component {
 			<Fragment>
 				<Header {...this.props} />
 				<SiteMain id="primary">
-					<TransitionGroup component={null}>
-						<CSSTransition
-							key={this.props.pathname}
-							classNames='fade'
-							timeout={{
-								enter: 500,
-								exit: 500
-							}}
-						>
-							<Route location={this.props.location} render={() => (
-								<Switch>
-									<Route exact path="/" component={AsyncHome} />
-									<Route exact path="/blog" render={(match) => (
-										<AsyncArchive match={match} />
-									)} />
-									<Route exact path="/contact" component={AsyncContact} />
-									<Route path="/post/:slug" component={AsyncPost} />
-									{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages) : null}
-									<Route component={AsyncNotFound} />
-								</Switch>
+					<Route location={this.props.location} render={() => (
+						<Switch>
+							<Route exact path="/" component={AsyncHome} />
+							<Route exact path="/blog" render={(match) => (
+								<AsyncArchive match={match} />
 							)} />
-						</CSSTransition>
-					</TransitionGroup>
+							<Route exact path="/contact" component={AsyncContact} />
+							<Route path="/post/:slug" component={AsyncPost} />
+							{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages) : null}
+							<Route component={AsyncNotFound} />
+						</Switch>
+					)} />
 				</SiteMain>
 			</Fragment>
 		);

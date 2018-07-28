@@ -28,10 +28,14 @@ const PostWrapper = styled.div`
 `;
 
 const PostArticle = styled.article`
+	--headAndScroll: calc(var(--site-header-height) + var(--scroll-height));
+	--padtop: ${props => props.pathname.startsWith('/post') ? 'var(--headAndScroll)' : null};
+	
+	padding-top: var(--padtop);
 	position: relative;
 
 	@media screen and (min-width: 560px) {
-		padding-top: calc(var(--site-header-height) + var(--scroll-height));
+		--padtop: var(--headAndScroll);
 	}
 `;
 
@@ -158,7 +162,7 @@ const PostContent = styled.div``;
 
 const Post = props => {
 
-	console.log(props)
+	//console.log(props)
 
 	let image = props.post._embedded['wp:featuredmedia'] ? props.post._embedded['wp:featuredmedia'][0] : false;
 
@@ -173,7 +177,7 @@ const Post = props => {
 
 	return (
 		<PostWrapper>
-			<PostArticle image={post.image}>
+			<PostArticle image={post.image} pathname={props.pathname}>
 				<Helmet>
 					<title>{post.title}</title>
 					<link rel="canonical" href={`${props.post.link}`} />

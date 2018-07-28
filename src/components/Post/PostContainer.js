@@ -43,7 +43,7 @@ class PostContainer extends Component {
 	}
 
 	render() {
-		//console.log(this.state)
+		//console.log(this.props)
 		if (1 !== this.state.post.length && 'NotFound' !== this.state.error) {
 			return <Loading />; 
 		}
@@ -51,7 +51,7 @@ class PostContainer extends Component {
 			return <NotFound />;
 		}
 		return (
-			<Post post={this.state.post[0]} />
+			<Post post={this.state.post[0]} pathname={this.props.location.pathname} />
 		);
 	}
 }

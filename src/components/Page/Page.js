@@ -7,7 +7,31 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Footer from '../Footer/Footer';
 
-const PageWrapper = styled.div``;
+const transitionName = 'swap';
+
+const PageWrapper = styled.div`
+	position: relative;
+
+	&.${transitionName}-enter {
+		opacity: 0;
+	}
+
+	&.${transitionName}-enter.${transitionName}-enter-active {
+		opacity: 1;
+		transform: scale(1);
+		transition: all 1s ease;
+	}
+
+	&.${transitionName}-exit {
+		opacity: 1;
+	}
+
+	&.${transitionName}-exit.${transitionName}-exit-active {
+		opacity: 0;
+		transform: scale(10);
+		transition: all 1s ease;
+	}
+`;
 
 const PageArticle = styled.article`
 	@media screen and (min-width: 560px) {
@@ -26,6 +50,24 @@ const PageHeader = styled.header`
 	justify-content: center;
 	margin: 0;
 	padding: 1em;
+
+	&.fade-enter {
+		opacity: 0;
+	}
+
+	&.fade-enter.fade-enter-active {
+		opacity: 1;
+		transition: all 1s ease;
+	}
+
+	&.fade-exit {
+		opacity: 1;
+	}
+
+	&.fade-exit.fade-exit-active {
+		opacity: 0;
+		transition: all 1s ease;
+	}
 `;
 
 const PageTitle = styled.h1`
@@ -51,7 +93,7 @@ const Page = ({ page, pathname }) => {
 	//console.log(props)
 
 	return (
-		<PageWrapper>
+		<PageWrapper data-test="page">
 			<PageArticle>
 				<Helmet>
 					<title>{he.decode(page.title.rendered)}</title>
@@ -80,10 +122,29 @@ const Page = ({ page, pathname }) => {
 						"description": "${page.excerpt.rendered}"
 					}`}</script>
 				</Helmet>
-					<PageHeader>
-						<PageTitle>{page.title.rendered}</PageTitle>
-					</PageHeader>
-				<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+				<TransitionGroup component={null}>
+					<CSSTransition
+						classNames="fade"
+						timeout={{
+							enter: 5000,
+							exit: 5000
+						}}
+					>
+					
+						<PageHeader>
+							<PageTitle>{page.title.rendered}</PageTitle>
+						</PageHeader>
+					</CSSTransition>
+				</TransitionGroup>
+				<CSSTransition
+					classNames="fade"
+					timeout={{
+						enter: 5000,
+						exit: 5000
+					}}
+				>
+					<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+				</CSSTransition>
 			</PageArticle>
 			<Footer />
 		</PageWrapper>
