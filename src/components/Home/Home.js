@@ -70,10 +70,33 @@ class Home extends Component {
 		error: null,
 		quantity: 12,
 		start: 0,
-		latest: {}
+		latest: {},
+		catID: null
 	}
 
 	componentDidMount() {
+
+		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/categories?per_page=100`, 24 * 60 * 60)
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					this.setState({
+						error: 'Something went wrong...'
+					})
+				}
+			})
+			.then(cats => {
+				let homeFeatureCategoryId = cats.filter(cat => {
+					return cat.slug === 'home-feature';
+				})
+				this.setState({
+					catID: homeFeatureCategoryId[0].id
+				})
+			})
+			.catch(error => this.setState({
+				error
+			}));
 
 		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=1`, 24 * 60 * 60)
 			.then(response => {
@@ -89,7 +112,7 @@ class Home extends Component {
 				this.setState({
 					latest
 				})
-				cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100&categories=145&exclude=${latest[0].id}`, 24 * 60 * 60)
+				cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100&categories=${this.state.catID}&exclude=${latest[0].id}`, 24 * 60 * 60)
 					.then(response => {
 						if (response.ok) {
 							return response.json();
@@ -111,7 +134,6 @@ class Home extends Component {
 			.catch(error => this.setState({
 				error
 			}));
-
 	}
 
 	render() {
