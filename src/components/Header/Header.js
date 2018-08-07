@@ -99,7 +99,7 @@ const Header = props => {
 		<SiteHeader page={props.pathname} transitionName="header">
 			<Title><TitleContent {...props} /></Title>
 			{'/' === props.pathname && <TitleHome>Slushman</TitleHome>}
-			<WPMenu menuId={127} page={props.pathname} />
+			<WPMenu location="main" page={props.pathname} />
 		</SiteHeader>
 	);
 };

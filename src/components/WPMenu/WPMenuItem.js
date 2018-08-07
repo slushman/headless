@@ -65,7 +65,7 @@ const MenuItemLink = styled(NavLink)`
 
 		@media screen and (min-width: 560px) {
 			--underlinkcolor: ${props => {
-				if ('/blog' === props.page || 'footer' === props.menulocation) {
+				if ('/blog' === props.page) {
 					return 'var(--color-charcoal)';
 				} else if ('/' !== props.page) {
 					return 'var(--color-light)';
@@ -152,7 +152,7 @@ const MenuItemLink = styled(NavLink)`
 			--zindex: -1;
 
 			@media screen and (min-width: 560px) {
-				--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-lt-blue)'};
+				--underlinkcolor: ${props => '/blog' === props.page && 'var(--color-charcoal)'};
 			}
 		}
 

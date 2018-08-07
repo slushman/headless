@@ -52,13 +52,12 @@ class WPMenu extends Component {
 	}
 
 	render() {
-		//console.log(this.state.menu)
-		//console.log(this.props)
-
-		if ( !this.state.menu.items ) { return null; }
+		if ( !this.state.menu.items && !Array.isArray(this.state.menu) ) { return null; }
 
 		let menuItems = this.props.menuId ? this.state.menu.items : this.state.menu;
 		let locationName = this.props.location ? this.props.location : this.state.menu.slug;
+
+		//console.log({ 'props': this.props, 'state': this.state, 'menu': this.state.menu, menuItems, locationName })
 
 		return (
 			<Nav location={locationName}>

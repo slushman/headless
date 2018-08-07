@@ -21,7 +21,7 @@ const Footer = props => {
 	return (
 		<SiteFooter>
 			<Copyright>&copy; {new Date().getFullYear()} Slushman</Copyright>
-			<WPMenu menuId={144} />
+			<WPMenu location="footer" />
 		</SiteFooter>
 	);
 };
