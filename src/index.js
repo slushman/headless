@@ -13,7 +13,7 @@ ReactGA.initialize(`${process.env.GATRACKING}`);
 
 WebFont.load({
 	google: {
-		families: ['Source Code Pro', 'Source Sans Pro:n4,n7', 'Source Serif Pro:n4,n7']
+		families: ['Source Code Pro', 'Source Sans Pro:400,700', 'Source Serif Pro:400,700']
 	}
 });
 
@@ -21,10 +21,6 @@ const fireTracking = () => {
 	ReactGA.pageview(window.location.hash)
 }
 
-/**
- * Render function in top Route comes from this article about page transitions:
- * https://blog.etch.team/react-page-transitions-make-your-website-feel-native-bf2804b011dc
- */
 render(
 	<BrowserRouter onUpdate={fireTracking}>
 		<Route to="/" render={

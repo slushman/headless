@@ -8,12 +8,13 @@
 
 * Reading Progress Bar by [Mike](https://codepen.io/MadeByMike/pen/ZOrEmr)
 
+* Render function in top Route comes from an [article about page transitions](https://blog.etch.team/react-page-transitions-make-your-website-feel-native-bf2804b011dc)
+
+
 
 
 TODOS
 * Test contact form
-* move live to api.slushman.com
-* Adjust Productions setting and confirm its working
 * Publish
 
 
@@ -27,7 +28,8 @@ Functional Changes
 
 * Get ScrollToTop to hide when not scrolled enough
 * Get ScrollToTop to not overlap footer
-* Add ScrollToTop to all posts & pages - should only be visible on longer content
+* Add ScrollToTop to
+* Test deploy all posts & pages - should only be visible on longer content
 
 
 
