@@ -47,7 +47,7 @@ const ArchiveHeader = styled.header`
 	.${transitionName}-enter.${transitionName}-enter-active {
 		height: 100vh;
 		opacity: 1;
-		transition: all 5s ease;
+		transition: all 1s ease;
 		width: 100vw;
 	}
 
@@ -60,7 +60,7 @@ const ArchiveHeader = styled.header`
 
 	.${transitionName}-exit.${transitionName}-exit-active {
 		opacity: 0;
-		transition: all 5s ease;
+		transition: all 1s ease;
 	}
 `;
 
@@ -114,8 +114,8 @@ const Archive = props => {
 				<title>{props.title}</title>
 			</Helmet>
 			<ArchiveHeader transitionName="test">
-					<ArchiveTitle>{props.title}</ArchiveTitle>
-				</ArchiveHeader>
+				<ArchiveTitle>{props.title}</ArchiveTitle>
+			</ArchiveHeader>
 			<ArchiveList>
 				<TransitionGroup component={null}>
 					{

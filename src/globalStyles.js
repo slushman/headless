@@ -57,21 +57,6 @@ injectGlobal`
 		}
 	}
 
-	a {
-		--link-color: #0474B5;
-		color: var(--link-color);
-	}
-
-	a:visited,
-	a:active,
-	a:hover {
-		--link-color: var(--color-dark);
-	}
-
-	a:focus {
-		outline-color: #E8671C;
-	}
-
 	img {
 		height: auto;
 		max-width: 100%;

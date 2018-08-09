@@ -158,7 +158,22 @@ const PostPrimary = styled.div`
 	}
 `;
 
-const PostContent = styled.div``;
+const PostContent = styled.div`
+	& a {
+		--link-color: #0474B5;
+		color: var(--link-color);
+	}
+
+	& a:visited,
+	& a:active,
+	& a:hover {
+		--link-color: var(--color-dark);
+	}
+
+	& a:focus {
+		outline-color: #E8671C;
+	}
+`;
 
 const Post = props => {
 
@@ -172,7 +187,7 @@ const Post = props => {
 		height: image ? image.media_details.height : null,
 		width: image ? image.media_details.width : null,
 		altText: image ? image.alt_text : null,
-		excerpt: he.decode(props.post.excerpt.rendered.replace(/<[^>]+>/g, ''))
+		excerpt: props.post.yoast && 0 !== props.post.yoast.metadesc.length ? props.post.yoast.metadesc : he.decode(props.post.excerpt.rendered),
 	}
 
 	return (
@@ -180,18 +195,19 @@ const Post = props => {
 			<PostArticle image={post.image} pathname={props.pathname}>
 				<Helmet>
 					<title>{post.title}</title>
-					<link rel="canonical" href={`${props.post.link}`} />
+					<link rel="canonical" href={props.post.link} />
+					<meta name="description" content={post.excerpt} />
 					<meta property="og:locale" content="en_US" />
 					<meta property="og:type" content="article" />
 					<meta property="og:title" content={post.title} />
 					<meta property="og:description" content={post.excerpt} />
-					<meta property="og:url" content={`${props.post.link}`} />
+					<meta property="og:url" content={props.post.link} />
 					<meta property="og:site_name" content="Slushman" />
 					<meta property="article:publisher" content="https://www.facebook.com/slushmandesign/" />
-					<meta property="article:section" content={`${props.post._embedded['wp:term'][0][0].name}`} />
-					<meta property="article:published_time" content={`${props.post.date}`} />
-					<meta property="article:modified_time" content={`${props.post.modified}`} />
-					<meta property="og:updated_time" content={`${props.post.modified}`} />
+					<meta property="article:section" content={props.post._embedded['wp:term'][0][0].name} />
+					<meta property="article:published_time" content={props.post.date} />
+					<meta property="article:modified_time" content={props.post.modified} />
+					<meta property="og:updated_time" content={props.post.modified} />
 					<meta property="og:image" content={post.image} />
 					<meta property="og:image:secure_url" content={post.image} />
 					<meta property="og:image:width" content={post.width} />

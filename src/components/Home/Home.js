@@ -9,6 +9,7 @@ import HomeLatest from './HomeLatest';
 import HomeArchive from './HomeArchive';
 import Loading from '../Loading/Loading';
 import Footer from '../Footer/Footer';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 const HomeWrapper = styled.div`
 	position: relative;
@@ -31,17 +32,18 @@ const HomeFeatArticlesHeading = styled.h2`
 `;
 
 const CTAHomeBottom = styled.div`
-	background-color: var(--color-med-gray);
+	background-color: var(--color-lt-gray);
 	padding: 1.5em;
 	text-transform: uppercase;
 `;
 
 const StyledLink = styled(Link)`
+	color: var(--color-dark-blue);
 	position: relative;
 	text-decoration: none;
 
 	&:before {
-		--bgcolor: var(--color-dark);
+		--bgcolor: var(--color-dark-blue);
 		--vis: hidden;
 
 		background-color: var(--bgcolor);
@@ -87,17 +89,56 @@ class Home extends Component {
 				}
 			})
 			.then(cats => {
+				console.log({cats: cats})
 				let homeFeatureCategoryId = cats.filter(cat => {
 					return cat.slug === 'home-feature';
 				})
-				this.setState({
-					catID: homeFeatureCategoryId[0].id
-				})
+				console.log({ homeFeatureCategoryId })
+
+				cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=1`, 24 * 60 * 60)
+					.then(response => {
+						if (response.ok) {
+							return response.json();
+						} else {
+							this.setState({
+								error: 'Something went wrong...'
+							})
+						}
+					})
+					.then(latest => {
+						console.log({ latest: latest })
+						this.setState({
+							latest
+						})
+						cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100&categories=${homeFeatureCategoryId[0].id}&exclude=${latest[0].id}`, 24 * 60 * 60)
+							.then(response => {
+								if (response.ok) {
+									return response.json();
+								} else {
+									this.setState({
+										error: 'Something went wrong...'
+									})
+								}
+							})
+							.then(posts => {
+								console.log({ posts: posts })
+								this.setState({
+									posts
+								})
+							})
+							.catch(error => this.setState({
+								error
+							}));
+					})
+					.catch(error => this.setState({
+						error
+					}));
 			})
 			.catch(error => this.setState({
 				error
 			}));
 
+/*
 		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=1`, 24 * 60 * 60)
 			.then(response => {
 				if (response.ok) {
@@ -134,9 +175,11 @@ class Home extends Component {
 			.catch(error => this.setState({
 				error
 			}));
+*/
 	}
 
 	render() {
+		console.log(window)
 		//console.log(this.state)
 		let page = {
 			title: 'Slushman Home',
@@ -147,7 +190,8 @@ class Home extends Component {
 			<HomeWrapper>
 				<Helmet>
 					<title>{`${page.title}`}</title>
-					<link rel="canonical" href={`${this.props.location.pathname}`} />
+					<link rel="canonical" href={window.location.href} />
+					<meta name="description" content={page.description} />
 					<meta property="og:locale" content="en_US" />
 					<meta property="og:type" content="article" />
 					<meta property="og:title" content={`${page.title}`} />
@@ -173,7 +217,9 @@ class Home extends Component {
 				</Helmet>
 				{
 					1 === this.state.latest.length
-						? <HomeLatest post={this.state.latest[0]} />
+						? <ErrorBoundry>
+							<HomeLatest post={this.state.latest[0]} />
+						</ErrorBoundry>
 						: <Loading />
 				}
 				<HomeFeatArticlesHeading>Featured Articles</HomeFeatArticlesHeading>

@@ -10,7 +10,8 @@ const PostLatest = styled.div`
 	padding-bottom: var(--padbot);
 	padding-top: var(--padtop);
 	background: linear-gradient(rgba(255,255,255,0.85),rgba(255,255,255,0.85)), url(${props => props.image});
-	transition: all 5s ease;
+	background-position: center;
+	transition: all 1s ease;
 
 	@media screen and (min-width: 560px) {
 		--padbot: 3em;
@@ -45,15 +46,17 @@ const HomeLatest = ({post}) => {
 
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
 	let imageSource = false !== image ? image.source_url : null;
+	let postTitle = post.yoast && 0 !== post.yoast.title.length ? post.yoast.title : he.decode(post.title.rendered);
+	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode(post.excerpt.rendered);
 
 	return (
 		<PostLatest image={imageSource}>
 			<HomeLatestTitleContent>
 				<CTAHomeTop>Read my latest article:</CTAHomeTop>
 				<HomeLatestTitle>
-					<Link to={`/post/${post.slug}`}>{he.decode(post.title.rendered)}</Link>
+					<Link to={`/post/${post.slug}`}>{postTitle}</Link>
 				</HomeLatestTitle>
-				<HomeContentExcerpt dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+				<HomeContentExcerpt dangerouslySetInnerHTML={{ __html: excerptContent }} />
 			</HomeLatestTitleContent>
 		</PostLatest>
 	);

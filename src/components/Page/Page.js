@@ -84,6 +84,21 @@ const PageContent = styled.div`
 	padding-right: var(--pad);
 	padding-top: 1em;
 
+	& a {
+		--link-color: #0474B5;
+		color: var(--link-color);
+	}
+
+	& a:visited,
+	& a:active,
+	& a:hover {
+		--link-color: var(--color-dark);
+	}
+
+	& a:focus {
+		outline-color: #E8671C;
+	}
+
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
 	}
@@ -92,22 +107,26 @@ const PageContent = styled.div`
 const Page = ({ page, pathname }) => {
 	//console.log(props)
 
+	let pageExcerpt = page.yoast && 0 !== page.yoast.metadesc.length ? page.yoast.metadesc : he.decode(page.excerpt.rendered);
+	let pageTitle = he.decode(page.title.rendered);
+
 	return (
 		<PageWrapper data-test="page">
 			<PageArticle>
 				<Helmet>
-					<title>{he.decode(page.title.rendered)}</title>
+					<title>{pageTitle}</title>
 					<link rel="canonical" href={`${page.link}`} />
+					<meta name="description" content={pageExcerpt} />
 					<meta property="og:locale" content="en_US" />
 					<meta property="og:type" content="article" />
-					<meta property="og:title" content={he.decode(page.title.rendered)} />
-					<meta property="og:description" content={page.excerpt.rendered} />
+					<meta property="og:title" content={pageTitle} />
+					<meta property="og:description" content={pageExcerpt} />
 					<meta property="og:url" content={`${page.link}`} />
 					<meta property="og:site_name" content="Slushman" />
 					<meta property="article:publisher" content="https://www.facebook.com/slushmandesign/" />
 					<meta name="twitter:card" content="summary" />
-					<meta name="twitter:description" content={page.excerpt.rendered} />
-					<meta name="twitter:title" content={he.decode(page.title.rendered)} />
+					<meta name="twitter:description" content={pageExcerpt} />
+					<meta name="twitter:title" content={pageTitle} />
 					<meta name="twitter:site" content="@slushman" />
 					<meta name="twitter:creator" content="@slushman" />
 					<script type='application/ld+json'>{`{
@@ -117,9 +136,9 @@ const Page = ({ page, pathname }) => {
 							"@type": "Person",
 							"name":"Chris Wilcoxson"
 						},
-						"headline": "${he.decode(page.title.rendered)}"
+						"headline": "${pageTitle}"
 						"lastReviewed": "${page.modified}",
-						"description": "${page.excerpt.rendered}"
+						"description": "${pageExcerpt}"
 					}`}</script>
 				</Helmet>
 				<TransitionGroup component={null}>
@@ -132,7 +151,7 @@ const Page = ({ page, pathname }) => {
 					>
 					
 						<PageHeader>
-							<PageTitle>{page.title.rendered}</PageTitle>
+							<PageTitle>{pageTitle}</PageTitle>
 						</PageHeader>
 					</CSSTransition>
 				</TransitionGroup>

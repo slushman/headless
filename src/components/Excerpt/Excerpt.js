@@ -35,7 +35,7 @@ const ExcerptListItem = styled.li`
 	.${transitionName}-enter.${transitionName}-enter-active {
 		height: 100vh;
 		opacity: 1;
-		transition: all 5s ease;
+		transition: all 1s ease;
 		width: 100vw;
 	}
 
@@ -49,7 +49,7 @@ const ExcerptListItem = styled.li`
 	.${transitionName}-exit.${transitionName}-exit-active {
 		opacity: 0;
 		transform: scale(10);
-		transition: all 5s ease;
+		transition: all 1s ease;
 	}
 `;
 
@@ -91,13 +91,14 @@ const Excerpt = props => {
 	let post = props.post;
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
 	let imageSource = false !== image ? image.source_url : null;
+	let excerptTitle = he.decode(post.title.rendered);
 
 	return (
 		<ExcerptListItem className={classNames(props.listItemClass)}>
 			<ExcerptLink to={`/post/${post.slug}`}>
 				<ExcerptImg image={imageSource} />
 				<ExcerptTitleWrap>
-					<ExcerptTitle>{he.decode(post.title.rendered)}</ExcerptTitle>
+					<ExcerptTitle>{excerptTitle}</ExcerptTitle>
 					<ExcerptDate>Published {moment(post.date).format("YYYY.MM.DD")}</ExcerptDate>
 				</ExcerptTitleWrap>
 			</ExcerptLink>

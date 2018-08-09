@@ -5,7 +5,7 @@ import { cachedFetch } from '../../functions';
 import styled from 'styled-components';
 
 import Header from '../Header/Header';
-//import Footer from '../Footer/Footer';
+import SkipToContentLink from './SkipToContentLink';
 import Loading from '../Loading/Loading';
 
 const AsyncHome = Loadable({
@@ -88,6 +88,7 @@ class App extends Component {
 		
 		return (
 			<Fragment>
+				<SkipToContentLink />
 				<Header {...this.props} />
 				<SiteMain id="primary">
 					<Route location={this.props.location} render={() => (

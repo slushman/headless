@@ -38,16 +38,20 @@ const ContentExcerptHome = styled.div``;
 const HomeExcerpt = props => {
 	//console.log(post)
 
+	//.replace(/<[^>]+>/g, '')
+
 	let post = props.post;
+	let excerptTitle = he.decode(post.title.rendered);
+	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode(post.excerpt.rendered);
 
 	return (
 		<HomeExcerptListItem className={classNames(props.listItemClass)}>
 			<HomeExcerptTitleContent>
 				<HomeExcerptTitle>
-					<Link to={`/post/${post.slug}`}>{he.decode(post.title.rendered)}</Link>
+					<Link to={`/post/${post.slug}`}>{excerptTitle}</Link>
 				</HomeExcerptTitle>
 				<HomeExcerptDate>Published {moment(post.date).format("YYYY.MM.DD")}</HomeExcerptDate>
-				<ContentExcerptHome dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+				<ContentExcerptHome dangerouslySetInnerHTML={{ __html: excerptContent }} />
 			</HomeExcerptTitleContent>
 		</HomeExcerptListItem>
 	);
