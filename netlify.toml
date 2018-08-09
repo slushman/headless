@@ -2,5 +2,5 @@
   ID = "0903b16c-2acb-429c-bac6-c175f3952f1d"
 
 [Build]
-  Publish = ""
+  Publish = "./build"
   Functions = ""
