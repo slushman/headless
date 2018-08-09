@@ -1,61 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
-    <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#1b558d">
-    <meta name="apple-mobile-web-app-title" content="Slushman">
-    <meta name="application-name" content="Slushman">
-    <meta name="msapplication-TileColor" content="#1b558d">
-    <meta name="theme-color" content="#ffffff">
-    <meta property="og:image:height" content="1257">
-    <meta property="og:image:width" content="2400">
-    <meta property="og:title" content="Slushman">
-    <meta property="og:description" content="Web developer specializing in WordPress, React, React Native, and accessibility.">
-    <meta property="og:url" content="%PUBLIC_URL%">
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
-    <link rel="alternate" type="application/rss+xml" title="Slushman Design > Feed" href="https://api.slushman.com/feed/">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="theme-color" content="#000000">
+		<!--
+			manifest.json provides metadata used when your web app is added to the
+			homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+		-->
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+		<link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+		<link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
+		<link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#1b558d">
+		<meta name="apple-mobile-web-app-title" content="Slushman">
+		<meta name="application-name" content="Slushman">
+		<meta name="msapplication-TileColor" content="#1b558d">
+		<meta name="theme-color" content="#ffffff">
+		<meta property="og:image:height" content="1257">
+		<meta property="og:image:width" content="2400">
+		<meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
+		<link rel="alternate" type="application/rss+xml" title="Slushman Design > Feed" href="https://api.slushman.com/feed/">
+		<link rel="dns-prefetch" href="//fonts.googleapis.com/">
+		<!--
+			Notice the use of %PUBLIC_URL% in the tags above.
+			It will be replaced with the URL of the `public` folder during the build.
+			Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <!-- A little help for the Netlify post-processing bots -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-    </form>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+			Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+			work correctly both with client-side routing and a non-root public URL.
+			Learn how to configure a non-root public URL by running `npm run build`.
+		-->
+		<title>Slushman</title>
+		<noscript>
+			<style>
+				body {
+					background-color: #F2F6F7;
+					color: #02334F;
+				}
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+				a {
+					color: #0474B5;
+				}
+				.logo {
+					max-width: 400px;
+				}
+			</style>
+		</noscript>
+	</head>
+	<body>
+		<!-- A little help for the Netlify post-processing bots -->
+		<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+			<input type="text" name="name" />
+			<input type="email" name="email" />
+			<textarea name="message"></textarea>
+		</form>
+		<noscript>
+			<img class="logo" src="/images/slushman-animated.svg" alt="Slushman" />
+			<h1>Welcome to slushman.com!</h1>
+			<p>This is the site for Chris Wilcoxson, a full-stack web developer focusing on React, WordPress, performance, and accessibility.</p>
+			<p>You can contact me at <a href="mailto:chris@slushman.com">chris@slushman.com</a> or connect with me on social media:</p>
+			<ul>
+				<li>
+					<a href="https://github.com/slushman">GitHub</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/slushmandesign">Facebook</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/slushman">Twitter</a>
+				</li>
+			</ul>
+			<form name="contact" netlify netlify-honeypot="bot-field">
+				<input type="text" name="name" />
+				<input type="email" name="email" />
+				<textarea name="message"></textarea>
+			</form>
+			<p>This page probably looks boring though. I built this site using React, so you'll need to turn on Javascript to see the rest.</p>
+			<p>Thanks for visiting!</p>
+		</noscript>
+		<div id="root"></div>
+		<!--
+			This HTML file is a template.
+			If you open it directly in the browser, you will see an empty page.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+			You can add webfonts, meta tags, or analytics to this file.
+			The build step will place the bundled scripts into the <body> tag.
+
+			To begin the development, run `npm start` or `yarn start`.
+			To create a production bundle, use `npm run build` or `yarn build`.
+		-->
+	</body>
 </html>
