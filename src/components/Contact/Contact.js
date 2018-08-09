@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import ContactForm from './ContactForm';
+import FormContainer from './FormContainer';
 import LinkMenu from '../LinkMenu/LinkMenu';
 import IconFacebook from '../Icons/Facebook';
 import IconGithub from '../Icons/Github';
@@ -42,6 +42,21 @@ const ContentWrap = styled.div`
 	--pad: 1em;
 
 	padding: 1em var(--pad);
+
+	& a {
+		--link-color: #0474B5;
+		color: var(--link-color);
+	}
+
+	& a:visited,
+	& a:active,
+	& a:hover {
+		--link-color: var(--color-dark);
+	}
+
+	& a:focus {
+		outline-color: #E8671C;
+	}
 
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
@@ -140,7 +155,7 @@ const Contact = (props) => {
 					<Heading>Not Sure You Need a New Site?</Heading>
 					<Content>With a site audit, I'll find ways your site can load and operate faster, be more accessible, and easier to use. Contact me with your specific concerns and your site URL for rates.</Content>
 					
-					<ContactForm />
+					<FormContainer />
 				</ContentWrap>
 			</ContactArticle>
 			<Footer />
