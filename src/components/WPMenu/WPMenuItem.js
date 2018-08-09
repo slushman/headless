@@ -28,11 +28,11 @@ const activeClassName = 'selected';
 
 const MenuItemLink = styled(NavLink)`
 	--display: inline-grid;
-	--link-color: var(--color-light);
+	--link-color: ${props => 'footer' === props.menulocation ? 'var(--color-light)' : 'var(--color-dark-blue)'};
 	--zindex: auto;
 
 	align-items: center;
-	color: var(--link-color);	
+	color: var(--link-color);
 	display: var(--display);
 	justify-content: center;
 	padding: 0.5em;
@@ -77,7 +77,7 @@ const MenuItemLink = styled(NavLink)`
 	}
 
 	&:hover {
-		--link-color: var(--color-light);
+		--link-color: ${props => 'footer' === props.menulocation ? 'var(--color-light)' : 'var(--color-dark-blue)'};
 
 		@media screen and (min-width: 560px) {
 			--link-color: ${props => {
@@ -128,7 +128,15 @@ const MenuItemLink = styled(NavLink)`
 		}
 
 		&:hover {
-			--link-color: var(--color-light);
+			--link-color: ${props => {
+				if ('footer' === props.menulocation) {
+					return 'var(--color-light)';
+				} else if ('/blog' === props.page) {
+					return 'var(--color-charcoal)';
+				} else {
+					return 'var(--color-dark-blue)';
+				}
+			}};
 
 			@media screen and (min-width: 560px) {
 				--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
@@ -159,7 +167,7 @@ const MenuItemLink = styled(NavLink)`
 		&:hover:before {
 			--bgcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
 			--height: 2px;
-			--underlinkcolor: var(--color-light);
+			--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
 		}
 	}
 `;
