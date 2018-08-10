@@ -6,7 +6,6 @@ import HomeExcerpt from './HomeExcerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 import { getColorClass } from '../../functions';
-import '../Excerpt/ExcerptColors.css';
 
 const HomePosts = styled.ul`
 	--display: grid;

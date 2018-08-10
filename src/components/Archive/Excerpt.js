@@ -5,6 +5,7 @@ import moment from 'moment-js';
 import he from 'he';
 import classNames from 'classnames';
 import styled from 'styled-components';
+import { getImage } from '../../functions';
 
 const transitionName = 'zoom';
 
@@ -57,8 +58,9 @@ const ExcerptLink = styled(Link)``;
 
 const ExcerptImg = styled.div`
 	--height: 7em;
+	--bgImage: url(${props => props.image});
 
-	background-image: url(${props => props.image});
+	background-image: var(--bgImage);
 	background-repeat: no-repeat;
 	background-size: cover;
 	filter: var(--filter);
@@ -90,7 +92,7 @@ const Excerpt = props => {
 
 	let post = props.post;
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
-	let imageSource = false !== image ? image.source_url : null;
+	let imageSource = image.media_details ? getImage(image.media_details.sizes, 'small') : null
 	let excerptTitle = he.decode(post.title.rendered);
 
 	return (

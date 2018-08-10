@@ -5,6 +5,7 @@ import he from 'he';
 import EmbedContainer from 'react-oembed-container';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import { getImage } from '../../functions';
 
 import Shurls from './Shurls';
 import Footer from '../Footer/Footer';
@@ -40,13 +41,14 @@ const PostArticle = styled.article`
 `;
 
 const PostHeader = styled.header`
-	--bgcolor: ${props => props.image ? 'rgba(2, 51, 79 ,0.5)' : 'var(--color-dark-blue)'};
-	--pad: ${props => props.image ? '3em' : '1em'};
+	--bgcolor: ${props => props.imageSizes ? 'rgba(2, 51, 79 ,0.5)' : 'var(--color-dark-blue)'};
+	--pad: ${props => props.imageSizes ? '3em' : '1em'};
+	--bgImage: url(${props => props.imageSizes.small});
 	
 	align-items: center;
 	background-attachment: fixed;
 	background-color: var(--bgcolor);
-	background-image: url(${props => props.image});
+	background-image: var(--bgImage);
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: var(--color-light);
@@ -71,7 +73,12 @@ const PostHeader = styled.header`
 	}
 
 	@media screen and (min-width: 560px) {
-		--pad: ${props => props.image ? '3em' : '1em'};
+		--bgImage: url(${props => props.imageSizes.med});
+		--pad: ${props => props.imageSizes ? '5em' : '1em'};
+	}
+
+	@media screen and (min-width: 1024px) {
+		--bgImage: url(${props => props.imageSizes.large});
 	}
 `;
 
@@ -181,6 +188,12 @@ const Post = props => {
 
 	let image = props.post._embedded['wp:featuredmedia'] ? props.post._embedded['wp:featuredmedia'][0] : false;
 
+	let imageSizes = {
+		small: image.media_details ? getImage(image.media_details.sizes, 'small') : null,
+		med: image.media_details ? getImage(image.media_details.sizes, 'med') : null,
+		large: image.media_details ? getImage(image.media_details.sizes, 'large') : null,
+	}
+
 	let post = {
 		title: he.decode(props.post.title.rendered),
 		image: image ? image.source_url : null,
@@ -192,7 +205,7 @@ const Post = props => {
 
 	return (
 		<PostWrapper>
-			<PostArticle image={post.image} pathname={props.pathname}>
+			<PostArticle pathname={props.pathname}>
 				<Helmet>
 					<title>{post.title}</title>
 					<link rel="canonical" href={props.post.link} />
@@ -232,7 +245,7 @@ const Post = props => {
 						"description": "${post.excerpt}"
 					}`}</script>
 				</Helmet>
-				<PostHeader image={post.image}>
+				<PostHeader imageSizes={imageSizes}>
 					<PostTitle image={post.image}>{post.title}</PostTitle>
 				</PostHeader>
 				<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>

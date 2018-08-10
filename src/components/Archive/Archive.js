@@ -4,14 +4,12 @@ import Helmet from 'react-helmet';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
-import Excerpt from '../Excerpt/Excerpt';
+import Excerpt from './Excerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import Footer from '../Footer/Footer';
 
 import { getColorClass } from '../../functions';
-
-import '../Excerpt/ExcerptColors.css';
 
 const transitionName = 'zoom';
 

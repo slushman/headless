@@ -74,3 +74,61 @@ export function getColorClass(increment) {
 	return excerptColors[counter];
 
 } // getColorClass()
+
+export function getImage( imageSizes, requestedSize ) {
+
+	if ( 'small' === requestedSize ) {
+
+		if (imageSizes.medium && 0 !== imageSizes.medium.source_url.length) {
+
+			return imageSizes.medium.source_url;
+
+		}
+
+		if (imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length) {
+
+			return imageSizes.medium_large.source_url;
+
+		}
+
+		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+
+			return imageSizes.large.source_url;
+
+		}
+
+		return imageSizes.full.source_url;
+
+	}
+
+	if ('med' === requestedSize) {
+
+		if (imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length) {
+
+			return imageSizes.medium_large.source_url;
+
+		}
+
+		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+
+			return imageSizes.large.source_url;
+
+		}
+
+		return imageSizes.full.source_url;
+
+	}
+
+	if ('large' === requestedSize) {
+
+		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+
+			return imageSizes.large.source_url;
+
+		}
+
+		return imageSizes.full.source_url;
+
+	}
+
+} // getImage()

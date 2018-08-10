@@ -77,7 +77,7 @@ class HomeContainer extends Component {
 	}
 
 	render() {
-		console.log(this.state)
+		//console.log(this.state)
 		return (
 			1 <= this.state.posts.length
 				? <Home

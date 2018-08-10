@@ -1,6 +1,88 @@
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
+
+	/* latin-ext */
+	@font-face {
+		font-family: 'Source Code Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlM-vWnsUnxlC9.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Source Code Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevWnsUnxg.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRdu3cOWxy40.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Source Serif Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Serif Pro'), local('SourceSerifPro-Regular'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXo-oAGIyY0Wfw.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Source Serif Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Source Serif Pro'), local('SourceSerifPro-Regular'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXQ-oAGIyY0.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Source Serif Pro';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSKqxKcsdrOPbQ.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Source Serif Pro';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSyqxKcsdrM.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
 	:root {
 		--color-light: #F2F6F7;
 		--color-lt-gray: #E9EFF2;
@@ -183,4 +265,208 @@ injectGlobal`
 		margin: 0;
 		padding: 0 4px 5px;
 	}
+
+
+	/*
+	 * White text on a blue bg
+	 */
+	.white-on-blue {
+		--bgcolor: var(--color-blue);
+		--color: var(--color-light);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.white-on-blue:hover,
+	.white-on-blue:focus-within {
+		--bgcolor: var(--color-light);
+		--color: var(--color-blue);
+	}
+
+	.white-on-blue a {
+		--color: var(--color-light);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.white-on-blue:hover a,
+	.white-on-blue:focus-within a:focus {
+		--color: var(--color-blue);
+	}
+
+	/*
+	 * Charcoal text on a med gray bg
+	 */
+	.charcoal-on-med-gray {
+		--bgcolor: var(--color-med-gray);
+		--color: var(--color-charcoal);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.charcoal-on-med-gray:hover,
+	.charcoal-on-med-gray:focus-within {
+		--bgcolor: var(--color-charcoal);
+		--color: var(--color-med-gray);
+	}
+
+	.charcoal-on-med-gray a {
+		--color: var(--color-charcoal);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.charcoal-on-med-gray:hover a,
+	.charcoal-on-med-gray:focus-within a:focus {
+		--color: var(--color-med-gray);
+	}
+
+	/*
+	 * Default colors
+	 */
+	.multicolor {
+		--bgcolor: var(--color-lt-gray);
+		--color: var(--color-dark);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.multicolor:hover,
+	.multicolor:focus-within {
+		--bgcolor: var(--color-lt-blue);
+	}
+
+	.multicolor a {
+		--color: var(--color-blue);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.multicolor:hover a,
+	.multicolor:focus-within a:focus {
+		--color: var(--color-dark);
+	}
+
+	/*
+	 * Dark Gray text on a white bg
+	 */
+	.dark-gray-on-white {
+		--bgcolor: var(--color-light);
+		--color: var(--color-dark-gray);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.dark-gray-on-white:hover,
+	.dark-gray-on-white:focus-within {
+		--bgcolor: var(--color-dark-gray);
+		--color: var(--color-light);
+	}
+
+	.dark-gray-on-white a {
+		--color: var(--color-dark-gray);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.dark-gray-on-white:hover a,
+	.dark-gray-on-white:focus-within a:focus {
+		--color: var(--color-light);
+	}
+
+	/*
+	 * Light Gray text on Dark bg
+	 */
+	.lt-gray-on-dark {
+		--bgcolor: var(--color-dark);
+		--color: var(--color-lt-gray);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.lt-gray-on-dark:hover,
+	.lt-gray-on-dark:focus-within {
+		--bgcolor: var(--color-lt-gray);
+		--color: var(--color-dark);
+	}
+
+	.lt-gray-on-dark a {
+		--color: var(--color-lt-gray);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.lt-gray-on-dark:hover a,
+	.lt-gray-on-dark:focus-within a:focus {
+		--color: var(--color-dark);
+	}
+
+	/*
+	 * Blue text on a white bg
+	 */
+	.blue-on-white {
+		--bgcolor: var(--color-light);
+		--color: var(--color-blue);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.blue-on-white:hover,
+	.blue-on-white:focus-within {
+		--bgcolor: var(--color-blue);
+		--color: var(--color-light);
+	}
+
+	.blue-on-white a {
+		--color: var(--color-blue);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.blue-on-white:hover a,
+	.blue-on-white:focus-within a:focus {
+		--color: var(--color-light);
+	}
+
+	/*
+	 * White text on a Dark Gray bg
+	 */
+	.white-on-dark-gray {
+		--bgcolor: var(--color-dark-gray);
+		--color: var(--color-light);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.white-on-dark-gray:hover,
+	.white-on-dark-gray:focus-within {
+		--bgcolor: var(--color-light);
+		--color: var(--color-dark-gray);
+	}
+
+	.white-on-dark-gray a {
+		--color: var(--color-light);
+		background-color: var(--bgcolor);
+		color: var(--color);
+		transition: 0.4s ease;
+	}
+
+	.white-on-dark-gray:hover a,
+	.white-on-dark-gray:focus-within a:focus {
+		--color: var(--color-dark-gray);
+	}
+
 `;
