@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { cachedFetch } from '../../functions';
 
 import HomeLatest from './HomeLatest';
 import HomeArchive from './HomeArchive';
@@ -65,146 +64,33 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-class Home extends Component {
+const Home = props => {
 
-	state = {
-		posts: {},
-		error: null,
-		quantity: 12,
-		start: 0,
-		latest: {},
-		catID: null
+	let page = {
+		title: 'Slushman Home',
+		description: 'Full-stack web developer focusing on React, WordPress, performance, and accessibility.',
+		link: props.location.pathname
 	}
 
-	componentDidMount() {
-
-		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/categories?per_page=100`, 24 * 60 * 60)
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					this.setState({
-						error: 'Something went wrong...'
-					})
-				}
-			})
-			.then(cats => {
-				console.log({cats: cats})
-				let homeFeatureCategoryId = cats.filter(cat => {
-					return cat.slug === 'home-feature';
-				})
-				console.log({ homeFeatureCategoryId })
-
-				cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=1`, 24 * 60 * 60)
-					.then(response => {
-						if (response.ok) {
-							return response.json();
-						} else {
-							this.setState({
-								error: 'Something went wrong...'
-							})
-						}
-					})
-					.then(latest => {
-						console.log({ latest: latest })
-						this.setState({
-							latest
-						})
-						cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100&categories=${homeFeatureCategoryId[0].id}&exclude=${latest[0].id}`, 24 * 60 * 60)
-							.then(response => {
-								if (response.ok) {
-									return response.json();
-								} else {
-									this.setState({
-										error: 'Something went wrong...'
-									})
-								}
-							})
-							.then(posts => {
-								console.log({ posts: posts })
-								this.setState({
-									posts
-								})
-							})
-							.catch(error => this.setState({
-								error
-							}));
-					})
-					.catch(error => this.setState({
-						error
-					}));
-			})
-			.catch(error => this.setState({
-				error
-			}));
-
-/*
-		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=1`, 24 * 60 * 60)
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					this.setState({
-						error: 'Something went wrong...'
-					})
-				}
-			})
-			.then(latest => {
-				this.setState({
-					latest
-				})
-				cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100&categories=${this.state.catID}&exclude=${latest[0].id}`, 24 * 60 * 60)
-					.then(response => {
-						if (response.ok) {
-							return response.json();
-						} else {
-							this.setState({
-								error: 'Something went wrong...'
-							})
-						}
-					})
-					.then(posts => {
-						this.setState({
-							posts
-						})
-					})
-					.catch(error => this.setState({
-						error
-					}));
-			})
-			.catch(error => this.setState({
-				error
-			}));
-*/
-	}
-
-	render() {
-		console.log(window)
-		//console.log(this.state)
-		let page = {
-			title: 'Slushman Home',
-			description: 'Web developer focusing on creating full-stack sites using React, WordPress, performance, and accessibility.',
-			link: this.props.location.pathname
-		}
-		return (
-			<HomeWrapper>
-				<Helmet>
-					<title>{`${page.title}`}</title>
-					<link rel="canonical" href={window.location.href} />
-					<meta name="description" content={page.description} />
-					<meta property="og:locale" content="en_US" />
-					<meta property="og:type" content="article" />
-					<meta property="og:title" content={`${page.title}`} />
-					<meta property="og:description" content={`${page.description}`} />
-					<meta property="og:url" content={`${this.props.location.pathname}`} />
-					<meta property="og:site_name" content="Slushman" />
-					<meta property="article:publisher" content="https://www.facebook.com/slushmandesign/" />
-					<meta name="twitter:card" content="summary" />
-					<meta name="twitter:description" content={`${page.description}`} />
-					<meta name="twitter:title" content={`${page.title}`} />
-					<meta name="twitter:site" content="@slushman" />
-					<meta name="twitter:creator" content="@slushman" />
-					<script type='application/ld+json'>{`{
+	return (
+		<HomeWrapper>
+			<Helmet>
+				<title>{`${page.title}`}</title>
+				<link rel="canonical" href={window.location.href} />
+				<meta name="description" content={page.description} />
+				<meta property="og:locale" content="en_US" />
+				<meta property="og:type" content="article" />
+				<meta property="og:title" content={`${page.title}`} />
+				<meta property="og:description" content={`${page.description}`} />
+				<meta property="og:url" content={window.location.href} />
+				<meta property="og:site_name" content="Slushman" />
+				<meta property="article:publisher" content="https://www.facebook.com/slushmandesign/" />
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:description" content={`${page.description}`} />
+				<meta name="twitter:title" content={`${page.title}`} />
+				<meta name="twitter:site" content="@slushman" />
+				<meta name="twitter:creator" content="@slushman" />
+				<script type='application/ld+json'>{`{
 					"@context": "https://schema.org",
 					"@type":"WebPage",
 					"author": {
@@ -214,27 +100,32 @@ class Home extends Component {
 					"headline": "${page.title}"
 					"description": "${page.description}"
 				}`}</script>
-				</Helmet>
-				{
-					1 === this.state.latest.length
-						? <ErrorBoundry>
-							<HomeLatest post={this.state.latest[0]} />
-						</ErrorBoundry>
-						: <Loading />
-				}
-				<HomeFeatArticlesHeading>Featured Articles</HomeFeatArticlesHeading>
-				{
-					1 <= this.state.posts.length
-						? <HomeArchive title="Blog" {...this.state} />
-						: <Loading />
-				}
-				<CTAHomeBottom>
-					<StyledLink to="/blog">Read more articles</StyledLink>
-				</CTAHomeBottom>
-				<Footer />
-			</HomeWrapper>
-		);
-	}
-}
+			</Helmet>
+			{
+				1 === props.latest.length
+					? <ErrorBoundry>
+						<HomeLatest post={props.latest[0]} />
+					</ErrorBoundry>
+					: <Loading />
+			}
+			<HomeFeatArticlesHeading>Featured Articles</HomeFeatArticlesHeading>
+			{
+				1 <= props.posts.length
+					? <HomeArchive title="Blog" {...props} />
+					: <Loading />
+			}
+			<CTAHomeBottom>
+				<StyledLink to="/blog">Read more articles</StyledLink>
+			</CTAHomeBottom>
+			<Footer />
+		</HomeWrapper>
+	);
+
+};
+
+Home.propTypes = {
+	latest: PropTypes.array,
+	posts: PropTypes.array,
+};
 
 export default Home;

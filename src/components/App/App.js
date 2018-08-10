@@ -9,7 +9,7 @@ import SkipToContentLink from './SkipToContentLink';
 import Loading from '../Loading/Loading';
 
 const AsyncHome = Loadable({
-	loader: () => import('../Home/Home'),
+	loader: () => import('../Home/HomeContainer'),
 	loading: Loading
 });
 const AsyncArchive = Loadable({
