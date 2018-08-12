@@ -50,24 +50,6 @@ const PageHeader = styled.header`
 	justify-content: center;
 	margin: 0;
 	padding: 1em;
-
-	&.fade-enter {
-		opacity: 0;
-	}
-
-	&.fade-enter.fade-enter-active {
-		opacity: 1;
-		transition: all 1s ease;
-	}
-
-	&.fade-exit {
-		opacity: 1;
-	}
-
-	&.fade-exit.fade-exit-active {
-		opacity: 0;
-		transition: all 1s ease;
-	}
 `;
 
 const PageTitle = styled.h1`

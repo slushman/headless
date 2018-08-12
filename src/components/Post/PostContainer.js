@@ -9,7 +9,9 @@ import NotFound from '../../components/NotFound/NotFound';
 class PostContainer extends Component {
 	state = {
 		post: {},
-		error: null
+		error: null,
+		beforePost: {},
+		afterPost: {}
 	}
 
 	componentDidMount() {
@@ -31,10 +33,15 @@ class PostContainer extends Component {
 				let post = posts.filter((post) => {
 					return post.slug === this.props.match.params.slug;
 				})
+				let beforePost = this.getBeforePost(posts,post);
+				let afterPost = this.getAfterPost(posts, post);
+				let error = 1 !== post.length ? 'NotFound' : null;
 
 				this.setState({
 					post,
-					error: 1 !== post.length ? 'NotFound' : null
+					beforePost,
+					afterPost,
+					error
 				})
 			})
 			.catch(error => this.setState({
@@ -42,8 +49,28 @@ class PostContainer extends Component {
 			}));
 	}
 
+	getBeforePost = (posts, post) => {
+		let currentIndex = this.findIndex(posts, post[0].id);
+		if ( 0 === currentIndex ) { return null; }
+		return posts[currentIndex - 1];
+	}
+
+	getAfterPost = (posts, post) => {
+		let currentIndex = this.findIndex(posts, post[0].id);
+		if (posts.length - 1 === currentIndex) { return null; }
+		return posts[currentIndex + 1];
+	}
+
+	findIndex = (haystack,needle) => {
+		for ( let i = 0; i < haystack.length; i++ ) {
+			if ( needle === haystack[i].id ) {
+				return i;
+			}
+		}
+	}
+
 	render() {
-		//console.log(this.props)
+		console.log(this.state)
 		if (1 !== this.state.post.length && 'NotFound' !== this.state.error) {
 			return <Loading />; 
 		}
@@ -51,7 +78,7 @@ class PostContainer extends Component {
 			return <NotFound />;
 		}
 		return (
-			<Post post={this.state.post[0]} pathname={this.props.location.pathname} />
+			<Post post={this.state.post[0]} pathname={this.props.location.pathname} beforePost={this.state.beforePost} afterPost={this.state.afterPost} />
 		);
 	}
 }

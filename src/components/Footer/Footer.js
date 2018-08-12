@@ -10,6 +10,7 @@ const SiteFooter = styled.footer`
 	display: flex;
 	justify-content: space-between;
 	padding: 2em 1em;
+	position: relative;
 	transition: background-color 0.5s ease;
 `;
 

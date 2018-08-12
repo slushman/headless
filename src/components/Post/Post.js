@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { getImage } from '../../functions';
 
 import Shurls from './Shurls';
+import PostNavLinks from './PostNavLinks';
 import Footer from '../Footer/Footer';
 
 const PostWrapper = styled.div`
@@ -255,6 +256,7 @@ const Post = props => {
 					</EmbedContainer>
 				</PostPrimary>
 				<Shurls {...props} />
+				<PostNavLinks beforePost={props.beforePost} afterPost={props.afterPost} />
 			</PostArticle>
 			<Footer />
 		</PostWrapper>

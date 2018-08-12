@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
-const NavMenu = styled.nav``;
+const NavMenuWrap = styled.nav``;
 
 const MenuList = styled.nav`
 	display: flex;
@@ -52,7 +52,7 @@ const MenuLink = styled(NavLink)`
 const NavMenu = (props) => {
 
 	return (
-		<NavMenu location={props.menuName}>
+		<NavMenuWrap location={props.menuName}>
 			<MenuList className={classNames(props.listClass)}>
 				{props.navLinks.map((link, i) => (
 					<li className={classNames(props.itemClass)} key={i}>
@@ -66,7 +66,7 @@ const NavMenu = (props) => {
 					</li>
 				))}
 			</MenuList>
-		</NavMenu>
+		</NavMenuWrap>
 	);
 };
 
