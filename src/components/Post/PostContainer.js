@@ -70,7 +70,7 @@ class PostContainer extends Component {
 	}
 
 	render() {
-		console.log(this.state)
+		//console.log(this.state)
 		if (1 !== this.state.post.length && 'NotFound' !== this.state.error) {
 			return <Loading />; 
 		}

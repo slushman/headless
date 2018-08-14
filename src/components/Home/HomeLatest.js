@@ -87,7 +87,6 @@ const HomeLatest = ({post}) => {
 	//console.log(post)
 
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
-	let postTitle = post.yoast && 0 !== post.yoast.title.length ? post.yoast.title : he.decode(post.title.rendered);
 	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode(post.excerpt.rendered);
 
 	let imageSizes = {
@@ -101,7 +100,7 @@ const HomeLatest = ({post}) => {
 			<HomeLatestTitleContent>
 				<CTAHomeTop>Read my latest article:</CTAHomeTop>
 				<HomeLatestTitle>
-					<Link to={`/post/${post.slug}`}>{postTitle}</Link>
+					<Link to={`/post/${post.slug}`}>{he.decode(post.title.rendered)}</Link>
 				</HomeLatestTitle>
 				<HomeContentExcerpt dangerouslySetInnerHTML={{ __html: excerptContent }} />
 			</HomeLatestTitleContent>

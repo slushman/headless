@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import HomeExcerpt from './HomeExcerpt';
+import Flexcerpt from '../Flexcerpt/Flexcerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
-
-import { getColorClass } from '../../functions';
 
 const HomePosts = styled.ul`
 	--display: grid;
@@ -36,7 +34,7 @@ const HomeArchive = props => {
 				showPosts.map((post, i) => {
 					return (
 						<ErrorBoundry key={i}>
-							<HomeExcerpt post={post} listItemClass={[getColorClass(i)]} />
+							<Flexcerpt post={post} display={['date','content']} location="home" index={i} />
 						</ErrorBoundry>
 					)	
 				})

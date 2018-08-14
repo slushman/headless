@@ -96,7 +96,7 @@ const Header = props => {
 	//console.log(props)
 
 	return (
-		<SiteHeader page={props.pathname} transitionName="header">
+		<SiteHeader page={props.pathname}>
 			<Title><TitleContent {...props} /></Title>
 			{'/' === props.pathname && <TitleHome>Slushman</TitleHome>}
 			<WPMenu location="main" page={props.pathname} />

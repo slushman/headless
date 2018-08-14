@@ -208,7 +208,7 @@ const Post = props => {
 		<PostWrapper>
 			<PostArticle pathname={props.pathname}>
 				<Helmet>
-					<title>{post.title}</title>
+					<title>{props.post.yoast && 0 !== props.post.yoast.title.length ? props.post.yoast.title : post.title}</title>
 					<link rel="canonical" href={props.post.link} />
 					<meta name="description" content={post.excerpt} />
 					<meta property="og:locale" content="en_US" />

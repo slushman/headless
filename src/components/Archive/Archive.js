@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
-import Excerpt from './Excerpt';
+import Flexcerpt from '../Flexcerpt/Flexcerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import Footer from '../Footer/Footer';
-
-import { getColorClass } from '../../functions';
-
-const transitionName = 'zoom';
 
 const ArchiveWrapper = styled.div`
 	position: relative;
@@ -37,29 +32,6 @@ const ArchiveHeader = styled.header`
 		--bgcolor: var(--color-dark-blue);
 		color: var(--color-light);
 	}
-
-	.${transitionName}-enter {
-		opacity: 0;
-	}
-
-	.${transitionName}-enter.${transitionName}-enter-active {
-		height: 100vh;
-		opacity: 1;
-		transition: all 1s ease;
-		width: 100vw;
-	}
-
-	.${transitionName}-exit {
-		height: 100vh;
-		opacity: 1;
-		transform: scale(10);
-		width: 100vw;
-	}
-
-	.${transitionName}-exit.${transitionName}-exit-active {
-		opacity: 0;
-		transition: all 1s ease;
-	}
 `;
 
 const ArchiveTitle = styled.h1`
@@ -82,23 +54,31 @@ const ArchiveCTABottomWrap = styled.div`
 `;
 
 const ArchiveCTALoadMore = styled.button`
+	--borderColor: var(--color-dark-blue);
+	--bgColor: var(--color-dark-blue);
+	--color: var(--color-light);
+
 	background: none;
-	background-color: var(--color-blue);
-	border: none;
+	background-color: var(--bgColor);
+	border: 2px solid var(--borderColor);
 	border-radius: 0;
 	box-shadow: none;
-	color: var(--color-light);
+	color: var(--color);
+	cursor: pointer;
 	display: block;
 	font-size: 1em;
-	min-width: 40vw;
 	margin: 0 auto;
 	padding: 1.5em;
+	transition: all 0.4s ease;
 	text-shadow: none;
 	text-transform: uppercase;
 
 	&:hover,
 	&:active,
 	&:focus {
+		--bgColor: var(--color-light);
+		--color: var(--color-dark-blue);
+
 		border-color: inherit;
 	}
 `;
@@ -115,28 +95,15 @@ const Archive = props => {
 				<ArchiveTitle>{props.title}</ArchiveTitle>
 			</ArchiveHeader>
 			<ArchiveList>
-				<TransitionGroup component={null}>
-					{
-						props.showPosts.map((post, i) => {
-							let colorClass = getColorClass(i);
-							//console.log({colorClass,i})
-							return (
-								<CSSTransition
-									key={i}
-									classNames={transitionName}
-									timeout={{
-										enter: 5000,
-										exit: 5000
-									}}
-								>
-									<ErrorBoundry key={i}>
-										<Excerpt post={post} listItemClass={[colorClass]} />
-									</ErrorBoundry>
-								</CSSTransition>
-							)
-						})
-					}
-				</TransitionGroup>
+				{
+					props.showPosts.map((post, i) => {
+						return (
+							<ErrorBoundry key={i}>
+								<Flexcerpt post={post} display={['image', 'date']} index={i} />
+							</ErrorBoundry>
+						)
+					})
+				}
 			</ArchiveList>
 			<ArchiveCTABottomWrap>
 				<ArchiveCTALoadMore onClick={props.onClick}>See more articles</ArchiveCTALoadMore>

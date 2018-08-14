@@ -101,13 +101,13 @@ const Home = props => {
 					"description": "${page.description}"
 				}`}</script>
 			</Helmet>
+			<ErrorBoundry>
 			{
 				1 === props.latest.length
-					? <ErrorBoundry>
-						<HomeLatest post={props.latest[0]} />
-					</ErrorBoundry>
+					? <HomeLatest post={props.latest[0]} />
 					: <Loading />
 			}
+			</ErrorBoundry>
 			<HomeFeatArticlesHeading>Featured Articles</HomeFeatArticlesHeading>
 			{
 				1 <= props.posts.length

@@ -35,10 +35,8 @@ const AsyncNotFound = Loadable({
 
 const SiteMain = styled.main`
 	display: grid;
-	grid-template-areas: 'TransitionThis';
 
 	& > div {
-		grid-area: TransitionThis;
 		width: 100vw;
 	}
 `;

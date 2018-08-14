@@ -16,6 +16,7 @@ const ScrollToTopButton = styled.button`
 	bottom: ${props => props.fixed ? '1.5em' : ''};
 	box-shadow: none;
 	color: var(--textColor);
+	cursor: pointer;
 	display: block;
 	font-size: 1em;
 	height: 2em;

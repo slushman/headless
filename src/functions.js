@@ -58,23 +58,11 @@ export function cachedFetch(url, options) {
 } // cachedFetch()
 
 /**
- * Returns one of the color classes.
+ * Returns the appropriate image URL based on the sizes available.
  * 
- * Uses modulo to get a number within the array length from the increment passed in.
- * 
- * @param 		int 		increment 		The increment number from map.
- * @return 		string 						The color class.
+ * @param {*} imageSizes 
+ * @param {*} requestedSize 
  */
-export function getColorClass(increment) {
-	
-	let excerptColors = ['white-on-blue', 'charcoal-on-med-gray', 'dark-gray-on-white', 'lt-gray-on-dark', 'blue-on-white', 'white-on-dark-gray'];
-	let counter = increment % excerptColors.length;
-
-	//console.log({counter:counter,increment: increment});
-	return excerptColors[counter];
-
-} // getColorClass()
-
 export function getImage( imageSizes, requestedSize ) {
 
 	if ( 'small' === requestedSize ) {

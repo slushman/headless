@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import he from 'he';
+
+import Flexcerpt from '../Flexcerpt/Flexcerpt';
 
 const Wrap = styled.nav`
 	--pad: 1em;
@@ -29,45 +29,23 @@ const List = styled.ul`
 	@media screen and (min-width: 550px) {
 		display: flex;
 	}
-`;
 
-const Item = styled.li`
-	--margbot: 1.5em;
-
-	margin-bottom: var(--margbot);
-
-	@media screen and (min-width: 550px) {
+	& li {
 		max-width: 50%;
 	}
 `;
-
-const PostNavLink = styled(Link)`
-	--link-color: #0474B5;
-	color: var(--link-color);
-
-	&:visited,
-	&:active,
-	&:hover {
-		--link-color: var(--color-dark);
-	}
-
-	&:focus {
-		outline-color: #E8671C;
-	}
-`;
-
 
 const PostNavLinks = ({beforePost,afterPost}) => {
 	return (
 		<Wrap>
 			<CTA>Check out other recent posts:</CTA>
 			<List>
-				<Item>
-					<PostNavLink to={`/post/${beforePost.slug}`}>{he.decode(beforePost.title.rendered)}</PostNavLink>
-				</Item>
-				<Item>
-					<PostNavLink to={`/post/${afterPost.slug}`}>{he.decode(afterPost.title.rendered)}</PostNavLink>
-				</Item>
+				{
+					beforePost ? <Flexcerpt post={beforePost} display={['date','content']} /> : null
+				}
+				{
+					afterPost ? <Flexcerpt post={afterPost} display={['date','content']} /> : null
+				}
 			</List>
 		</Wrap>
 	);

@@ -3,34 +3,11 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import he from 'he';
 import styled from 'styled-components';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Footer from '../Footer/Footer';
 
-const transitionName = 'swap';
-
 const PageWrapper = styled.div`
 	position: relative;
-
-	&.${transitionName}-enter {
-		opacity: 0;
-	}
-
-	&.${transitionName}-enter.${transitionName}-enter-active {
-		opacity: 1;
-		transform: scale(1);
-		transition: all 1s ease;
-	}
-
-	&.${transitionName}-exit {
-		opacity: 1;
-	}
-
-	&.${transitionName}-exit.${transitionName}-exit-active {
-		opacity: 0;
-		transform: scale(10);
-		transition: all 1s ease;
-	}
 `;
 
 const PageArticle = styled.article`
@@ -123,29 +100,10 @@ const Page = ({ page, pathname }) => {
 						"description": "${pageExcerpt}"
 					}`}</script>
 				</Helmet>
-				<TransitionGroup component={null}>
-					<CSSTransition
-						classNames="fade"
-						timeout={{
-							enter: 5000,
-							exit: 5000
-						}}
-					>
-					
-						<PageHeader>
-							<PageTitle>{pageTitle}</PageTitle>
-						</PageHeader>
-					</CSSTransition>
-				</TransitionGroup>
-				<CSSTransition
-					classNames="fade"
-					timeout={{
-						enter: 5000,
-						exit: 5000
-					}}
-				>
-					<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-				</CSSTransition>
+				<PageHeader>
+					<PageTitle>{pageTitle}</PageTitle>
+				</PageHeader>
+				<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
 			</PageArticle>
 			<Footer />
 		</PageWrapper>
