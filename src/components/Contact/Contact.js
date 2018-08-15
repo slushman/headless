@@ -7,7 +7,6 @@ import LinkMenu from '../LinkMenu/LinkMenu';
 import IconFacebook from '../Icons/Facebook';
 import IconGithub from '../Icons/Github';
 import IconTwitter from '../Icons/Twitter';
-import Footer from '../Footer/Footer';
 
 const ContactWrapper = styled.div``;
 
@@ -158,7 +157,6 @@ const Contact = (props) => {
 					<FormContainer />
 				</ContentWrap>
 			</ContactArticle>
-			<Footer />
 		</ContactWrapper>
 	);
 }

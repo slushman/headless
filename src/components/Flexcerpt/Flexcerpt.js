@@ -174,6 +174,7 @@ const ExcerptImg = styled.div`
 	--bgImage: url(${props => props.image});
 
 	background-image: var(--bgImage);
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	filter: var(--filter);

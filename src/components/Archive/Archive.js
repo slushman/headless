@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Flexcerpt from '../Flexcerpt/Flexcerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
-import Footer from '../Footer/Footer';
 
 const ArchiveWrapper = styled.div`
 	position: relative;
@@ -109,7 +108,6 @@ const Archive = props => {
 				<ArchiveCTALoadMore onClick={props.onClick}>See more articles</ArchiveCTALoadMore>
 				<ScrollToTop />
 			</ArchiveCTABottomWrap>
-			<Footer />
 		</ArchiveWrapper>
 	);
 };

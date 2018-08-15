@@ -14,7 +14,7 @@
 
 
 TODOS
-* Test contact form
+* Redirections
 * Publish
 
 

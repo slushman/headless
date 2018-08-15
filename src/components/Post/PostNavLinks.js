@@ -5,10 +5,13 @@ import styled from 'styled-components';
 import Flexcerpt from '../Flexcerpt/Flexcerpt';
 
 const Wrap = styled.nav`
+	--bgcolor: var(--color-lt-gray);
 	--pad: 1em;
 
+	background-color: var(--bgcolor);
 	padding-left: var(--pad);
 	padding-right: var(--pad);
+	padding-top: 1em;
 	position: relative;
 
 	@media screen and (min-width: 700px) {
@@ -17,7 +20,7 @@ const Wrap = styled.nav`
 `;
 
 const CTA = styled.h2`
-
+	margin-top: 0;
 `;
 
 const List = styled.ul`
@@ -28,10 +31,6 @@ const List = styled.ul`
 
 	@media screen and (min-width: 550px) {
 		display: flex;
-	}
-
-	& li {
-		max-width: 50%;
 	}
 `;
 

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { cachedFetch } from '../../functions';
 import styled from 'styled-components';
 
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import SkipToContentLink from './SkipToContentLink';
 import Loading from '../Loading/Loading';
 
@@ -24,10 +24,14 @@ const AsyncContact = Loadable({
 	loader: () => import('../Contact/Contact'),
 	loading: Loading
 });
-const AsyncPage = Loadable({
-	loader: () => import('../Page/Page'),
+const AsyncPageContainer = Loadable({
+	loader: () => import('../Page/PageContainer'),
 	loading: Loading
 });
+// const AsyncPage = Loadable({
+// 	loader: () => import('../Page/Page'),
+// 	loading: Loading
+// });
 const AsyncNotFound = Loadable({
 	loader: () => import('../NotFound/NotFound'),
 	loading: Loading
@@ -41,70 +45,29 @@ const SiteMain = styled.main`
 	}
 `;
 
-class App extends Component {
-
-	state = {
-		pages: {}
-	}
-
-	componentDidMount() {
-		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/pages?_embed&per_page=100`, 30 * 24 * 60 * 60)
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					this.setState({
-						error: 'Something went wrong...'
-					})
-				}
-			})
-			.then(pages => {
-				this.setState({
-					pages
-				})
-			})
-			.catch(error => this.setState({
-				error
-			}));
-	}
-
-	pageRoutes = (pages) => {
-		return pages.map((page, i) => (
-			<Route
-				exact
-				key={page.id}
-				path={`/${page.slug}`}
-				render={() => (
-					<AsyncPage page={page} pathname={this.props.pathname} />
-				)}
-			/>
-		))
-	}
-
-	render() {
-		//console.log(this.state);
-		
-		return (
-			<Fragment>
-				<SkipToContentLink />
-				<Header {...this.props} />
-				<SiteMain id="primary">
-					<Route location={this.props.location} render={() => (
-						<Switch>
-							<Route exact path="/" component={AsyncHome} />
-							<Route exact path="/blog" render={(match) => (
-								<AsyncArchive match={match} />
-							)} />
-							<Route exact path="/contact" component={AsyncContact} />
-							<Route path="/post/:slug" component={AsyncPost} />
-							{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages) : null}
-							<Route component={AsyncNotFound} />
-						</Switch>
-					)} />
-				</SiteMain>
-			</Fragment>
-		);
-	}
-}
+const App = props => {
+	return (
+		<Fragment>
+			<SkipToContentLink />
+			<Header {...props} />
+			<SiteMain id="primary">
+				<Route location={props.location} render={() => (
+					<Switch>
+						<Route exact path="/" component={AsyncHome} />
+						<Route exact path="/blog" render={(match) => (
+							<AsyncArchive match={match} />
+						)} />
+						<Route exact path="/contact" component={AsyncContact} />
+						<Route path="/post/:slug" component={AsyncPost} />
+						<AsyncPageContainer />
+						{/*1 <= this.state.pages.length ? this.pageRoutes(this.state.pages) : null*/}
+						<Route component={AsyncNotFound} />
+					</Switch>
+				)} />
+			</SiteMain>
+			<Footer />
+		</Fragment>
+	);
+};
 
 export default App;

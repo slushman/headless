@@ -9,7 +9,6 @@ import { getImage } from '../../functions';
 
 import Shurls from './Shurls';
 import PostNavLinks from './PostNavLinks';
-import Footer from '../Footer/Footer';
 
 const PostWrapper = styled.div`
 	background: linear-gradient(to right top, #0089f2 50%, #DDD 50%);
@@ -50,6 +49,7 @@ const PostHeader = styled.header`
 	background-attachment: fixed;
 	background-color: var(--bgcolor);
 	background-image: var(--bgImage);
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: var(--color-light);
@@ -75,7 +75,7 @@ const PostHeader = styled.header`
 
 	@media screen and (min-width: 560px) {
 		--bgImage: url(${props => props.imageSizes.med});
-		--pad: ${props => props.imageSizes ? '5em' : '1em'};
+		--pad: ${props => props.imageSizes.med ? '7.5em' : '3em'};
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -93,7 +93,7 @@ const PostTitle = styled.h1`
 	z-index: 1;
 
 	@media screen and (min-width: 560px) {
-		--fontsize: ${props => props.image ? '3em' : '2em'};
+		--fontsize: 3em;
 	}
 `;
 
@@ -258,7 +258,6 @@ const Post = props => {
 				<Shurls {...props} />
 				<PostNavLinks beforePost={props.beforePost} afterPost={props.afterPost} />
 			</PostArticle>
-			<Footer />
 		</PostWrapper>
 	);
 };

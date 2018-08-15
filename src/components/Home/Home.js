@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import HomeLatest from './HomeLatest';
 import HomeArchive from './HomeArchive';
 import Loading from '../Loading/Loading';
-import Footer from '../Footer/Footer';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 const HomeWrapper = styled.div`
@@ -117,7 +116,6 @@ const Home = props => {
 			<CTAHomeBottom>
 				<StyledLink to="/blog">Read more articles</StyledLink>
 			</CTAHomeBottom>
-			<Footer />
 		</HomeWrapper>
 	);
 

@@ -65,9 +65,7 @@ const MenuItemLink = styled(NavLink)`
 
 		@media screen and (min-width: 560px) {
 			--underlinkcolor: ${props => {
-				if ('/blog' === props.page) {
-					return 'var(--color-charcoal)';
-				} else if ('/' !== props.page) {
+				if ('/' !== props.page) {
 					return 'var(--color-light)';
 				} else {
 					return 'var(--color-blue)';
@@ -83,8 +81,6 @@ const MenuItemLink = styled(NavLink)`
 			--link-color: ${props => {
 				if ('/' === props.page) {
 					return 'var(--color-dark-blue)';
-				} else if ('/blog' === props.page) {
-					return 'var(--color-charcoal)';
 				} else {
 					return 'var(--color-light)';
 				}
@@ -105,8 +101,6 @@ const MenuItemLink = styled(NavLink)`
 		--link-color: ${props => {
 			if ('/' === props.page) {
 				return 'var(--color-dark-blue)';
-			} else if ('/blog' === props.page ) {
-				return 'var(--color-charcoal)';
 			} else {
 				return  'var(--color-light)';
 			}
@@ -115,8 +109,10 @@ const MenuItemLink = styled(NavLink)`
 
 	&.${activeClassName} {
 		--link-color: ${props => {
-			if ('/blog' === props.page || 'footer' === props.menulocation) {
+			if ( 'footer' === props.menulocation) {
 				return 'var(--color-charcoal)';
+			} else if ( '/blog' === props.page ) {
+				return 'var(--color-med-gray)';
 			} else {
 				return 'var(--color-dark)';
 			}
@@ -124,22 +120,20 @@ const MenuItemLink = styled(NavLink)`
 		--zindex: 1;
 
 		@media screen and (min-width: 560px) {
-			--link-color: ${props => '/blog' === props.page ? 'var(--color-light)' : 'var(--color-dark)'};
+			--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-dark)'};
 		}
 
 		&:hover {
 			--link-color: ${props => {
 				if ('footer' === props.menulocation) {
 					return 'var(--color-light)';
-				} else if ('/blog' === props.page) {
-					return 'var(--color-charcoal)';
 				} else {
 					return 'var(--color-dark-blue)';
 				}
 			}};
 
 			@media screen and (min-width: 560px) {
-				--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
+				--link-color: var(--color-light);
 			}
 		}
 
@@ -151,7 +145,7 @@ const MenuItemLink = styled(NavLink)`
 				if ('footer' === props.menulocation) {
 					return 'var(--color-light)';
 				} else if ('/blog' === props.page) { 
-					return 'var(--color-med-gray)';
+					return 'var(--color-dark-gray)';
 				} else {
 					return 'var(--color-lt-blue)';
 				}
@@ -160,12 +154,12 @@ const MenuItemLink = styled(NavLink)`
 			--zindex: -1;
 
 			@media screen and (min-width: 560px) {
-				--underlinkcolor: ${props => '/blog' === props.page && 'var(--color-charcoal)'};
+				--underlinkcolor: ${props => '/blog' === props.page && 'var(--color-light)'};
 			}
 		}
 
 		&:hover:before {
-			--bgcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
+			--bgcolor: var(--color-light);
 			--height: 2px;
 			--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
 		}

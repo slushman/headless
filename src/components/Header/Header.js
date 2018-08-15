@@ -34,7 +34,7 @@ const SiteHeader = styled.header`
 
 			if ('/blog' === props.page) {
 
-				return 'var(--color-med-gray)';
+				return 'var(--color-dark-gray)';
 
 			} else if ('/' === props.page) {
 

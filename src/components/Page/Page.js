@@ -4,8 +4,6 @@ import Helmet from 'react-helmet';
 import he from 'he';
 import styled from 'styled-components';
 
-import Footer from '../Footer/Footer';
-
 const PageWrapper = styled.div`
 	position: relative;
 `;
@@ -105,7 +103,6 @@ const Page = ({ page, pathname }) => {
 				</PageHeader>
 				<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
 			</PageArticle>
-			<Footer />
 		</PageWrapper>
 	);
 };
