@@ -166,16 +166,51 @@ const MenuItemLink = styled(NavLink)`
 	}
 `;
 
-const WPMenuItem = ({ item, location, menuLinks, depthLevel, ...rest }) => {
+const WPMenuItem = ({ item, menuLinks, depthLevel, ...rest }) => {
 
 	const subMenuLinks = menuLinks.filter(link => {
 		return parseInt(link.parent, 10) === parseInt(item.id, 10);
 	})
-
-	//console.log({ rest })
-
 	const linkTarget = item.target && "_blank" === item.target ? item.target : null;
 	const linkTitle = item.title ? item.title : null;
+
+	return (
+		<MenuItem location={rest.menu.slug} className={item.classes.string}>
+			<MenuItemLink
+				className={classNames(rest.linkClass)}
+				activeClassName={activeClassName}
+				depth={depthLevel}
+				menulocation={rest.menu.slug}
+				page={rest.page}
+				to={`/${item.slug}`}
+				target={linkTarget}
+				title={linkTitle}
+				exact={true}
+			>{item.title}</MenuItemLink>
+			{1 <= subMenuLinks.length 
+				? <WPMenuList 
+					menuLinks={menuLinks} 
+					location={rest.menu.slug} 
+					parentId={parseInt(item.id, 10)} 
+					depthLevel={depthLevel + 1} 
+					{...rest} /> 
+				: null
+			}
+		</MenuItem>
+	);
+}
+
+WPMenuItem.propTypes = {
+	item: PropTypes.object,
+	menuLinks: PropTypes.array,
+	depthLevel: PropTypes.number
+}
+
+export default WPMenuItem;
+
+
+
+
 
 	//if (item.classes.includes('slushicons')) {
 
@@ -195,35 +230,3 @@ const WPMenuItem = ({ item, location, menuLinks, depthLevel, ...rest }) => {
 		//itemTitle = Icon(properName);
 
 	//}
-
-	return (
-		<MenuItem location={location} className={item.classes.string}>
-			<MenuItemLink
-				className={classNames(rest.linkClass)}
-				activeClassName={activeClassName}
-				depth={depthLevel}
-				menulocation={location}
-				page={rest.page}
-				to={`/${item.slug}`}
-				target={linkTarget}
-				title={linkTitle}
-				exact={true}
-			>{item.title}</MenuItemLink>
-			{1 <= subMenuLinks.length 
-				? <WPMenuList 
-					menuLinks={menuLinks} 
-					location={location} 
-					parentId={parseInt(item.id, 10)} 
-					depthLevel={depthLevel + 1} 
-					{...rest} /> 
-				: null
-			}
-		</MenuItem>
-	);
-}
-
-WPMenuItem.propTypes = {
-	menuLinks: PropTypes.array
-}
-
-export default WPMenuItem;

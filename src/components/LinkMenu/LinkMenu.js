@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+
 const Nav = styled.nav`
 	margin-bottom: ${props => 'social' === props.location ? '1.5em' : ''};
 `;
@@ -57,11 +59,13 @@ const LinkMenu = (props) => {
 		<Nav location={props.menuName}>
 			<MenuList className={classNames(props.listClass)}>
 				{props.menuLinks.map((link, i) => (
-					<MenuListItem className={classNames(props.itemClass)} key={i}>
-						<MenuItemLink className={classNames(props.linkClass)} to={link.url}>
-							{link.component}
-						</MenuItemLink>
-					</MenuListItem>
+					<ErrorBoundry>
+						<MenuListItem className={classNames(props.itemClass)} key={i}>
+							<MenuItemLink className={classNames(props.linkClass)} to={link.url}>
+								{link.component}
+							</MenuItemLink>
+						</MenuListItem>
+					</ErrorBoundry>
 				))}
 			</MenuList>
 		</Nav>

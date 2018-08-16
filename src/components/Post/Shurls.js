@@ -10,6 +10,7 @@ import IconPinterest from '../Icons/Pinterest';
 import IconStumbleupon from '../Icons/Stumbleupon';
 import IconTumblr from '../Icons/Tumblr';
 import IconTwitter from '../Icons/Twitter';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 const ShurlSection = styled.section`
 	--pad: 1em;
@@ -115,11 +116,13 @@ const Shurls = (props) => {
 			<ShurlsList>
 				{
 					shurlLinks.map((link, i) => (
-						<ShurlItem key={i}>
-							<ShurlLink className="shurl-link" href={link.url} data-name={link.name} onClick={(e) => eventTracking(link.name, e)} target="_blank">
-								{link.component}
-							</ShurlLink>
-						</ShurlItem>
+						<ErrorBoundry key={i}>
+							<ShurlItem>
+								<ShurlLink className="shurl-link" href={link.url} data-name={link.name} onClick={(e) => eventTracking(link.name, e)} target="_blank">
+									{link.component}
+								</ShurlLink>
+							</ShurlItem>
+						</ErrorBoundry>
 					))
 				}
 			</ShurlsList>

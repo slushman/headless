@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import WPMenu from '../WPMenu/WPMenu';
+import WPMenuContainer from '../WPMenu/WPMenuContainer';
 
 const SiteFooter = styled.footer`
 	align-items: center;
@@ -22,7 +22,7 @@ const Footer = props => {
 	return (
 		<SiteFooter>
 			<Copyright>&copy; {new Date().getFullYear()} Slushman</Copyright>
-			<WPMenu location="footer" />
+			<WPMenuContainer location="footer" />
 		</SiteFooter>
 	);
 };

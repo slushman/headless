@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import WPMenu from '../WPMenu/WPMenu';
+import WPMenuContainer from '../WPMenu/WPMenuContainer';
 
 const SiteHeader = styled.header`
 	--bgcolor: var(--color-light);
@@ -99,7 +99,7 @@ const Header = props => {
 		<SiteHeader page={props.pathname}>
 			<Title><TitleContent {...props} /></Title>
 			{'/' === props.pathname && <TitleHome>Slushman</TitleHome>}
-			<WPMenu location="main" page={props.pathname} />
+			<WPMenuContainer location="main" page={props.pathname} />
 		</SiteHeader>
 	);
 };

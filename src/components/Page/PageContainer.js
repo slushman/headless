@@ -5,6 +5,7 @@ import Loadable from 'react-loadable';
 import { cachedFetch } from '../../functions';
 
 import Loading from '../../components/Loading/Loading';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 const AsyncPage = Loadable({
 	loader: () => import('../Page/Page'),
@@ -39,14 +40,16 @@ class PageContainer extends Component {
 
 	pageRoutes = (pages) => {
 		return pages.map((page, i) => (
-			<Route
-				exact
-				key={page.id}
-				path={`/${page.slug}`}
-				render={() => (
-					<AsyncPage page={page} pathname={this.props.pathname} />
-				)}
-			/>
+			<ErrorBoundry key={i}>
+				<Route
+					exact
+					key={page.id}
+					path={`/${page.slug}`}
+					render={() => (
+						<AsyncPage page={page} pathname={this.props.pathname} />
+					)}
+				/>
+			</ErrorBoundry>
 		))
 	}
 
