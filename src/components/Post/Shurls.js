@@ -52,7 +52,7 @@ const ShurlLink = styled.a`
 `;
 
 const eventTracking = (name, event) => {
-	console.log()
+	//console.log()
 	ReactGA.event({
 		category: 'SocialSharing',
 		action: 'Clicked ' + name,

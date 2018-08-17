@@ -59,7 +59,7 @@ const LinkMenu = (props) => {
 		<Nav location={props.menuName}>
 			<MenuList className={classNames(props.listClass)}>
 				{props.menuLinks.map((link, i) => (
-					<ErrorBoundry>
+					<ErrorBoundry key={i}>
 						<MenuListItem className={classNames(props.itemClass)} key={i}>
 							<MenuItemLink className={classNames(props.linkClass)} to={link.url}>
 								{link.component}

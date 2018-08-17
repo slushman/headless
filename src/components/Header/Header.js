@@ -86,27 +86,23 @@ const LogoImg = styled.img`
 	}
 `;
 
-const TitleContent = props => (
+const TitleContent = ({page}) => (
 	<StyledLink to="/">
-		<LogoImg src="/images/slushman-animated.svg" alt="Slushman" page={props.pathname} />
+		<LogoImg src="/images/slushman-animated.svg" alt="Slushman" page={page} />
 	</StyledLink>
 );
 
-const Header = props => {
-	//console.log(props)
-
+const Header = ({pathname}) => {
 	return (
-		<SiteHeader page={props.pathname}>
-			<Title><TitleContent {...props} /></Title>
-			{'/' === props.pathname && <TitleHome>Slushman</TitleHome>}
-			<WPMenuContainer location="main" page={props.pathname} />
+		<SiteHeader page={pathname}>
+			<Title><TitleContent page={pathname} /></Title>
+			{'/' === pathname && <TitleHome>Slushman</TitleHome>}
+			<WPMenuContainer location="main" page={pathname} />
 		</SiteHeader>
 	);
 };
 
 Header.propTypes = {
-	location: PropTypes.object,
-	path: PropTypes.string,
 	pathname: PropTypes.string,
 };
 

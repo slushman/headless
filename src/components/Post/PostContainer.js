@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { cachedFetch } from '../../functions';
 
 import Post from '../../components/Post/Post';
 import Loading from '../../components/Loading/Loading';
-import NotFound from '../../components/NotFound/NotFound';
 
 class PostContainer extends Component {
 	state = {
@@ -33,8 +33,8 @@ class PostContainer extends Component {
 				let post = posts.filter((post) => {
 					return post.slug === this.props.match.params.slug;
 				})
-				let beforePost = this.getBeforePost(posts,post);
-				let afterPost = this.getAfterPost(posts, post);
+				let beforePost = 1 === post.length ? this.getBeforePost(posts,post) : null;
+				let afterPost = 1 === post.length ? this.getAfterPost(posts, post) : null;
 				let error = 1 !== post.length ? 'NotFound' : null;
 
 				this.setState({
@@ -71,14 +71,14 @@ class PostContainer extends Component {
 
 	render() {
 		//console.log(this.state)
-		if (1 !== this.state.post.length && 'NotFound' !== this.state.error) {
-			return <Loading />; 
-		}
-		if ('NotFound' === this.state.error) {
-			return <NotFound />;
+		//console.log(this.props)
+		if (1 !== this.state.post.length && 'NotFound' === this.state.error) {
+			return <Redirect to="/404" />;
 		}
 		return (
-			<Post post={this.state.post[0]} pathname={this.props.location.pathname} beforePost={this.state.beforePost} afterPost={this.state.afterPost} />
+			1 <= this.state.post.length
+				? <Post post={this.state.post[0]} pathname={this.props.location.pathname} beforePost={this.state.beforePost} afterPost={this.state.afterPost} />
+				: <Loading />
 		);
 	}
 }

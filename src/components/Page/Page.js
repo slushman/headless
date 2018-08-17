@@ -61,8 +61,8 @@ const PageContent = styled.div`
 	}
 `;
 
-const Page = ({ page, pathname }) => {
-	//console.log(props)
+const Page = ({ page }) => {
+	//console.log(page)
 
 	let pageExcerpt = page.yoast && 0 !== page.yoast.metadesc.length ? page.yoast.metadesc : he.decode(page.excerpt.rendered);
 	let pageTitle = he.decode(page.title.rendered);

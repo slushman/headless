@@ -7,6 +7,7 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { getImage } from '../../functions';
 
+import Caption from './Caption';
 import Shurls from './Shurls';
 import PostNavLinks from './PostNavLinks';
 
@@ -46,7 +47,6 @@ const PostHeader = styled.header`
 	--bgImage: url(${props => props.imageSizes.small});
 	
 	align-items: center;
-	background-attachment: fixed;
 	background-color: var(--bgcolor);
 	background-image: var(--bgImage);
 	background-position: center;
@@ -54,8 +54,8 @@ const PostHeader = styled.header`
 	background-size: cover;
 	color: var(--color-light);
 	display: flex;
+	flex-direction: column;
 	height: var(--height);
-	justify-content: center;
 	margin: 0;
 	padding-bottom: var(--pad);
 	padding-left: 1em;
@@ -76,6 +76,10 @@ const PostHeader = styled.header`
 	@media screen and (min-width: 560px) {
 		--bgImage: url(${props => props.imageSizes.med});
 		--pad: ${props => props.imageSizes.med ? '7.5em' : '3em'};
+	}
+
+	@media screen and (min-width: 700px) {
+		justify-content: center;
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -185,7 +189,7 @@ const PostContent = styled.div`
 
 const Post = props => {
 
-	//console.log(props)
+	console.log(props)
 
 	let image = props.post._embedded['wp:featuredmedia'] ? props.post._embedded['wp:featuredmedia'][0] : false;
 
@@ -248,6 +252,10 @@ const Post = props => {
 				</Helmet>
 				<PostHeader imageSizes={imageSizes}>
 					<PostTitle image={post.image}>{post.title}</PostTitle>
+					{	image.credits
+							? <Caption credits={image.credits} />
+							: null
+					}
 				</PostHeader>
 				<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>
 				<PostPrimary id="primary">

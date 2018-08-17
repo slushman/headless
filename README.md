@@ -14,7 +14,6 @@
 
 
 TODOS
-* Redirections
 * Publish
 
 
@@ -40,9 +39,6 @@ Content Changes
 	- bio
 	- good picture
 	- resume
-
-* Add images to every post
-* Replace bad images with better ones
 
 * Check all presentation posts and make sure they are good ones. Compare to http://owltastic.com/category/speaking/
 * Add talks section to homepage
