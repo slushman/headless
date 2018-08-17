@@ -1,20 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NotFoundSection = styled.section``;
+import NotFoundPostsContainer from './NotFoundPostsContainer';
+
+const NotFoundSection = styled.section`
+	position: relative;
+
+	@media screen and (min-width: 560px) {
+		padding-top: var(--site-header-height);
+	}
+`;
 
 const NotFoundHeader = styled.header`
-	--bgcolor: var(--color-dark-blue);
+	--bgcolor: var(--color-accent);
 	
 	align-items: center;
 	background-color: var(--bgcolor);
 	color: var(--color-light);
 	display: flex;
 	height: var(--height);
+	justify-content: center;
 	margin: 0;
-	padding-left: 1em;
-	padding-right: 1em;
-	padding-top: var(--site-header-height);
+	padding: 1em;
 `;
 
 const NotFoundTitle = styled.h1`
@@ -26,23 +33,33 @@ const NotFoundTitle = styled.h1`
 const NotFoundContent = styled.div`
 	--pad: 1em;
 
+	padding-bottom: 1em;
 	padding-left: var(--pad);
 	padding-right: var(--pad);
+	padding-top: 1em;
 
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
 	}
 `;
 
+const Heading = styled.h2``;
+
+const Content = styled.p`
+	line-height: 1.75;
+`;
+
 const NotFound = () => {
 	return (
 		<NotFoundSection>
 			<NotFoundHeader>
-				<NotFoundTitle>Error 404</NotFoundTitle>
+				<NotFoundTitle>Content Not Found</NotFoundTitle>
 			</NotFoundHeader>
 			<NotFoundContent>
-				Nope. This is not the page you're looking for. Maybe try droids?
+				<Content>Nope. This is not the content you're looking for. Maybe try droids?</Content>
+				<Heading>Check out some other posts:</Heading>
 			</NotFoundContent>
+			<NotFoundPostsContainer />
 		</NotFoundSection>
 	);
 };
