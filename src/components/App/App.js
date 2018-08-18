@@ -18,10 +18,6 @@ const AsyncPost = Loadable({
 	loader: () => import('../Post/PostContainer'),
 	loading: Loading
 });
-const AsyncContact = Loadable({
-	loader: () => import('../Contact/Contact'),
-	loading: Loading
-});
 const AsyncPage = Loadable({
 	loader: () => import('../Page/Page'),
 	loading: Loading
@@ -58,17 +54,17 @@ class App extends Component {
 			}));
 	}
 
-	pageRoutes = (pages) => {
-		//console.log(pages)
+	pageRoutes = (pages,location) => {
+		//console.log(props)
 		return pages.map((page, i) => {
-			//console.log(page)
+			//console.log(props)
 			return (
 				<Route
 					exact
 					key={page.id}
 					path={`/${page.slug}`}
 					render={() => (
-						<AsyncPage page={page} />
+						<AsyncPage page={page} location={location} />
 					)}
 				/>
 			)
@@ -76,21 +72,22 @@ class App extends Component {
 	}
 	
 	render() {
-		//console.log(this.props)
+		// console.log(this.props)
 		// console.log(this.state)
 		return (
-			<Switch>
-				<Route exact path="/" component={AsyncHome} />
-				<Route exact path="/blog" render={() => (
-					<AsyncArchive match={this.props.match} />
-				)} />
-				<Route exact path="/contact" component={AsyncContact} />
-				{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages) : null}
-				<Route path="/post/:slug" component={AsyncPost} />
-				<Route exact path="/404" component={AsyncNotFound} />
-				<Redirect from="/:slug" to="/post/:slug" />
-				<Route component={AsyncNotFound} />
-			</Switch>
+			1 <= this.state.pages.length 
+				? 	<Switch>
+						<Route exact path="/" component={AsyncHome} />
+						<Route exact path="/blog" render={() => (
+							<AsyncArchive match={this.props.match} />
+						)} />
+						{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages,this.props.location) : null }
+						<Route path="/post/:slug" component={AsyncPost} />
+						<Route exact path="/404" component={AsyncNotFound} />
+						<Redirect from="/:slug" to="/post/:slug" />
+						<Route component={AsyncNotFound} />
+					</Switch>
+				: null
 		);
 	}
 };

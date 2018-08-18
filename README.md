@@ -35,15 +35,8 @@ Functional Changes
 Content Changes
 * Add a site-level description in the header - who am I and why should they read my stuff? What's my "thing"? - "Helping Developers Level-up"
 
-* Add an About page
-	- bio
-	- good picture
-	- resume
-
 * Check all presentation posts and make sure they are good ones. Compare to http://owltastic.com/category/speaking/
 * Add talks section to homepage
-
-* Add portfolio?
 
 * Create courses
 * Add courses section to homepage with big CTA

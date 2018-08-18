@@ -6,9 +6,7 @@ import styled from 'styled-components';
 
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
-const Nav = styled.nav`
-	margin-bottom: ${props => 'social' === props.location ? '1.5em' : ''};
-`;
+const Nav = styled.nav``;
 
 const MenuList = styled.ul`
 	display: flex;

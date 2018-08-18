@@ -4,6 +4,8 @@ import Helmet from 'react-helmet';
 import he from 'he';
 import styled from 'styled-components';
 
+import FormContainer from '../Contact/FormContainer';
+
 const PageWrapper = styled.div`
 	position: relative;
 `;
@@ -33,7 +35,7 @@ const PageTitle = styled.h1`
 	margin: 0;
 `;
 
-const PageContent = styled.div`
+const ContentWrap = styled.div`
 	--pad: 1em;
 
 	padding-bottom: 1em;
@@ -61,8 +63,16 @@ const PageContent = styled.div`
 	}
 `;
 
-const Page = ({ page }) => {
+const WPContent = styled.div`
+	p {
+		line-height: 1.75;
+		margin: 0 0 1.5em;
+	}
+`;
+
+const Page = ({ page, location }) => {
 	//console.log(page)
+	console.log(location)
 
 	let pageExcerpt = page.yoast && 0 !== page.yoast.metadesc.length ? page.yoast.metadesc : he.decode(page.excerpt.rendered);
 	let pageTitle = he.decode(page.title.rendered);
@@ -101,7 +111,14 @@ const Page = ({ page }) => {
 				<PageHeader>
 					<PageTitle>{pageTitle}</PageTitle>
 				</PageHeader>
-				<PageContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+				<ContentWrap>
+					<WPContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+					{
+						'/contact' === location.pathname
+							? <FormContainer />
+							: null
+					}
+				</ContentWrap>
 			</PageArticle>
 		</PageWrapper>
 	);
