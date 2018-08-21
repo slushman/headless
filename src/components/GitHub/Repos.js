@@ -20,7 +20,7 @@ const RepoStars = styled.span``;
 
 const Repos = ({repos}) => {
 
-	console.log(repos)
+	//console.log(repos)
 	return (
 		<RepoWrap>
 			<Heading2>GitHub Repos</Heading2>

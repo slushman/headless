@@ -21,7 +21,7 @@ const Credit = styled.span`
 `;
 
 const Caption = ({credits}) => {
-	console.log(credits)
+	//console.log(credits)
 	return (
 			<CreditLink href={credits.credit_url}>
 				<IconCamera width="16" height="16" fillColor="#fff" />

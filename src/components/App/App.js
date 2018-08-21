@@ -4,6 +4,7 @@ import Loadable from 'react-loadable';
 
 import { cachedFetch } from '../../functions';
 
+import Analytics from '../Analytics/Analytics';
 import Loading from '../Loading/Loading';
 
 const AsyncHome = Loadable({
@@ -63,9 +64,8 @@ class App extends Component {
 					exact
 					key={page.id}
 					path={`/${page.slug}`}
-					render={() => (
-						<AsyncPage page={page} location={location} />
-					)}
+					component={Analytics(AsyncPage)}
+					//render={() => (<AsyncPage page={page} location={location} />)}
 				/>
 			)
 		})
@@ -74,18 +74,19 @@ class App extends Component {
 	render() {
 		// console.log(this.props)
 		// console.log(this.state)
+		// <Route exact path="/blog" render={() => (<AsyncArchive match={this.props.match} />)} />
 		return (
 			1 <= this.state.pages.length 
 				? 	<Switch>
-						<Route exact path="/" component={AsyncHome} />
+						<Route exact path="/" component={Analytics(AsyncHome)} />
 						<Route exact path="/blog" render={() => (
-							<AsyncArchive match={this.props.match} />
+							Analytics(<AsyncArchive match={this.props.match} />)
 						)} />
 						{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages,this.props.location) : null }
-						<Route path="/post/:slug" component={AsyncPost} />
-						<Route exact path="/404" component={AsyncNotFound} />
+						<Route path="/post/:slug" component={Analytics(AsyncPost)} />
+						<Route exact path="/404" component={Analytics(AsyncNotFound)} />
 						<Redirect from="/:slug" to="/post/:slug" />
-						<Route component={AsyncNotFound} />
+						<Route component={Analytics(AsyncNotFound)} />
 					</Switch>
 				: null
 		);

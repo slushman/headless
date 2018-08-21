@@ -9,14 +9,6 @@ import Footer from './components/Footer/Footer';
 import SkipToContentLink from './components/App/SkipToContentLink';
 import registerServiceWorker from './registerServiceWorker';
 import './globalStyles.js';
-import ReactGA from 'react-ga';
-import './globalStyles.js';
-
-ReactGA.initialize(`${process.env.GATRACKING}`);
-
-const fireTracking = () => {
-	ReactGA.pageview(window.location.hash)
-}
 
 const SiteMain = styled.main`
 	display: grid;
@@ -31,7 +23,7 @@ const SiteMain = styled.main`
 `;
 
 render(
-	<BrowserRouter onUpdate={fireTracking}>
+	<BrowserRouter>
 		<Route to="/" render={ props => {
 			return (
 				<Fragment>
