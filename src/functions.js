@@ -120,3 +120,19 @@ export function getImage( imageSizes, requestedSize ) {
 	}
 
 } // getImage()
+
+/**
+ * Capitalizes the first letter of each word.
+ * 
+ * @param 		string 		strToCaps 		The string to capitalize.
+ * @return 		string 						The capitalized string.
+ */
+export function toTitleCase( strToCaps ) {
+
+	return strToCaps.replace( /\w\S*/g, function (txt) {
+	
+		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	
+	} );
+
+} // toTitleCase()

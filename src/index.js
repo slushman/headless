@@ -24,22 +24,25 @@ const SiteMain = styled.main`
 	& > div {
 		width: 100vw;
 	}
+
+	@media screen and (min-width: 560px) {
+		padding-top: ${props => '/' === props.path ? '0' : 'var(--site-header-height)'};
+	}
 `;
 
 render(
 	<BrowserRouter onUpdate={fireTracking}>
 		<Route to="/" render={ props => {
-				return (
-					<Fragment>
-						<SkipToContentLink />
-						<Header pathname={props.location.pathname} />
-						<SiteMain id="primary">
-							<App {...props} />
-						</SiteMain>
-						<Footer />
-					</Fragment>
-				);
-			}
+			return (
+				<Fragment>
+					<SkipToContentLink />
+					<Header pathname={props.location.pathname} />
+					<SiteMain id="primary" path={props.location.pathname}>
+						<App {...props} />
+					</SiteMain>
+					<Footer />
+				</Fragment>
+			)}
 		} />
 	</BrowserRouter>,
 	document.getElementById('root')

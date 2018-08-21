@@ -9,10 +9,6 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const ArchiveWrapper = styled.div`
 	position: relative;
-
-	@media screen and (min-width: 560px) {
-		padding-top: var(--site-header-height);
-	}
 `;
 
 const ArchiveHeader = styled.header`

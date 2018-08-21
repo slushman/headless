@@ -5,12 +5,17 @@ import styled from 'styled-components';
 import WPMenuList from './WPMenuList';
 
 const Nav = styled.nav`
+	--width: 100%;
+
 	background-color: ${props => 'default' === props.location ? 'var(--navbgcolor, transparent)' : ''};
-	width: ${props => 'default' === props.location ? 'var(--width)' : ''};
+	width: var(--width);
 
 	@media screen and (max-width: 559px) {
 		--navbgcolor: ${props => 'default' === props.location ? 'var(--color-dark-blue)' : ''};
-		--width: ${props => 'default' === props.location ? '100%' : ''};
+	}
+
+	@media screen and (min-width: 560px) {
+		--width: auto;
 	}
 `;
 

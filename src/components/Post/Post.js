@@ -23,22 +23,14 @@ const PostWrapper = styled.div`
 		bottom: 0;
 		content: "";
 		position: fixed;
-		top: calc(var(--site-header-height) + var(--scroll-height));
+		top: 0;
 		width: 100%;
 		z-index: 0;
 	}
 `;
 
 const PostArticle = styled.article`
-	--headAndScroll: calc(var(--site-header-height) + var(--scroll-height));
-	--padtop: ${props => props.pathname.startsWith('/post') ? 'var(--headAndScroll)' : null};
-	
-	padding-top: var(--padtop);
 	position: relative;
-
-	@media screen and (min-width: 560px) {
-		--padtop: var(--headAndScroll);
-	}
 `;
 
 const PostHeader = styled.header`
@@ -139,6 +131,7 @@ const PostPrimary = styled.div`
 
 	& pre {
 		color: var(--color-light);
+		padding: 1.5em 0;
 		position: relative;
 		z-index: 1;
 	}

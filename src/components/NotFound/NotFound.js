@@ -5,10 +5,6 @@ import NotFoundPostsContainer from './NotFoundPostsContainer';
 
 const NotFoundSection = styled.section`
 	position: relative;
-
-	@media screen and (min-width: 560px) {
-		padding-top: var(--site-header-height);
-	}
 `;
 
 const NotFoundHeader = styled.header`

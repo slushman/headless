@@ -5,16 +5,13 @@ import he from 'he';
 import styled from 'styled-components';
 
 import FormContainer from '../Contact/FormContainer';
+import GitHub from '../GitHub/GitHub';
 
 const PageWrapper = styled.div`
 	position: relative;
 `;
 
-const PageArticle = styled.article`
-	@media screen and (min-width: 560px) {
-		padding-top: var(--site-header-height);
-	}
-`;
+const PageArticle = styled.article``;
 
 const PageHeader = styled.header`
 	--bgcolor: var(--color-lt-blue);
@@ -72,7 +69,7 @@ const WPContent = styled.div`
 
 const Page = ({ page, location }) => {
 	//console.log(page)
-	console.log(location)
+	//console.log(location)
 
 	let pageExcerpt = page.yoast && 0 !== page.yoast.metadesc.length ? page.yoast.metadesc : he.decode(page.excerpt.rendered);
 	let pageTitle = he.decode(page.title.rendered);
@@ -116,6 +113,11 @@ const Page = ({ page, location }) => {
 					{
 						'/contact' === location.pathname
 							? <FormContainer />
+							: null
+					}
+					{
+						'/plugins' === location.pathname
+							? <GitHub />
 							: null
 					}
 				</ContentWrap>
