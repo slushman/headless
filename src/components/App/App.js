@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import Analytics from 'react-router-ga';
 
 import { cachedFetch } from '../../functions';
 
-import Analytics from '../Analytics/Analytics';
 import Loading from '../Loading/Loading';
 
 const AsyncHome = Loadable({
@@ -55,17 +55,18 @@ class App extends Component {
 			}));
 	}
 
-	pageRoutes = (pages,location) => {
-		//console.log(props)
-		return pages.map((page, i) => {
+	pageRoutes = (location) => {
+		//console.log(this.state.pages)
+		return this.state.pages.map((page,i) => {
 			//console.log(props)
 			return (
-				<Route
-					exact
-					key={page.id}
+				<Route 
+					exact 
+					key={page.id} 
 					path={`/${page.slug}`}
-					component={Analytics(AsyncPage)}
-					//render={() => (<AsyncPage page={page} location={location} />)}
+					render={() => (
+						<AsyncPage page={page} location={location} />
+					)} 
 				/>
 			)
 		})
@@ -73,21 +74,23 @@ class App extends Component {
 	
 	render() {
 		// console.log(this.props)
-		// console.log(this.state)
+		//console.log(this.state)
 		// <Route exact path="/blog" render={() => (<AsyncArchive match={this.props.match} />)} />
 		return (
 			1 <= this.state.pages.length 
-				? 	<Switch>
-						<Route exact path="/" component={Analytics(AsyncHome)} />
-						<Route exact path="/blog" render={() => (
-							Analytics(<AsyncArchive match={this.props.match} />)
-						)} />
-						{1 <= this.state.pages.length ? this.pageRoutes(this.state.pages,this.props.location) : null }
-						<Route path="/post/:slug" component={Analytics(AsyncPost)} />
-						<Route exact path="/404" component={Analytics(AsyncNotFound)} />
-						<Redirect from="/:slug" to="/post/:slug" />
-						<Route component={Analytics(AsyncNotFound)} />
-					</Switch>
+				? 	<Analytics id="UA-27308708-1">
+						<Switch>
+							<Route exact path="/" component={AsyncHome} />
+							<Route exact path="/blog" render={() => (
+								<AsyncArchive match={this.props.match} />
+							)} />
+							{this.pageRoutes(this.props.location)}
+							<Route path="/post/:slug" component={AsyncPost} />
+							<Route exact path="/404" component={AsyncNotFound} />
+							<Redirect from="/:slug" to="/post/:slug" />
+							<Route component={AsyncNotFound} />
+						</Switch>
+					</Analytics>
 				: null
 		);
 	}
