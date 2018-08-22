@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment-js';
 import PropTypes from 'prop-types';
 import he from 'he';
-import EmbedContainer from 'react-oembed-container';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { getImage } from '../../functions';
@@ -10,6 +9,7 @@ import { getImage } from '../../functions';
 import Caption from './Caption';
 import Shurls from './Shurls';
 import PostNavLinks from './PostNavLinks';
+import WPContent from '../WPContent/WPContent';
 
 const PostWrapper = styled.div`
 	background: linear-gradient(to right top, #0089f2 50%, #DDD 50%);
@@ -163,23 +163,6 @@ const PostPrimary = styled.div`
 	}
 `;
 
-const PostContent = styled.div`
-	& a {
-		--link-color: #0474B5;
-		color: var(--link-color);
-	}
-
-	& a:visited,
-	& a:active,
-	& a:hover {
-		--link-color: var(--color-dark);
-	}
-
-	& a:focus {
-		outline-color: #E8671C;
-	}
-`;
-
 const Post = props => {
 
 	//console.log(props)
@@ -252,9 +235,7 @@ const Post = props => {
 				</PostHeader>
 				<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>
 				<PostPrimary id="primary">
-					<EmbedContainer markup={props.post.content.rendered}>
-						<PostContent dangerouslySetInnerHTML={{ __html: props.post.content.rendered }} />
-					</EmbedContainer>
+					<WPContent content={props.post.content} />
 				</PostPrimary>
 				<Shurls {...props} />
 				<PostNavLinks beforePost={props.beforePost} afterPost={props.afterPost} />

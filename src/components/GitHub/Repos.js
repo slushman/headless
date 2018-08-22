@@ -14,7 +14,21 @@ const RepoList = styled.ul``;
 
 const RepoItem = styled.li``;
 
-const RepoLink = styled.a``;
+const RepoLink = styled.a`
+	--link-color: var(--color-blue);
+
+	color: var(--link-color);
+
+	&:visited,
+	&:active,
+	&:hover {
+		--link-color: var(--color-blue);
+	}
+
+	&:focus {
+		outline-color: #E8671C;
+	}
+`;
 
 const RepoStars = styled.span``;
 

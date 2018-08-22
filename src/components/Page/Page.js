@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import FormContainer from '../Contact/FormContainer';
 import GitHub from '../GitHub/GitHub';
+import WPContent from '../WPContent/WPContent';
 
 const PageWrapper = styled.div`
 	position: relative;
@@ -40,30 +41,8 @@ const ContentWrap = styled.div`
 	padding-right: var(--pad);
 	padding-top: 1em;
 
-	& a {
-		--link-color: #0474B5;
-		color: var(--link-color);
-	}
-
-	& a:visited,
-	& a:active,
-	& a:hover {
-		--link-color: var(--color-dark);
-	}
-
-	& a:focus {
-		outline-color: #E8671C;
-	}
-
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
-	}
-`;
-
-const WPContent = styled.div`
-	p {
-		line-height: 1.75;
-		margin: 0 0 1.5em;
 	}
 `;
 
@@ -109,7 +88,7 @@ const Page = ({ page, location }) => {
 					<PageTitle>{pageTitle}</PageTitle>
 				</PageHeader>
 				<ContentWrap>
-					<WPContent dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+					<WPContent content={page.content} />
 					{
 						'/contact' === location.pathname
 							? <FormContainer />

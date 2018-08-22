@@ -33,21 +33,6 @@ const PostLatest = styled.div`
 		z-index: 0;
 	}
 
-	& a {
-		--link-color: #0474B5;
-		color: var(--link-color);
-	}
-
-	& a:visited,
-	& a:active,
-	& a:hover {
-		--link-color: var(--color-dark);
-	}
-
-	& a:focus {
-		outline-color: #E8671C;
-	}
-
 	@media screen and (min-width: 560px) {
 		--bgImage: url(${props => props.imageSizes.med});
 		--padbot: 3em;
@@ -81,6 +66,22 @@ const HomeLatestTitle = styled.h2`
 	font-size: 2.5em;
 `;
 
+const StyledLink = styled(Link)`
+	--link-color: var(--color-blue);
+
+	color: var(--link-color);
+	
+	&:visited,
+	&:active,
+	&:hover {
+		--link-color: var(--color-blue);
+	}
+
+	&:focus {
+		outline-color: #E8671C;
+	}
+`;
+
 const HomeContentExcerpt = styled.div``;
 
 const HomeLatest = ({post}) => {
@@ -100,7 +101,7 @@ const HomeLatest = ({post}) => {
 			<HomeLatestTitleContent>
 				<CTAHomeTop>Read my latest article:</CTAHomeTop>
 				<HomeLatestTitle>
-					<Link to={`/post/${post.slug}`}>{he.decode(post.title.rendered)}</Link>
+					<StyledLink to={`/post/${post.slug}`}>{he.decode(post.title.rendered)}</StyledLink>
 				</HomeLatestTitle>
 				<HomeContentExcerpt dangerouslySetInnerHTML={{ __html: excerptContent }} />
 			</HomeLatestTitleContent>
