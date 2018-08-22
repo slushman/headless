@@ -78,7 +78,7 @@ class App extends Component {
 		// <Route exact path="/blog" render={() => (<AsyncArchive match={this.props.match} />)} />
 		return (
 			1 <= this.state.pages.length 
-				? 	<Analytics id="UA-27308708-1">
+				? 	<Analytics id="UA-27308708-1" debug>
 						<Switch>
 							<Route exact path="/" component={AsyncHome} />
 							<Route exact path="/blog" render={() => (
