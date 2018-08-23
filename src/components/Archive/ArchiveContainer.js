@@ -17,12 +17,13 @@ import Loading from '../Loading/Loading';
 class ArchiveContainer extends Component {
 
 	state = {
-		posts: {},
+		posts: [],
 		error: null,
 		quantity: 6,
 		showPosts: [],
 		start: 0,
-		end: 6
+		end: 6,
+		cats: [],
 	}
 	
 	componentDidMount() {
@@ -33,20 +34,16 @@ class ArchiveContainer extends Component {
 				if (response.ok) {
 					return response.json();
 				} else {
-					this.setState({
+					this.setState({ 
 						error: 'Something went wrong...'
 					})
 				}
 			})
 			.then(posts => {
-				this.setState({
-					posts
-				})
-				this.slicePosts(this.state.start);
+				this.setState({ posts })
+				this.slicePosts();
 			})
-			.catch(error => this.setState({
-				error
-			}));
+			.catch(error => this.setState({ error }));
 
 		window.addEventListener('resize', this.updateQuantity);
 	}
@@ -54,27 +51,6 @@ class ArchiveContainer extends Component {
 	componentWillUnmount() {
 		window.removeEventListener('resize', this.updateQuantity);
 	}
-
-	/**
-	 * Sets showPosts in state with posts in the requested category.
-	 * 
-	 * @uses 		slicePosts()
-	 */
-	filterCats = (categoryId) => {
-		// reset state for start, end, and showPosts
-
-		// filter all the posts by categoryId
-		let catPosts = this.state.posts.filter( post => {
-			return post.categories.includes(categoryId);
-		} );
-
-		this.setState({
-			showPosts: catPosts
-		})
-
-		// slice the results by quantity
-		this.slicePosts( this.state.start )
-	} // filterCats()
 
 	/**
 	 * Runs when the "See More Articles" button is clicked.
@@ -153,10 +129,11 @@ class ArchiveContainer extends Component {
 		return (
 			1 <= this.state.posts.length
 				? <Archive 
-					title="Blog" 
+					title="Blog"
 					showPosts={this.state.showPosts} 
 					onClick={this.loadMore}
 					scrollTop={this.scrollToTop}
+					loadMoreText="See More Articles"
 				/>
 				: <Loading />
 		);

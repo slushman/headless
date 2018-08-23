@@ -77,7 +77,7 @@ class PostContainer extends Component {
 		}
 		return (
 			1 <= this.state.post.length
-				? <Post post={this.state.post[0]} pathname={this.props.location.pathname} beforePost={this.state.beforePost} afterPost={this.state.afterPost} />
+				? <Post post={this.state.post[0]} beforePost={this.state.beforePost} afterPost={this.state.afterPost} {...this.props} />
 				: <Loading />
 		);
 	}

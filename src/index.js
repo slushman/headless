@@ -11,7 +11,7 @@ import SkipToContentLink from './components/App/SkipToContentLink';
 import registerServiceWorker from './registerServiceWorker';
 import './globalStyles.js';
 
-//ReactGA.initialize('UA-27308708-01', { debug: false });
+ReactGA.initialize('UA-27308708-01', { debug: false });
 
 const SiteMain = styled.main`
 	display: grid;

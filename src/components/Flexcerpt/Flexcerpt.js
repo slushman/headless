@@ -7,6 +7,8 @@ import classNames from 'classnames';
 import styled from 'styled-components';
 import { getImage } from '../../functions';
 
+import Categories from './Categories';
+
 const colorCount = 6;
 
 const ExcerptListItem = styled.li`
@@ -46,8 +48,6 @@ const ExcerptListItem = styled.li`
 			return 'var(--color-dark)';
 		}
 	}};
-	
-	
 	
 	background-color: var(--bgcolor);
 	color: var(--color);
@@ -165,9 +165,13 @@ const ExcerptWrap = styled.div`
 	z-index: 1;
 `;
 
-//calc(100vw/2 - 42rem/2)
+const ExcerptHead = styled.div`
+	position: relative;
+`;
 
-const ExcerptLink = styled(Link)``;
+const ExcerptLink = styled(Link)`
+	display: block;
+`;
 
 const ExcerptImg = styled.div`
 	--height: 7em;
@@ -185,7 +189,10 @@ const ExcerptImg = styled.div`
 	}
 `;
 
-const ExcerptTitle = styled.h2``;
+const ExcerptTitle = styled.h2`
+	margin: 0;
+	margin-bottom: 0.5em;
+`;
 
 const ExcerptDate = styled.small`
 	margin-top: auto;
@@ -196,7 +203,7 @@ const ExcerptDate = styled.small`
 const ExcerptContent = styled.div``;
 
 const Flexcerpt = props => {
-	//console.log(post)
+	//console.log(props)
 
 	let post = props.post;
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
@@ -208,12 +215,20 @@ const Flexcerpt = props => {
 		<ExcerptListItem className={classNames(props.listItemClass)} location={props.location} index={props.index}>
 			{
 				true === props.display.includes('image') ?
-					<ExcerptLink to={`/post/${post.slug}`}>
-						<ExcerptImg image={imageSource} />
-					</ExcerptLink>
+					<ExcerptHead>
+						<ExcerptLink to={`/post/${post.slug}`}>
+							<ExcerptImg image={imageSource} />
+						</ExcerptLink>
+					</ExcerptHead>
 					: null
+					
 			}	
 			<ExcerptWrap>
+				{
+					true === props.display.includes('cats') && post._embedded['wp:term'] && 1 <= post._embedded['wp:term'][0].length
+						? <Categories cats={post._embedded['wp:term'][0]} />
+						: null
+				}
 				<ExcerptTitle>
 					<ExcerptLink to={`/post/${post.slug}`}>{excerptTitle}</ExcerptLink>
 				</ExcerptTitle>

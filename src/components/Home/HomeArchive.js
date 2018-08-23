@@ -34,7 +34,7 @@ const HomeArchive = props => {
 				showPosts.map((post, i) => {
 					return (
 						<ErrorBoundry key={i}>
-							<Flexcerpt post={post} display={['date','content']} location="home" index={i} />
+							<Flexcerpt post={post} display={['date','content', 'cats']} location="home" index={i} cats={props.cats} />
 						</ErrorBoundry>
 					)	
 				})

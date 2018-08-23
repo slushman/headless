@@ -37,7 +37,7 @@ const List = styled.ul`
 const PostNavLinks = ({beforePost,afterPost}) => {
 	return (
 		<Wrap>
-			<CTA>Check out other recent posts:</CTA>
+			<CTA>Check out some other posts:</CTA>
 			<List>
 				{
 					beforePost ? <Flexcerpt post={beforePost} display={['date','content']} /> : null

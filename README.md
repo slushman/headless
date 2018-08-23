@@ -14,19 +14,6 @@
 
 
 TODOS
-* Publish
-
-
-Later TODOS
-
-Functional Changes
-* View posts by category
-	- filter by category?
-
-* Get most starred repos on my Github and display those on the Plugins page.
-
-* Get plugins listed on WordPress.org and display them, along with the downloads count.
-
 * Jest tests for all components
 
 * Get ScrollToTop to hide when not scrolled enough
@@ -37,9 +24,6 @@ Functional Changes
 
 
 Content Changes
-
-
-
 * Add a site-level description in the header - who am I and why should they read my stuff? What's my "thing"? - "Helping Developers Level-up"
 
 * Check all presentation posts and make sure they are good ones. Compare to http://owltastic.com/category/speaking/

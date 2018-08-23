@@ -11,6 +11,7 @@ class HomeContainer extends Component {
 		error: null,
 		latest: [],
 		showPosts: [],
+		cats: [],
 		catID: null,
 	}
 
@@ -31,6 +32,7 @@ class HomeContainer extends Component {
 					return cat.slug === 'home-feature';
 				})
 				this.setState({
+					cats,
 					catID: homeFeatureCategoryId[0].id
 				})
 			})
@@ -83,6 +85,7 @@ class HomeContainer extends Component {
 				? <Home
 					latest={this.state.latest}
 					posts={this.state.showPosts}
+					cats={this.state.cats}
 					{...this.props}
 				/>
 				: <Loading />

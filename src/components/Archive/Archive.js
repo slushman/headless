@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Flexcerpt from '../Flexcerpt/Flexcerpt';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
@@ -48,7 +49,7 @@ const ArchiveCTABottomWrap = styled.div`
 	display: flex;
 `;
 
-const ArchiveCTALoadMore = styled.button`
+const CTAStyles = css`
 	--borderColor: var(--color-dark-blue);
 	--bgColor: var(--color-dark-blue);
 	--color: var(--color-light);
@@ -78,6 +79,15 @@ const ArchiveCTALoadMore = styled.button`
 	}
 `;
 
+const ArchiveCTALoadMore = styled.button`
+	${CTAStyles}
+`;
+
+const StyledLink = styled(Link)`
+	${CTAStyles}
+`;
+
+
 const Archive = props => {
 	//console.log(props)
 	return (
@@ -94,14 +104,18 @@ const Archive = props => {
 					props.showPosts.map((post, i) => {
 						return (
 							<ErrorBoundry key={i}>
-								<Flexcerpt post={post} display={['image', 'date']} index={i} />
+								<Flexcerpt post={post} display={['image', 'date', 'cats']} index={i} />
 							</ErrorBoundry>
 						)
 					})
 				}
 			</ArchiveList>
 			<ArchiveCTABottomWrap>
-				<ArchiveCTALoadMore onClick={props.onClick}>See more articles</ArchiveCTALoadMore>
+			{
+				props.ctaToBlog
+					? <StyledLink to="/blog">{props.loadMoreText}</StyledLink>
+					: <ArchiveCTALoadMore onClick={props.onClick}>{props.loadMoreText}</ArchiveCTALoadMore>
+			}
 				<ScrollToTop />
 			</ArchiveCTABottomWrap>
 		</ArchiveWrapper>
@@ -109,6 +123,7 @@ const Archive = props => {
 };
 
 Archive.propTypes = {
+	loadMoreText: PropTypes.string,
 	showPosts: PropTypes.array,
 	title: PropTypes.string,
 };

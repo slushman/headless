@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { getImage } from '../../functions';
 
+import Categories from '../Flexcerpt/Categories';
 import Caption from './Caption';
 import Shurls from './Shurls';
 import PostNavLinks from './PostNavLinks';
@@ -93,19 +94,34 @@ const PostTitle = styled.h1`
 	}
 `;
 
-const PostDate = styled.p`
+const PostMeta = styled.div`
 	--pad: 1em;
 
 	background-color: var(--color-lt-blue);
-	margin: 0;
+	
+	justify-content: space-between;
 	padding-bottom: 1em;
 	padding-left: var(--pad);
 	padding-right: var(--pad);
 	padding-top: 1em;
 
+	@media screen and (min-width: 560px) {
+		display: flex;
+	}
+
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
 	}
+
+	& a {
+		color: var(--color-dark);
+		margin-bottom: 0;
+	}
+
+`;
+
+const PostDate = styled.p`
+	margin: 0;
 `;
 
 const PostPrimary = styled.div`
@@ -116,48 +132,6 @@ const PostPrimary = styled.div`
 	padding-right: var(--pad);
 	padding-top: 1em;
 
-	& p {
-		line-height: 1.75;
-		margin-bottom: 1.5em;
-	}
-
-	& pre,
-	& code,
-	& kbd,
-	& samp, {
-		font-family: 'Source Code Pro', monospace;
-		position: relative;
-	}
-
-	& pre {
-		color: var(--color-light);
-		padding: 1.5em 0;
-		position: relative;
-		z-index: 1;
-	}
-
-	& pre:before {
-		background-color: var(--color-dark);
-		bottom: 0;
-		content: "";
-		left: 50%;
-		margin-right: -50vw;
-		margin-left: -50vw;
-		position: absolute;
-		right: 50%;
-		top: 0;
-		width: 100vw;
-		z-index: -1;
-	}
-
-	& pre code {
-		display: block;
-		font-family: 'Source Code Pro', monospace;
-		font-size: 1rem;
-		overflow: scroll;
-		padding: 1em;
-	}
-
 	@media screen and (min-width: 700px) {
 		--pad: calc(100vw/2 - 42rem/2);
 	}
@@ -165,7 +139,7 @@ const PostPrimary = styled.div`
 
 const Post = props => {
 
-	//console.log(props)
+	console.log(props)
 
 	let image = props.post._embedded['wp:featuredmedia'] ? props.post._embedded['wp:featuredmedia'][0] : false;
 
@@ -186,7 +160,7 @@ const Post = props => {
 
 	return (
 		<PostWrapper>
-			<PostArticle pathname={props.pathname}>
+			<PostArticle pathname={props.location.pathname}>
 				<Helmet>
 					<title>{props.post.yoast && 0 !== props.post.yoast.title.length ? props.post.yoast.title : post.title}</title>
 					<link rel="canonical" href={props.post.link} />
@@ -227,13 +201,16 @@ const Post = props => {
 					}`}</script>
 				</Helmet>
 				<PostHeader imageSizes={imageSizes}>
-					<PostTitle image={post.image}>{post.title}</PostTitle>
-					{	image.credits
+					<PostTitle>{post.title}</PostTitle>
+					{image.credits && image.credits.credit && image.credits.credit_url
 							? <Caption credits={image.credits} />
 							: null
 					}
 				</PostHeader>
-				<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>
+				<PostMeta>
+					<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>
+					<Categories cats={props.post._embedded['wp:term'][0]} />
+				</PostMeta>
 				<PostPrimary id="primary">
 					<WPContent content={props.post.content} />
 				</PostPrimary>
