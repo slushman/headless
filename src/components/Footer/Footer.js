@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import WPMenuContainer from '../WPMenu/WPMenuContainer';
-import SocialLinks from './SocialLinks';
 
 const SiteFooter = styled.footer`
 	--flexwrap: wrap;
@@ -35,7 +34,7 @@ const Copyright = styled.div`
 	}
 `;
 
-const LinksWrap = styled.div`
+const SocialWrap = styled.div`
 	--flex: 0 0 100%;
 	--order: 1;
 
@@ -45,6 +44,10 @@ const LinksWrap = styled.div`
 	@media screen and (min-width: 550px) {
 		--flex: 1;
 		--order: 2;
+	}
+
+	svg {
+		fill: var(--color-light);
 	}
 `;
 
@@ -65,11 +68,11 @@ const Footer = props => {
 	return (
 		<SiteFooter>
 			<Copyright>&copy; {new Date().getFullYear()} Slushman</Copyright>
-			<LinksWrap>
-				<SocialLinks />
-			</LinksWrap>
+			<SocialWrap>
+				<WPMenuContainer location="social" />
+			</SocialWrap>
 			<MenuWrap>
-				<WPMenuContainer location="footer" />
+				<WPMenuContainer location="footer" linkClass="test" />
 			</MenuWrap>
 		</SiteFooter>
 	);

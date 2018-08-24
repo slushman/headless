@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import styled from 'styled-components';
 
 import WPMenuList from './WPMenuList';
+import WPMenuLink from './WPMenuLink';
 
 const MenuItem = styled.li`
 	flex: 1;
@@ -24,176 +23,24 @@ const MenuItem = styled.li`
 	}
 `;
 
-const activeClassName = 'selected';
+const WPMenuItem = props => {
 
-const MenuItemLink = styled(NavLink)`
-	--display: inline-grid;
-	--link-color: ${props => 'footer' === props.menulocation ? 'var(--color-light)' : 'var(--color-dark-blue)'};
-	--zindex: auto;
+	//console.log(props)
 
-	align-items: center;
-	color: var(--link-color);
-	display: var(--display);
-	justify-content: center;
-	padding: 0.5em;
-	position: relative;
-	text-decoration: none;
-	text-transform: ${props => 'default' === props.menulocation ? 'uppercase' : ''};
-	transition: all 1s ease;
-	width: 100%;
-	z-index: var(--zindex);
-
-	&:before {
-		--height: 2px;
-		--underlinkcolor: var(--color-light);
-		--transform: scale(0);
-		--transition: all 0.3s ease-in-out;
-		--vis: hidden;
-		--zindex: auto;
-
-		background-color: var(--underlinkcolor);
-		bottom: 0;
-		content: "";
-		height: var(--height);
-		left: 0;
-		position: absolute;
-		transform: var(--transform);
-		transition: var(--transition);
-		visibility: var(--vis);
-		width: 100%;
-		z-index: var(--zindex);
-
-		@media screen and (min-width: 560px) {
-			--underlinkcolor: ${props => {
-				if ('/' !== props.page) {
-					return 'var(--color-light)';
-				} else {
-					return 'var(--color-blue)';
-				}
-			}};
-		}
-	}
-
-	&:hover {
-		--link-color: ${props => 'footer' === props.menulocation ? 'var(--color-light)' : 'var(--color-dark-blue)'};
-
-		@media screen and (min-width: 560px) {
-			--link-color: ${props => {
-				if ('/' === props.page) {
-					return 'var(--color-dark-blue)';
-				} else {
-					return 'var(--color-light)';
-				}
-			}};
-		}
-	}
-
-	&:hover:before {
-		--transform: scale(1);
-		--vis: visible;
-	}
-
-	@media screen and (max-width: 767px) {
-		min-height: 48px;
-	}
-
-	@media screen and (min-width: 560px) {
-		--link-color: ${props => {
-			if ('/' === props.page) {
-				return 'var(--color-dark-blue)';
-			} else {
-				return  'var(--color-light)';
-			}
-		}};
-	}
-
-	&.${activeClassName} {
-		--link-color: ${props => {
-			if ( 'footer' === props.menulocation) {
-				return 'var(--color-charcoal)';
-			} else if ( '/blog' === props.page ) {
-				return 'var(--color-med-gray)';
-			} else {
-				return 'var(--color-dark)';
-			}
-		}};
-		--zindex: 1;
-
-		@media screen and (min-width: 560px) {
-			--link-color: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-dark)'};
-		}
-
-		&:hover {
-			--link-color: ${props => {
-				if ('footer' === props.menulocation) {
-					return 'var(--color-light)';
-				} else {
-					return 'var(--color-dark-blue)';
-				}
-			}};
-
-			@media screen and (min-width: 560px) {
-				--link-color: var(--color-light);
-			}
-		}
-
-		&:before {
-			--height: 100%;
-			--transform: none;
-			--transition: all 1s ease;
-			--underlinkcolor: ${props => {
-				if ('footer' === props.menulocation) {
-					return 'var(--color-light)';
-				} else if ('/blog' === props.page) { 
-					return 'var(--color-dark-gray)';
-				} else {
-					return 'var(--color-lt-blue)';
-				}
-			}};
-			--vis: visible;
-			--zindex: -1;
-
-			@media screen and (min-width: 560px) {
-				--underlinkcolor: ${props => '/blog' === props.page && 'var(--color-light)'};
-			}
-		}
-
-		&:hover:before {
-			--bgcolor: var(--color-light);
-			--height: 2px;
-			--underlinkcolor: ${props => '/blog' === props.page ? 'var(--color-charcoal)' : 'var(--color-light)'};
-		}
-	}
-`;
-
-const WPMenuItem = ({ item, menuLinks, depthLevel, ...rest }) => {
-
-	const subMenuLinks = menuLinks.filter(link => {
-		return parseInt(link.parent, 10) === parseInt(item.id, 10);
+	const subMenuLinks = props.menuLinks.filter(link => {
+		return parseInt(link.parent, 10) === parseInt(props.item.id, 10);
 	})
-	const linkTarget = item.target && "_blank" === item.target ? item.target : null;
-	const linkTitle = item.title ? item.title : null;
 
 	return (
-		<MenuItem location={rest.menu.slug} className={item.classes.string}>
-			<MenuItemLink
-				className={classNames(rest.linkClass)}
-				activeClassName={activeClassName}
-				depth={depthLevel}
-				menulocation={rest.menu.slug}
-				page={rest.page}
-				to={`/${item.slug}`}
-				target={linkTarget}
-				title={linkTitle}
-				exact={true}
-			>{item.title}</MenuItemLink>
+		<MenuItem location={props.menu.slug} className={props.item.classes.string}>
+			<WPMenuLink link={props.item} menu={props.menu.slug} linkClass={props.linkClass} itemClasses={props.item.classes.array} page={props.page} />
 			{1 <= subMenuLinks.length 
 				? <WPMenuList 
-					menuLinks={menuLinks} 
-					location={rest.menu.slug} 
-					parentId={parseInt(item.id, 10)} 
-					depthLevel={depthLevel + 1} 
-					{...rest} /> 
+					menuLinks={props.menuLinks} 
+					location={props.menu.slug} 
+					parentId={parseInt(props.item.id, 10)} 
+					depthLevel={props.depthLevel + 1} 
+					{...props} /> 
 				: null
 			}
 		</MenuItem>
@@ -207,10 +54,6 @@ WPMenuItem.propTypes = {
 }
 
 export default WPMenuItem;
-
-
-
-
 
 	//if (item.classes.includes('slushicons')) {
 

@@ -139,7 +139,7 @@ const PostPrimary = styled.div`
 
 const Post = props => {
 
-	console.log(props)
+	//console.log(props)
 
 	let image = props.post._embedded['wp:featuredmedia'] ? props.post._embedded['wp:featuredmedia'][0] : false;
 
