@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 
-import IconEmail from '../Icons/Email';
-import IconFacebook from '../Icons/Facebook';
-import IconGoogle from '../Icons/Google';
-import IconLinkedIn from '../Icons/Linkedin';
-import IconPinterest from '../Icons/Pinterest';
-import IconStumbleupon from '../Icons/Stumbleupon';
-import IconTumblr from '../Icons/Tumblr';
-import IconTwitter from '../Icons/Twitter';
+import IconEmail from '../SVGS/Email';
+import IconFacebook from '../SVGS/Facebook';
+import IconGoogle from '../SVGS/Google';
+import IconLinkedIn from '../SVGS/Linkedin';
+import IconPinterest from '../SVGS/Pinterest';
+import IconStumbleupon from '../SVGS/Stumbleupon';
+import IconTumblr from '../SVGS/Tumblr';
+import IconTwitter from '../SVGS/Twitter';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 const ShurlSection = styled.section`

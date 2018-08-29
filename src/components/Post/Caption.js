@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import IconCamera from '../Icons/Camera';
+import IconCamera from '../SVGS/Camera';
 
 const CreditLink = styled.a`
 	bottom: 1em;
