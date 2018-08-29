@@ -36,6 +36,8 @@ const InputList = styled.ul`
 	}
 `;
 
+const Recaptcha = styled.div``;
+
 const ContactForm = props => {
 	return (
 		<Form method="POST" name="contact" netlify="true" netlify-honeypot="bot-field" onSubmit={props.handleSubmit}>
@@ -45,6 +47,7 @@ const ContactForm = props => {
 					<Input labelText="Name" name="name" onChange={props.handleChange} value={props.name} />
 					<Input labelText="Email" name="email" onChange={props.handleChange} type="email" value={props.email} />
 					<Textarea labelText="Message" name="message" onChange={props.handleChange} value={props.message} />
+					<Recaptcha netlify-recaptcha="true" />
 					<Button position="right" labelText="Send" />
 				</InputList>
 			</Fieldset>
