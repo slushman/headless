@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icons from '../Icons/Icons';
+import Icons from '../SVGS/Icons';
 
 const Text = styled.span`
 	border 		: ${props => 'text-hide' === props.textPos && '0'};

@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 import IconEmail from '../Icons/Email';
 import IconFacebook from '../Icons/Facebook';
 import IconGoogle from '../Icons/Google';
-import IconLinkedIn from '../Icons/LinkedIn';
+import IconLinkedIn from '../Icons/Linkedin';
 import IconPinterest from '../Icons/Pinterest';
 import IconStumbleupon from '../Icons/Stumbleupon';
 import IconTumblr from '../Icons/Tumblr';
