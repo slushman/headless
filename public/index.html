@@ -51,6 +51,9 @@
 				.logo {
 					max-width: 400px;
 				}
+				.hidden {
+					display: none;
+				}
 			</style>
 		</noscript>
 	</head>
@@ -77,14 +80,17 @@
 					<a href="https://twitter.com/slushman">Twitter</a>
 				</li>
 			</ul>
+			<p>This page probably looks boring though. I built this site using React, so you'll need to turn on Javascript to see the rest.</p>
+			<p>Thanks for visiting!</p>
 			<form name="contact" netlify netlify-honeypot="bot-field">
 				<input type="text" name="name" />
 				<input type="email" name="email" />
 				<textarea name="message"></textarea>
-				<div netlify-recaptcha="true"></div>
+				<p class="hidden">
+					<label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+				</p>
+				<div data-netlify-recaptcha></div>
 			</form>
-			<p>This page probably looks boring though. I built this site using React, so you'll need to turn on Javascript to see the rest.</p>
-			<p>Thanks for visiting!</p>
 		</noscript>
 		<div id="root"></div>
 		<!--

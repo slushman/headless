@@ -18,11 +18,10 @@ const Field = styled.div`
 	order: 2;
 `;
 
-const NetlifyCaptcha = props => {
-	//console.log(props)
+const NetlifyCaptcha = () => {
 	return (
 		<FieldContainer>
-			<Field netlify-recaptcha="true"></Field>
+			<Field data-netlify-recaptcha></Field>
 		</FieldContainer>
 	);
 };
