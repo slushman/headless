@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className={null}
+>
+  <div
+    className="sc-bdVaJa ebydHU"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Testing simulated content from WordPress.",
+      }
+    }
+  />
+</div>
+`;

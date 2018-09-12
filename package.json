@@ -29,5 +29,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "netlifyctl deploy"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.4.2"
   }
 }
