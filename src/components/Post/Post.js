@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment-js';
 import PropTypes from 'prop-types';
 import he from 'he';
 import Helmet from 'react-helmet';
@@ -158,6 +157,8 @@ const Post = props => {
 		excerpt: props.post.yoast && 0 !== props.post.yoast.metadesc.length ? props.post.yoast.metadesc : he.decode(props.post.excerpt.rendered),
 	}
 
+	let postDate = new Date( props.post.date );
+
 	return (
 		<PostWrapper>
 			<PostArticle pathname={props.location.pathname}>
@@ -208,7 +209,7 @@ const Post = props => {
 					}
 				</PostHeader>
 				<PostMeta>
-					<PostDate>Published {moment(props.post.date).format("YYYY.MM.DD")}</PostDate>
+					<PostDate>Published {postDate.getFullYear() + '.' + (postDate.getMonth() + 1) + '.' + postDate.getDate()}</PostDate>
 					<Categories cats={props.post._embedded['wp:term'][0]} />
 				</PostMeta>
 				<PostPrimary id="primary">

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import moment from 'moment-js';
 import he from 'he';
 import classNames from 'classnames';
 import styled from 'styled-components';
@@ -203,13 +202,14 @@ const ExcerptDate = styled.small`
 const ExcerptContent = styled.div``;
 
 const Flexcerpt = props => {
-	//console.log(props)
+	console.log(props.post)
 
 	let post = props.post;
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
 	let imageSource = image.media_details ? getImage(image.media_details.sizes, 'small') : null;
 	let excerptTitle = he.decode(post.title.rendered);
 	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode(post.excerpt.rendered);
+	let postDate = new Date( post.date );
 
 	return (
 		<ExcerptListItem className={classNames(props.listItemClass)} location={props.location} index={props.index}>
@@ -234,7 +234,7 @@ const Flexcerpt = props => {
 				</ExcerptTitle>
 				{
 					true === props.display.includes('date')
-						? <ExcerptDate>Published {moment(post.date).format("YYYY.MM.DD")}</ExcerptDate>
+						? <ExcerptDate>Published {postDate.getFullYear() + '.' + (postDate.getMonth() + 1) + '.' + postDate.getDate()}</ExcerptDate>
 						: null
 				}
 				{
