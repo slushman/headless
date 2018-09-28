@@ -59,11 +59,6 @@
 	</head>
 	<body>
 		<!-- A little help for the Netlify post-processing bots -->
-		<form name="contact" netlify netlify-honeypot="bot-field" hidden>
-			<input type="text" name="name" />
-			<input type="email" name="email" />
-			<textarea name="message"></textarea>
-		</form>
 		<noscript>
 			<img class="logo" src="/images/slushman-animated.svg" alt="Slushman" />
 			<h1>Welcome to slushman.com!</h1>
@@ -82,15 +77,6 @@
 			</ul>
 			<p>This page probably looks boring though. I built this site using React, so you'll need to turn on Javascript to see the rest.</p>
 			<p>Thanks for visiting!</p>
-			<form name="contact" netlify netlify-honeypot="bot-field">
-				<input type="text" name="name" />
-				<input type="email" name="email" />
-				<textarea name="message"></textarea>
-				<p class="hidden">
-					<label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-				</p>
-				<div data-netlify-recaptcha></div>
-			</form>
 		</noscript>
 		<div id="root"></div>
 		<!--

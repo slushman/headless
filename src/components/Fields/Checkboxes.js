@@ -7,7 +7,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -59,34 +59,34 @@ const Field = styled.input`
 `;
 
 const Required = styled.small`
-	color: var(--color-dark-gray);
+	color: var(--color-dark-gray );
 `;
 
 const Checkboxes = props => {
 	return (
 		<FieldContainer>
-			<FieldLabel>{props.labelText}</FieldLabel>
+			<FieldLabel>{ props.labelText }</FieldLabel>
 			<Fieldset>
-				<Legend>{props.description} <Required>{props.required ? null : '(Optional)'}</Required></Legend>
+				<Legend>{ props.description } <Required>{ props.required ? null : '(Optional)' }</Required></Legend>
 				<CheckboxList>
 				{
-					props.boxes.map((box, i) => (
-						<FieldContainer key={i}>
-							<Label for={props.name}>
+					props.boxes.map( ( box, i ) => (
+						<FieldContainer key={ i }>
+							<Label for={ props.name }>
 								<Field
-									autofocus={props.autofocus}
-									checked={props.checked}
-									disabled={props.disabled}
-									id={props.id}
-									name={props.name}
-									required={props.required}
+									autofocus={ props.autofocus }
+									checked={ props.checked }
+									disabled={ props.disabled }
+									id={ props.id }
+									name={ props.name }
+									required={ props.required }
 									type="checkbox"
-									value={box.value}
+									value={ box.value }
 								/>
-								{box.label}
+								{ box.label }
 							</Label>
 						</FieldContainer>
-					))
+					) )
 				}
 				</CheckboxList>
 			</Fieldset>
@@ -102,19 +102,19 @@ Checkboxes.propTypes = {
 	labelText: PropTypes.string.isRequired,
 	multiple: PropTypes.bool,
 	name: PropTypes.string.isRequired,
-	boxes: PropTypes.arrayOf(PropTypes.shape({
+	boxes: PropTypes.arrayOf( propTypes.shape( {
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
-	})),
+	} ) ),
 	required: PropTypes.bool,
 	size: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 };
 
 Checkboxes.defaultProps = {
-	required: true
+	required: true,
 }
 
 export default Checkboxes;

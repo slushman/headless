@@ -6,7 +6,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;

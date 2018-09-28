@@ -7,7 +7,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -32,27 +32,27 @@ const FieldWrap = styled.span`
 
 const Field = styled.textarea`
 	--bgcolor: #fff;
-	--borderColor: var(--color-dark-gray);
+	--borderColor: var(--color-dark-gray );
 	--color: currentColor;
 
-	background-color: var(--bgcolor);
-	border-color: var(--borderColor);
+	background-color: var(--bgcolor );
+	border-color: var(--borderColor );
 	border-width: 1px;
 	border-style: solid;
-	color: var(--color);
+	color: var(--color );
 	font-size: 1.25em;
 	line-height: 1.5;
 	padding: 0.25em;
 
 	&:disabled {
-		--bgcolor: var(--color-light);
-		--borderColor: var(--color-med-gray);
-		--color: var(--color-med-gray);
+		--bgcolor: var(--color-light );
+		--borderColor: var(--color-med-gray );
+		--color: var(--color-med-gray );
 	}
 
 	&:readonly {
-		--borderColor: var(--color-lt-gray); 
-		--color: var(--color-dark-gray);
+		--borderColor: var(--color-lt-gray ); 
+		--color: var(--color-dark-gray );
 
 		cursor: not-allowed;
 	}
@@ -61,28 +61,28 @@ const Field = styled.textarea`
 const Description = styled.small``;
 
 const Required = styled.small`
-	color: var(--color-dark-gray);
+	color: var(--color-dark-gray );
 `;
 
 const Textarea = props => {
 	return (
 		<FieldContainer>
-			<Label for={props.name}>{props.labelText}</Label>
+			<Label for={ props.name }>{ props.labelText }</Label>
 			<FieldWrap>
 				<Field 
-					autofocus={props.autofocus}
-					cols={props.cols}
-					disabled={props.disabled}
-					id={props.id}
-					maxlength={props.maxlength}
-					name={props.name}
-					onChange={props.onChange}
-					readonly={props.readonly}
-					required={props.required}
-					rows={props.rows}
-					value={props.value}
+					autofocus={ props.autofocus }
+					cols={ props.cols }
+					disabled={ props.disabled }
+					id={ props.id }
+					maxlength={ props.maxlength }
+					name={ props.name }
+					onChange={ props.onChange }
+					readonly={ props.readonly }
+					required={ props.required }
+					rows={ props.rows }
+					value={ props.value }
 				/>
-				<Description>{props.description} <Required>{props.required ? null : '(Optional)'}</Required></Description>
+				<Description>{ props.description } <Required>{ props.required ? null : '(Optional)' }</Required></Description>
 			</FieldWrap>
 		</FieldContainer>
 	);
@@ -93,7 +93,7 @@ Textarea.propTypes = {
 	cols: PropTypes.oneOfType([
 		PropTypes.string, 
 		PropTypes.number
-	]),
+	] ),
 	description: PropTypes.string,
 	disabled: PropTypes.bool,
 	id: PropTypes.string,
@@ -101,22 +101,22 @@ Textarea.propTypes = {
 	maxlength: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	name: PropTypes.string.isRequired,
 	readonly: PropTypes.bool,
 	required: PropTypes.bool,
 	rows: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	value: PropTypes.string,
-	wrap: PropTypes.oneOf(['soft','hard']),
+	wrap: PropTypes.oneOf(['soft','hard'] ),
 };
 
 Textarea.defaultProps = {
 	cols: 10,
 	rows: 10,
-	required: true
+	required: true,
 }
 
 export default Textarea;

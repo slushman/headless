@@ -11,7 +11,7 @@ import SkipToContentLink from './components/App/SkipToContentLink';
 import registerServiceWorker from './registerServiceWorker';
 import './globalStyles.js';
 
-ReactGA.initialize('UA-27308708-01', { debug: false });
+ReactGA.initialize( 'UA-27308708-01', { debug: false } );
 
 const SiteMain = styled.main`
 	display: grid;
@@ -20,8 +20,8 @@ const SiteMain = styled.main`
 		width: 100vw;
 	}
 
-	@media screen and (min-width: 560px) {
-		padding-top: ${props => '/' === props.path ? '0' : 'var(--site-header-height)'};
+	@media screen and ( min-width: 560px) {
+		padding-top: ${ props => '/' === props.path ? '0' : 'var(--site-header-height )' };
 	}
 `;
 
@@ -31,16 +31,16 @@ render(
 			return (
 				<Fragment>
 					<SkipToContentLink />
-					<Header pathname={props.location.pathname} />
-					<SiteMain id="primary" path={props.location.pathname}>
-						<App {...props} />
+					<Header pathname={ props.location.pathname } />
+					<SiteMain id="primary" path={ props.location.pathname }>
+						<App { ...props } />
 					</SiteMain>
 					<Footer />
 				</Fragment>
-			)}
+			) }
 		} />
 	</BrowserRouter>,
-	document.getElementById('root')
+	document.getElementById( 'root' )
 );
 
 registerServiceWorker();

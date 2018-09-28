@@ -7,10 +7,10 @@ const content = {
 	rendered: "Testing simulated content from WordPress."
 };
 
-it('renders without crashing', () => {
+it( 'renders without crashing', () => {
 	const component = renderer.create(
-		<WPContent content={content} />
+		<WPContent content={ content } />
 	);
 	let tree = component.toJSON();
-	expect(tree).toMatchSnapshot();
-});
+	expect( tree ).toMatchSnapshot();
+} );

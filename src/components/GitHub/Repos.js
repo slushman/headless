@@ -15,14 +15,14 @@ const RepoList = styled.ul``;
 const RepoItem = styled.li``;
 
 const RepoLink = styled.a`
-	--link-color: var(--color-blue);
+	--link-color: var(--color-blue );
 
-	color: var(--link-color);
+	color: var(--link-color );
 
 	&:visited,
 	&:active,
 	&:hover {
-		--link-color: var(--color-blue);
+		--link-color: var(--color-blue );
 	}
 
 	&:focus {
@@ -32,26 +32,23 @@ const RepoLink = styled.a`
 
 const RepoStars = styled.span``;
 
-const Repos = ({repos}) => {
-
-	//console.log(repos)
+const Repos = ( { repos } ) => {
+	//console.log( repos )
 	return (
 		<RepoWrap>
 			<Heading2>GitHub Repos</Heading2>
 			<RepoList>
 			{
-				repos.map((repo, i) => {
-
-					let splitName = repo.name.replace(/-/g, ' ');
-
+				repos.map( ( repo, i ) => {
+					let splitName = repo.name.replace( /-/g, ' ' );
 					return (
-						<ErrorBoundry key={i}>
+						<ErrorBoundry key={ i }>
 							<RepoItem>
-								<RepoLink href={repo.html_url}>{toTitleCase(splitName)}</RepoLink> <RepoStars>({repo.stargazers_count} stars)</RepoStars>
+								<RepoLink href={ repo.html_url }>{ toTitleCase( splitName ) }</RepoLink> <RepoStars>( { repo.stargazers_count } stars )</RepoStars>
 							</RepoItem>
 						</ErrorBoundry>
 					)
-				})
+				} )
 			}
 			</RepoList>
 		</RepoWrap>
@@ -59,7 +56,7 @@ const Repos = ({repos}) => {
 };
 
 Repos.propTypes = {
-	repos: PropTypes.array
+	repos: PropTypes.array,
 };
 
 export default Repos;

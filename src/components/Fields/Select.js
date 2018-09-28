@@ -7,7 +7,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -41,30 +41,30 @@ const Option = styled.option`
 const Description = styled.small``;
 
 const Required = styled.small`
-	color: var(--color-dark-gray);
+	color: var(--color-dark-gray );
 `;
 
 const Select = props => {
 	return (
 		<FieldContainer>
-			<Label for={props.name}>{props.labelText}</Label>
+			<Label for={ props.name }>{ props.labelText }</Label>
 			<FieldWrap>
 				<Field
-					autofocus={props.autofocus}
-					disabled={props.disabled}
-					id={props.id}
-					multiple={props.multiple}
-					name={props.name}
-					required={props.required}
-					size={props.size}
+					autofocus={ props.autofocus }
+					disabled={ props.disabled }
+					id={ props.id }
+					multiple={ props.multiple }
+					name={ props.name }
+					required={ props.required }
+					size={ props.size }
 				>
 				{
-					props.options.map((option,i) => (
-						<Option key={i} value={option.value} selected={option.value === props.value}>{option.label}</Option>
-					))
+					props.options.map( ( option,i ) => (
+						<Option key={ i } value={ option.value } selected={ option.value === props.value }>{ option.label }</Option>
+					) )
 				}
 				</Field>
-				<Description>{props.description} <Required>{props.required ? null : '(Optional)'}</Required></Description>
+				<Description>{ props.description } <Required>{ props.required ? null : '(Optional)' }</Required></Description>
 			</FieldWrap>
 		</FieldContainer>
 	);
@@ -78,20 +78,20 @@ Select.propTypes = {
 	labelText: PropTypes.string.isRequired,
 	multiple: PropTypes.bool,
 	name: PropTypes.string.isRequired,
-	options: PropTypes.arrayOf(PropTypes.shape({
+	options: PropTypes.arrayOf( propTypes.shape( {
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
-	})),
+	} ) ),
 	required: PropTypes.bool,
 	size: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	value: PropTypes.string,
 };
 
 Select.defaultProps = {
-	required: true
+	required: true,
 }
 
 export default Select;

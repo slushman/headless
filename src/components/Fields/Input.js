@@ -13,7 +13,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -38,29 +38,29 @@ const FieldWrap = styled.span`
 
 const Field = styled.input`
 	--bgcolor: #fff;
-	--borderColor: var(--color-dark-gray);
+	--borderColor: var(--color-dark-gray );
 	--borderWidth: 1px;
 	--color: currentColor;
 
-	background-color: var(--bgcolor);
-	border-color: var(--borderColor);
-	border-width: var(--borderWidth);
+	background-color: var(--bgcolor );
+	border-color: var(--borderColor );
+	border-width: var(--borderWidth );
 	border-style: solid;
-	color: var(--color);
+	color: var(--color );
 	font-size: 1.25em;
 	line-height: 1.5;
 	padding: 0.25em;
 	transition: 0.4s ease;
 
 	&:disabled {
-		--bgcolor: var(--color-light);
-		--borderColor: var(--color-med-gray);
-		--color: var(--color-med-gray);
+		--bgcolor: var(--color-light );
+		--borderColor: var(--color-med-gray );
+		--color: var(--color-med-gray );
 	}
 
 	&:read-only {
-		--borderColor: var(--color-lt-gray); 
-		--color: var(--color-dark-gray);
+		--borderColor: var(--color-lt-gray ); 
+		--color: var(--color-dark-gray );
 
 		cursor: not-allowed;
 	}
@@ -69,34 +69,34 @@ const Field = styled.input`
 const Description = styled.small``;
 
 const Required = styled.small`
-	color: var(--color-dark-gray);
+	color: var(--color-dark-gray );
 `;
 
 const Input = props => {
-	//console.log(props)
+	//console.log( props )
 	return (
 		<FieldContainer>
-			<Label for={props.name}>{props.labelText}</Label>
+			<Label for={ props.name }>{ props.labelText }</Label>
 			<FieldWrap>
 				<Field 
-					autocomplete={props.autocomplete}
-					autofocus={props.autofocus}
-					disabled={props.disabled}
-					id={props.id}
-					max={props.max}
-					maxlength={props.maxlength}
-					min={props.min}
-					name={props.name}
-					onChange={props.onChange}
-					readonly={props.readonly} 
-					required={props.required} 
-					size={props.size} 
-					step={props.step} 
-					type={props.type}
-					value={props.value}
-					width={props.width}
+					autocomplete={ props.autocomplete }
+					autofocus={ props.autofocus }
+					disabled={ props.disabled }
+					id={ props.id }
+					max={ props.max }
+					maxlength={ props.maxlength }
+					min={ props.min }
+					name={ props.name }
+					onChange={ props.onChange }
+					readonly={ props.readonly } 
+					required={ props.required } 
+					size={ props.size } 
+					step={ props.step } 
+					type={ props.type }
+					value={ props.value }
+					width={ props.width }
 				/>
-				<Description>{props.description} <Required>{props.required ? null : '(Optional)'}</Required></Description>
+				<Description>{ props.description } <Required>{ props.required ? null : '(Optional)' }</Required></Description>
 			</FieldWrap>
 		</FieldContainer>
 	);
@@ -112,26 +112,26 @@ Input.propTypes = {
 	max: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	maxlength: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	min: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	name: PropTypes.string.isRequired,
 	readonly: PropTypes.bool,
 	required: PropTypes.bool,
 	size: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	step: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 	type: PropTypes.oneOf([
 		'email',
 		'hidden',
@@ -140,17 +140,17 @@ Input.propTypes = {
 		'tel',
 		'text',
 		'url',
-	]),
+	] ),
 	value: PropTypes.string,
 	width: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	])
+	] ),
 };
 
 Input.defaultProps = {
 	required: true,
-	type: 'text'
+	type: 'text',
 }
 
 export default Input;

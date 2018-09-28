@@ -20,22 +20,18 @@ const MenuList = styled.ul`
  * @param 		int 		parentId 		The parent menu item ID
  * @param 		int 		depth 			The menu item depth level.
  */
-const WPMenuList = ({ menuLinks, parentId = 0, depthLevel = 0, ...rest }) => {
-
-	//console.log(rest)
-
-	const linksAtThisDepth = menuLinks.filter(link => {
-		return parseInt(link.parent, 10) === parseInt(parentId, 10);
-	})
-
+const WPMenuList = ( { menuLinks, parentId = 0, depthLevel = 0, ...rest } ) => {
+	const linksAtThisDepth = menuLinks.filter( link => {
+		return parseInt( link.parent, 10 ) === parseInt( parentId, 10 );
+	} )
 	return (		
 		<MenuList>
 			{
-				linksAtThisDepth.map((item, key) => (
-					<ErrorBoundry key={key}>
-						<WPMenuItem key={key} item={item} menuLinks={menuLinks} depthLevel={depthLevel} {...rest} />
+				linksAtThisDepth.map( ( item, key ) => (
+					<ErrorBoundry key={ key }>
+						<WPMenuItem key={ key } item={ item } menuLinks={ menuLinks } depthLevel={ depthLevel } { ...rest } />
 					</ErrorBoundry>
-				))
+				) )
 			}
 		</MenuList>
 	);
@@ -44,14 +40,14 @@ const WPMenuList = ({ menuLinks, parentId = 0, depthLevel = 0, ...rest }) => {
 WPMenuList.propTypes = {
 	menuLinks: PropTypes.array,
 	parentId: PropTypes.number,
-	depthLevel: PropTypes.number
+	depthLevel: PropTypes.number,
 }
 
 WPMenuList.defaultProps = {
 	menuLinks: [],
 	location: '',
 	parentId: 0,
-	depthLevel: 0
+	depthLevel: 0,
 }
 
 export default WPMenuList;

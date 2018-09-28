@@ -8,13 +8,13 @@ const NotFoundSection = styled.section`
 `;
 
 const NotFoundHeader = styled.header`
-	--bgcolor: var(--color-accent);
+	--bgcolor: var(--color-accent );
 	
 	align-items: center;
-	background-color: var(--bgcolor);
-	color: var(--color-light);
+	background-color: var(--bgcolor );
+	color: var(--color-light );
 	display: flex;
-	height: var(--height);
+	height: var(--height );
 	justify-content: center;
 	margin: 0;
 	padding: 1em;
@@ -30,12 +30,12 @@ const NotFoundContent = styled.div`
 	--pad: 1em;
 
 	padding-bottom: 1em;
-	padding-left: var(--pad);
-	padding-right: var(--pad);
+	padding-left: var(--pad );
+	padding-right: var(--pad );
 	padding-top: 1em;
 
-	@media screen and (min-width: 700px) {
-		--pad: calc(100vw/2 - 42rem/2);
+	@media screen and ( min-width: 700px) {
+		--pad: calc( 100vw/2 - 42rem/2);
 	}
 `;
 

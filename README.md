@@ -17,7 +17,7 @@ TODOS
 
 * Get ScrollToTop to hide when not scrolled enough
 * Get ScrollToTop to not overlap footer
-* Add ScrollToTop to all posts long enough to be scrolled (maybe if they are tall enough to be 1.5 x the browser window height?)
+* Add ScrollToTop to all posts long enough to be scrolled ( maybe if they are tall enough to be 1.5 x the browser window height?)
 * Test deploy all posts & pages - should only be visible on longer content
 
 

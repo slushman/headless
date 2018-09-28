@@ -5,15 +5,15 @@ import EmbedContainer from 'react-oembed-container';
 
 const Content = styled.div`
 	& a {
-		--link-color: var(--color-blue);
+		--link-color: var(--color-blue );
 		
-		color: var(--link-color);
+		color: var(--link-color );
 	}
 
 	& a:visited,
 	& a:active,
 	& a:hover {
-		--link-color: var(--color-blue);
+		--link-color: var(--color-blue );
 	}
 
 	& a:focus {
@@ -34,14 +34,14 @@ const Content = styled.div`
 	}
 
 	& pre {
-		color: var(--color-light);
+		color: var(--color-light );
 		padding: 1.5em 0;
 		position: relative;
 		z-index: 1;
 	}
 
 	& pre:before {
-		background-color: var(--color-dark);
+		background-color: var(--color-dark );
 		bottom: 0;
 		content: "";
 		left: 50%;
@@ -63,16 +63,16 @@ const Content = styled.div`
 	}
 `;
 
-const WPContent = ({content}) => {
+const WPContent = ( { content } ) => {
 	return (
-		<EmbedContainer markup={content.rendered}>
-			<Content dangerouslySetInnerHTML={{ __html: content.rendered }} />
+		<EmbedContainer markup={ content.rendered }>
+			<Content dangerouslySetInnerHTML={ { __html: content.rendered } } />
 		</EmbedContainer>
 	);
 };
 
 WPContent.propTypes = {
-	content: PropTypes.object
+	content: PropTypes.object,
 };
 
 export default WPContent;

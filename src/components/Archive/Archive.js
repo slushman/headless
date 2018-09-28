@@ -13,20 +13,20 @@ const ArchiveWrapper = styled.div`
 `;
 
 const ArchiveHeader = styled.header`
-	--bgcolor: var(--color-med-gray);
+	--bgcolor: var(--color-med-gray );
 	
 	align-items: center;
-	background-color: var(--bgcolor);
+	background-color: var(--bgcolor );
 	color: var(--color-charcoal);
 	display: flex;
-	height: var(--height);
+	height: var(--height );
 	justify-content: center;
 	margin: 0;
 	padding: 1em;
 
-	@media screen and (min-width: 560px) {
-		--bgcolor: var(--color-dark-blue);
-		color: var(--color-light);
+	@media screen and ( min-width: 560px) {
+		--bgcolor: var(--color-dark-blue );
+		color: var(--color-light );
 	}
 `;
 
@@ -38,7 +38,7 @@ const ArchiveTitle = styled.h1`
 
 const ArchiveList = styled.ul`
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(calc( 375px - 2em ), 1fr));
+	grid-template-columns: repeat( auto-fit, minmax( calc( 375px - 2em ), 1fr ) );
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -50,16 +50,16 @@ const ArchiveCTABottomWrap = styled.div`
 `;
 
 const CTAStyles = css`
-	--borderColor: var(--color-dark-blue);
-	--bgColor: var(--color-dark-blue);
-	--color: var(--color-light);
+	--borderColor: var(--color-dark-blue );
+	--bgColor: var(--color-dark-blue );
+	--color: var(--color-light );
 
 	background: none;
-	background-color: var(--bgColor);
-	border: 2px solid var(--borderColor);
+	background-color: var(--bgColor );
+	border: 2px solid var(--borderColor );
 	border-radius: 0;
 	box-shadow: none;
-	color: var(--color);
+	color: var(--color );
 	cursor: pointer;
 	display: block;
 	font-size: 1em;
@@ -72,50 +72,50 @@ const CTAStyles = css`
 	&:hover,
 	&:active,
 	&:focus {
-		--bgColor: var(--color-light);
-		--color: var(--color-dark-blue);
+		--bgColor: var(--color-light );
+		--color: var(--color-dark-blue );
 
 		border-color: inherit;
 	}
 `;
 
 const ArchiveCTALoadMore = styled.button`
-	${CTAStyles}
+	${ CTAStyles }
 `;
 
-const StyledLink = styled(Link)`
-	${CTAStyles}
+const StyledLink = styled( Link )`
+	${ CTAStyles }
 `;
 
 
 const Archive = props => {
-	//console.log(props)
+	//console.log( props )
 	return (
 		<ArchiveWrapper>
 			<Helmet>
 				<link rel="canonical" href="" />
-				<title>{props.title}</title>
+				<title>{ props.title }</title>
 			</Helmet>
 			<ArchiveHeader transitionName="test">
-				<ArchiveTitle>{props.title}</ArchiveTitle>
+				<ArchiveTitle>{ props.title }</ArchiveTitle>
 			</ArchiveHeader>
 			<ArchiveList>
 				{
-					props.showPosts.map((post, i) => {
+					props.showPosts.map( ( post, i ) => {
 						return (
-							<ErrorBoundry key={i}>
-								<Flexcerpt post={post} display={['image', 'date', 'cats']} index={i} />
+							<ErrorBoundry key={ i }>
+								<Flexcerpt post={ post } display={ [ 'image', 'date', 'cats' ] } index={ i } />
 							</ErrorBoundry>
 						)
-					})
+					} )
 				}
 			</ArchiveList>
 			<ArchiveCTABottomWrap>
-			{
-				props.ctaToBlog
-					? <StyledLink to="/blog">{props.loadMoreText}</StyledLink>
-					: <ArchiveCTALoadMore onClick={props.onClick}>{props.loadMoreText}</ArchiveCTALoadMore>
-			}
+				{
+					props.ctaToBlog ?
+						<StyledLink to="/blog">{ props.loadMoreText }</StyledLink> :
+						<ArchiveCTALoadMore onClick={ props.onClick }>{ props.loadMoreText }</ArchiveCTALoadMore>
+				}
 				<ScrollToTop />
 			</ArchiveCTABottomWrap>
 		</ArchiveWrapper>

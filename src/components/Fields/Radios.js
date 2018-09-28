@@ -7,7 +7,7 @@ const FieldContainer = styled.li`
 	margin: 0 0 1.5em;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -25,8 +25,6 @@ const FieldList = styled.ul`
 `;
 
 const FieldItem = styled.li``;
-
-
 
 const Label = styled.label`
 	order: 1;
@@ -55,7 +53,7 @@ const DescList = styled.ul`
 `;
 
 const DescItem = styled.li`
-	&:not(:last-child) {
+	&:not(:last-chilD ) {
 		margin-right: 1.5em;
 	}
 `;
@@ -63,41 +61,41 @@ const DescItem = styled.li`
 const Description = styled.small``;
 
 const Required = styled.small`
-	color: var(--color-dark-gray);
+	color: var(--color-dark-gray );
 `;
 
 const Radios = props => {
 	return (
 		<FieldContainer>
-			<FieldLabel for={props.name}>{props.labelText}</FieldLabel>
+			<FieldLabel for={ props.name }>{ props.labelText }</FieldLabel>
 			<FieldWrap>
 				<FieldList>
 					{
-						props.radios.map((radio, i) => (
-							<FieldItem key={i}>
-								<Label for={props.name}>
+						props.radios.map( ( radio, i ) => (
+							<FieldItem key={ i }>
+								<Label for={ props.name }>
 									<Field
-										autofocus={props.autofocus}
-										checked={props.checked}
-										disabled={props.disabled}
-										id={props.id}
-										name={props.name}
-										required={props.required}
+										autofocus={ props.autofocus }
+										checked={ props.checked }
+										disabled={ props.disabled }
+										id={ props.id }
+										name={ props.name }
+										required={ props.required }
 										type="radio"
-										value={radio.value}
+										value={ radio.value }
 									/>
-									{radio.label}
+									{ radio.label }
 								</Label>
 							</FieldItem>
-						))
+						) )
 					}
 				</FieldList>
 				<DescList>
 					<DescItem>
-						<Description>{props.description}</Description>
+						<Description>{ props.description }</Description>
 					</DescItem>
 					<DescItem>
-						<Required>{props.required ? null : '(Optional)'}</Required>
+						<Required>{ props.required ? null : '(Optional)' }</Required>
 					</DescItem>
 				</DescList>
 			</FieldWrap>
@@ -113,19 +111,19 @@ Radios.propTypes = {
 	labelText: PropTypes.string.isRequired,
 	multiple: PropTypes.bool,
 	name: PropTypes.string.isRequired,
-	radios: PropTypes.arrayOf(PropTypes.shape({
+	radios: PropTypes.arrayOf( propTypes.shape( {
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
-	})),
+	} ) ),
 	required: PropTypes.bool,
 	size: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	]),
+	] ),
 };
 
 Radios.defaultProps = {
-	required: true
+	required: true,
 }
 
 export default Radios;

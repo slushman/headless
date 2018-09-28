@@ -7,7 +7,7 @@ const FieldContainer = styled.li`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
@@ -40,18 +40,18 @@ const Description = styled.span``;
 const Checkbox = props => {
 	return (
 		<FieldContainer>
-			<FieldLabel>{props.labelText}</FieldLabel>
-			<Label for={props.name}>
+			<FieldLabel>{ props.labelText }</FieldLabel>
+			<Label for={ props.name }>
 				<Field
-					autofocus={props.autofocus}
-					checked={props.checked}
-					disabled={props.disabled}
-					id={props.id}
-					name={props.name}
-					required={props.required}
+					autofocus={ props.autofocus }
+					checked={ props.checked }
+					disabled={ props.disabled }
+					id={ props.id }
+					name={ props.name }
+					required={ props.required }
 					type="checkbox"
 				/>
-				<Description>{props.description}</Description>
+				<Description>{ props.description }</Description>
 			</Label>
 		</FieldContainer>
 	);

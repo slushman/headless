@@ -7,7 +7,7 @@ injectGlobal`
 		font-family: 'Source Code Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlM-vWnsUnxlC9.woff2) format('woff2');
+		src: local( 'Source Code Pro' ), local( 'SourceCodePro-Regular' ), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlM-vWnsUnxlC9.woff2) format( 'woff2' );
 		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
 	/* latin */
@@ -15,7 +15,7 @@ injectGlobal`
 		font-family: 'Source Code Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevWnsUnxg.woff2) format('woff2');
+		src: local( 'Source Code Pro' ), local( 'SourceCodePro-Regular' ), url(https://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevWnsUnxg.woff2) format( 'woff2' );
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
 	/* latin-ext */
@@ -23,7 +23,7 @@ injectGlobal`
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2) format('woff2');
+		src: local( 'Source Sans Pro Regular' ), local( 'SourceSansPro-Regular' ), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2) format( 'woff2' );
 		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
 	/* latin */
@@ -31,7 +31,7 @@ injectGlobal`
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+		src: local( 'Source Sans Pro Regular' ), local( 'SourceSansPro-Regular' ), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format( 'woff2' );
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
 	/* latin-ext */
@@ -39,7 +39,7 @@ injectGlobal`
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 700;
-		src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRdu3cOWxy40.woff2) format('woff2');
+		src: local( 'Source Sans Pro Bold' ), local( 'SourceSansPro-Bold' ), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRdu3cOWxy40.woff2) format( 'woff2' );
 		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
 	/* latin */
@@ -47,7 +47,7 @@ injectGlobal`
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 700;
-		src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
+		src: local( 'Source Sans Pro Bold' ), local( 'SourceSansPro-Bold' ), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format( 'woff2' );
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
 	/* latin-ext */
@@ -55,7 +55,7 @@ injectGlobal`
 		font-family: 'Source Serif Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Serif Pro'), local('SourceSerifPro-Regular'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXo-oAGIyY0Wfw.woff2) format('woff2');
+		src: local( 'Source Serif Pro' ), local( 'SourceSerifPro-Regular' ), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXo-oAGIyY0Wfw.woff2) format( 'woff2' );
 		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
 	/* latin */
@@ -63,7 +63,7 @@ injectGlobal`
 		font-family: 'Source Serif Pro';
 		font-style: normal;
 		font-weight: 400;
-		src: local('Source Serif Pro'), local('SourceSerifPro-Regular'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXQ-oAGIyY0.woff2) format('woff2');
+		src: local( 'Source Serif Pro' ), local( 'SourceSerifPro-Regular' ), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIQzD-0qpwxpaWvjeD0X88SAOeauXQ-oAGIyY0.woff2) format( 'woff2' );
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
 	/* latin-ext */
@@ -71,7 +71,7 @@ injectGlobal`
 		font-family: 'Source Serif Pro';
 		font-style: normal;
 		font-weight: 700;
-		src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSKqxKcsdrOPbQ.woff2) format('woff2');
+		src: local( 'Source Serif Pro Bold' ), local( 'SourceSerifPro-Bold' ), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSKqxKcsdrOPbQ.woff2) format( 'woff2' );
 		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
 	/* latin */
@@ -79,7 +79,7 @@ injectGlobal`
 		font-family: 'Source Serif Pro';
 		font-style: normal;
 		font-weight: 700;
-		src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSyqxKcsdrM.woff2) format('woff2');
+		src: local( 'Source Serif Pro Bold' ), local( 'SourceSerifPro-Bold' ), url(https://fonts.gstatic.com/s/sourceserifpro/v5/neIXzD-0qpwxpaWvjeD0X88SAOeasc8btSyqxKcsdrM.woff2) format( 'woff2' );
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
 
@@ -94,8 +94,8 @@ injectGlobal`
 		--color-medlt-blue: #61B7E8;
 		--color-bright-blue: #1C9DE8;
 		--color-blue: #0474B5;
-		--color-dark-blue: #03649C; /* rgb(3, 100, 156) */
-		--color-dark: #02334F; /* rgb(2, 51, 79) */
+		--color-dark-blue: #03649C; /* rgb( 3, 100, 156 ) */
+		--color-dark: #02334F; /* rgb( 2, 51, 79) */
 
 		--color-lt-accent: #CF1C04;
 		--color-accent: #B51804;
@@ -104,7 +104,7 @@ injectGlobal`
 		--site-header-height: 128px;
 		--scroll-height: 4px;
 
-		@media screen and (min-width: 560px) {
+		@media screen and ( min-width: 560px) {
 			--site-header-height: 80px;
 		}
 	}
@@ -123,18 +123,18 @@ injectGlobal`
 		--fontsize: 1rem;
 
 		background-color: #F2F6F7;
-		background-color: var(--color-light);
-		color: var(--color-dark);
+		background-color: var(--color-light );
+		color: var(--color-dark );
 		font-family: 'Source Sans Pro', sans-serif;
-		font-size: var(--fontsize);
+		font-size: var(--fontsize );
 		margin: 0;
 		padding: 0;
 
-		@media screen and (min-width: 19rem) {
-			--fontsize: calc(1rem + 0.2 * ((100vw - 19rem) / 60));
+		@media screen and ( min-width: 19rem) {
+			--fontsize: calc( 1rem + 0.2 * ( ( 100vw - 19rem) / 60 ) );
 		}
 
-		@media screen and (min-width: 80rem) {
+		@media screen and ( min-width: 80rem) {
 			--fontsize: 1.2rem;
 		}
 	}
@@ -165,13 +165,13 @@ injectGlobal`
 	 */
 
 	.screen-reader-text {
-		background-color: var(--color-lt-gray);
+		background-color: var(--color-lt-gray );
 		border: 0;
 		border-radius: 3px;
-		box-shadow: 0 0 2px 2px rgba(var(--color-dark-gray), 0.6);
-		clip: rect(1px, 1px, 1px, 1px);
-		clip-path: inset(50%);
-		color: var(--color-dark-gray);
+		box-shadow: 0 0 2px 2px rgba(var(--color-dark-gray ), 0.6 );
+		clip: rect( 1px, 1px, 1px, 1px);
+		clip-path: inset( 50%);
+		color: var(--color-dark-gray );
 		display: block;
 		font-size: 0.875rem;
 		font-weight: bold;
@@ -206,7 +206,7 @@ injectGlobal`
 	}
 
 	.gallery-columns-3 {
-		grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+		grid-template-columns: repeat( auto-fill, minmax( 210px, 1fr ) );
 	}
 
 	.gallery-caption,

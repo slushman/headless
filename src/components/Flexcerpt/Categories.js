@@ -20,42 +20,42 @@ const CatsList = styled.ul`
 
 const Cat = styled.li``;
 
-const CatLink = styled(Link)`
+const CatLink = styled( Link )`
 	display: inline-block;
 	font-size: 0.875em;
 	margin-bottom: 0.5em;
 	text-transform: uppercase;
 `;
 
-const Categories = ({cats}) => {
+const Categories = ( { cats } ) => {
 
-	//console.log(cats)
+	//console.log( cats )
 
-	let showCats = cats.filter(cat => {
+	let showCats = cats.filter( cat => {
 		return 'Home Feature' !== cat.name;
 	} )
 
-	//console.log(showCats)
+	//console.log( showCats )
 
 	return (
 		<CatsList>
 			{
-				showCats.map((cat, i) => {
+				showCats.map( ( cat, i ) => {
 					return (
-						<ErrorBoundry key={i}>
+						<ErrorBoundry key={ i }>
 							<Cat>
-								<CatLink to={`/category/${cat.slug}`}>{cat.name}</CatLink>
+								<CatLink to={ `/category/${ cat.slug }` }>{ cat.name }</CatLink>
 							</Cat>
 						</ErrorBoundry>
 					)
-				})
+				} )
 			}
 		</CatsList>
 	);
 };
 
 Categories.propTypes = {
-	cats: PropTypes.array
+	cats: PropTypes.array,
 };
 
 export default Categories;

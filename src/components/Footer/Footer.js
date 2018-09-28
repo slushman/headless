@@ -7,8 +7,8 @@ const SiteFooter = styled.footer`
 	--flexwrap: wrap;
 
 	align-items: center;
-	background-color: var(--color-dark-gray);
-	color: var(--color-light);
+	background-color: var(--color-dark-gray );
+	color: var(--color-light );
 	display: flex;
 	flex-wrap: var(--flexwrap);
 	justify-content: space-between;
@@ -16,7 +16,7 @@ const SiteFooter = styled.footer`
 	position: relative;
 	transition: background-color 0.5s ease;
 
-	@media screen and (min-width: 550px) {
+	@media screen and ( min-width: 550px) {
 		--flexwrap: inherit;
 	}
 `;
@@ -26,9 +26,9 @@ const Copyright = styled.div`
 	--order: 2;
 	
 	flex: var(--flex);
-	order: var(--order);
+	order: var(--order );
 
-	@media screen and (min-width: 550px) {
+	@media screen and ( min-width: 550px) {
 		--flex: 1;
 		--order: 1;
 	}
@@ -39,15 +39,15 @@ const SocialWrap = styled.div`
 	--order: 1;
 
 	flex: var(--flex);
-	order: var(--order);
+	order: var(--order );
 
-	@media screen and (min-width: 550px) {
+	@media screen and ( min-width: 550px) {
 		--flex: 1;
 		--order: 2;
 	}
 
 	svg {
-		fill: var(--color-light);
+		fill: var(--color-light );
 	}
 `;
 
@@ -57,17 +57,17 @@ const MenuWrap = styled.div`
 	flex: var(--flex);
 	order: 3;
 
-	@media screen and (min-width: 550px) {
+	@media screen and ( min-width: 550px) {
 		--flex: 1;
 	}
 `;
 
 const Footer = props => {
-	//console.log(props);
+	//console.log( props );
 
 	return (
 		<SiteFooter>
-			<Copyright>&copy; {new Date().getFullYear()} Slushman</Copyright>
+			<Copyright>&copy; { new Date().getFullYear() } Slushman</Copyright>
 			<SocialWrap>
 				<WPMenuContainer location="social" />
 			</SocialWrap>
@@ -79,4 +79,3 @@ const Footer = props => {
 };
 
 export default Footer;
-

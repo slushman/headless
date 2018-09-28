@@ -8,52 +8,52 @@
  * 
  * @param 		string 		url 		The URL to fetch
  * @param 		string 		options 	The length of time to cache
- * 											the request (in seconds)
+ * 											the request ( in seconds )
  * @return 		json 					The JSON response.
  */
-export function cachedFetch(url, options) {
+export function cachedFetch(url, options ) {
 
 	let expiry = 5 * 60 // 5 min default
 
-	if (typeof options === 'number') {
+	if ( typeof options === 'number' ) {
 		expiry = options
 		options = undefined
-	} else if (typeof options === 'object') {
+	} else if ( typeof options === 'object' ) {
 		expiry = options.seconds || expiry
 	}
 
 	let cacheKey = url
-	let cached = localStorage.getItem(cacheKey)
-	let whenCached = localStorage.getItem(cacheKey + ':ts')
+	let cached = localStorage.getItem( cacheKey )
+	let whenCached = localStorage.getItem( cacheKey + ':ts' )
 
-	if (cached !== null && whenCached !== null) {
+	if ( cached !== null && whenCached !== null) {
 
-		let age = (Date.now() - whenCached) / 1000
+		let age = (Date.now() - whenCached ) / 1000
 
-		if (age < expiry) {
-			let response = new Response(new Blob([cached]))
-			return Promise.resolve(response)
+		if ( age < expiry ) {
+			let response = new Response(new Blob([cached ] ) )
+			return Promise.resolve( response )
 		} else {
-			localStorage.removeItem(cacheKey)
-			localStorage.removeItem(cacheKey + ':ts')
+			localStorage.removeItem( cacheKey )
+			localStorage.removeItem( cacheKey + ':ts' )
 		}
 
 	}
 
-	return fetch(url, options).then(response => {
+	return fetch(url, options ).then( response => {
 
-		if (response.status === 200) {
-			let ct = response.headers.get('Content-Type')
-			if (ct && (ct.match(/application\/json/i) || ct.match(/text\//i))) {
-				response.clone().text().then(content => {
-					localStorage.setItem(cacheKey, content)
-					localStorage.setItem(cacheKey + ':ts', Date.now())
-				})
+		if ( response.status === 200 ) {
+			let ct = response.headers.get( 'Content-Type' )
+			if ( ct && ( ct.match( /application\/json/i ) || ct.match( /text\//i ) )) {
+				response.clone().text().then( content => {
+					localStorage.setItem( cacheKey, content )
+					localStorage.setItem( cacheKey + ':ts', Date.now() )
+				} )
 			}
 		}
 		return response
 
-	})
+	} )
 
 } // cachedFetch()
 
@@ -67,19 +67,19 @@ export function getImage( imageSizes, requestedSize ) {
 
 	if ( 'small' === requestedSize ) {
 
-		if (imageSizes.medium && 0 !== imageSizes.medium.source_url.length) {
+		if ( imageSizes.medium && 0 !== imageSizes.medium.source_url.length ) {
 
 			return imageSizes.medium.source_url;
 
 		}
 
-		if (imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length) {
+		if ( imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length ) {
 
 			return imageSizes.medium_large.source_url;
 
 		}
 
-		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+		if ( imageSizes.large && 0 !== imageSizes.large.source_url.length ) {
 
 			return imageSizes.large.source_url;
 
@@ -89,15 +89,15 @@ export function getImage( imageSizes, requestedSize ) {
 
 	}
 
-	if ('med' === requestedSize) {
+	if ( 'med' === requestedSize ) {
 
-		if (imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length) {
+		if ( imageSizes.medium_large && 0 !== imageSizes.medium_large.source_url.length ) {
 
 			return imageSizes.medium_large.source_url;
 
 		}
 
-		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+		if ( imageSizes.large && 0 !== imageSizes.large.source_url.length ) {
 
 			return imageSizes.large.source_url;
 
@@ -107,9 +107,9 @@ export function getImage( imageSizes, requestedSize ) {
 
 	}
 
-	if ('large' === requestedSize) {
+	if ( 'large' === requestedSize ) {
 
-		if (imageSizes.large && 0 !== imageSizes.large.source_url.length) {
+		if ( imageSizes.large && 0 !== imageSizes.large.source_url.length ) {
 
 			return imageSizes.large.source_url;
 
@@ -129,9 +129,9 @@ export function getImage( imageSizes, requestedSize ) {
  */
 export function toTitleCase( strToCaps ) {
 
-	return strToCaps.replace( /\w\S*/g, function (txt) {
+	return strToCaps.replace( /\w\S*/g, function ( txt ) {
 	
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		return txt.charAt( 0 ).toUpperCase() + txt.substr( 1 ).toLowerCase();
 	
 	} );
 

@@ -4,29 +4,29 @@ import styled from 'styled-components';
 
 const ButtonWrap = styled.li`
 	display: flex;
-	justify-content: ${props => 'right' === props.position ? 'flex-end' : 'flex-start' };
+	justify-content: ${ props => 'right' === props.position ? 'flex-end' : 'flex-start' };
 	margin: 0;
 	padding: 0;
 
-	@media screen and (max-width: 559px) {
+	@media screen and ( max-width: 559px) {
 		flex-direction: column;
 	}
 `;
 
 const ButtonElement = styled.button`
 	--bgcolor: #fff;
-	--borderColor: var(--color-dark-gray);
+	--borderColor: var(--color-dark-gray );
 	--borderWidth: 1px;
 	--color: currenColor;
 
 	background: none;
-	background-color: var(--bgcolor);
-	border-color: var(--borderColor);
+	background-color: var(--bgcolor );
+	border-color: var(--borderColor );
 	border-radius: 0;
 	border-style: solid;
-	border-width: var(--borderWidth);
+	border-width: var(--borderWidth );
 	box-shadow: none;
-	color: var(--color);
+	color: var(--color );
 	cursor: pointer;
 	font-size: 1em;
 	max-width: 50vw;
@@ -37,7 +37,7 @@ const ButtonElement = styled.button`
 	&:hover,
 	&:active,
 	&:focus {
-		--bgcolor: var(--color-dark-gray);
+		--bgcolor: var(--color-dark-gray );
 		--borderColor: inherit;
 		--color: #fff;
 	}
@@ -45,8 +45,8 @@ const ButtonElement = styled.button`
 
 const Button = props => {
 	return (
-		<ButtonWrap position={props.position}>
-			<ButtonElement type={props.type}>{props.labelText}</ButtonElement>
+		<ButtonWrap position={ props.position }>
+			<ButtonElement type={ props.type }>{ props.labelText }</ButtonElement>
 		</ButtonWrap>
 	);
 };
@@ -54,13 +54,13 @@ const Button = props => {
 Button.propTypes = {
 	labelText: PropTypes.string,
 	position: PropTypes.string,
-	type: PropTypes.string
+	type: PropTypes.string,
 };
 
 Button.defaultProps = {
 	labelText: 'Submit',
 	position: 'left',
-	type: 'submit'
+	type: 'submit',
 }
 
 export default Button;

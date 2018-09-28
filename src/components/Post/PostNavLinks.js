@@ -5,17 +5,17 @@ import styled from 'styled-components';
 import Flexcerpt from '../Flexcerpt/Flexcerpt';
 
 const Wrap = styled.nav`
-	--bgcolor: var(--color-lt-gray);
+	--bgcolor: var(--color-lt-gray );
 	--pad: 1em;
 
-	background-color: var(--bgcolor);
-	padding-left: var(--pad);
-	padding-right: var(--pad);
+	background-color: var(--bgcolor );
+	padding-left: var(--pad );
+	padding-right: var(--pad );
 	padding-top: 1em;
 	position: relative;
 
-	@media screen and (min-width: 700px) {
-		--pad: calc(100vw/2 - 42rem/2);
+	@media screen and ( min-width: 700px) {
+		--pad: calc( 100vw/2 - 42rem/2);
 	}
 `;
 
@@ -29,21 +29,21 @@ const List = styled.ul`
 	margin: 0;
 	padding: 0;
 
-	@media screen and (min-width: 550px) {
+	@media screen and ( min-width: 550px) {
 		display: flex;
 	}
 `;
 
-const PostNavLinks = ({beforePost,afterPost}) => {
+const PostNavLinks = ( { beforePost,afterPost } ) => {
 	return (
 		<Wrap>
 			<CTA>Check out some other posts:</CTA>
 			<List>
 				{
-					beforePost ? <Flexcerpt post={beforePost} display={['date','content']} /> : null
+					beforePost ? <Flexcerpt post={ beforePost } display={ [ 'date','content' ] } /> : null
 				}
 				{
-					afterPost ? <Flexcerpt post={afterPost} display={['date','content']} /> : null
+					afterPost ? <Flexcerpt post={ afterPost } display={ [ 'date','content' ] } /> : null
 				}
 			</List>
 		</Wrap>

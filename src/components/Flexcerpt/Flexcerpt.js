@@ -11,46 +11,46 @@ import Categories from './Categories';
 const colorCount = 6;
 
 const ExcerptListItem = styled.li`
-	--bgcolor: ${props => {
+	--bgcolor: ${ props => {
 		let counter = props.index % colorCount;
-		if (5 === counter) {
-			return 'var(--color-dark-gray)';
-		} else if (4 === counter) {
-			return 'var(--color-light)';
-		} else if (3 === counter) {
-			return 'var(--color-dark)';
-		} else if (2 === counter) {
-			return 'var(--color-light)';
-		} else if (1 === counter) {
-			return 'var(--color-med-gray)';
-		} else if (0 === counter) {
-			return 'var(--color-blue)';
+		if ( 5 === counter ) {
+			return 'var(--color-dark-gray )';
+		} else if ( 4 === counter ) {
+			return 'var(--color-light )';
+		} else if ( 3 === counter ) {
+			return 'var(--color-dark )';
+		} else if ( 2 === counter ) {
+			return 'var(--color-light )';
+		} else if ( 1 === counter ) {
+			return 'var(--color-med-gray )';
+		} else if ( 0 === counter ) {
+			return 'var(--color-blue )';
 		} else {
-			return 'var(--color-lt-gray)';
+			return 'var(--color-lt-gray )';
 		}
-	}};
-	--color: ${props => {
+	} };
+	--color: ${ props => {
 		let counter = props.index % colorCount;
-		if (5 === counter) {
-			return 'var(--color-light)';
-		} else if (4 === counter) {
-			return 'var(--color-blue)';
-		} else if (3 === counter) {
-			return 'var(--color-lt-gray)';
-		} else if (2 === counter) {
-			return 'var(--color-dark-gray)';
-		} else if (1 === counter) {
+		if ( 5 === counter ) {
+			return 'var(--color-light )';
+		} else if ( 4 === counter ) {
+			return 'var(--color-blue )';
+		} else if ( 3 === counter ) {
+			return 'var(--color-lt-gray )';
+		} else if ( 2 === counter ) {
+			return 'var(--color-dark-gray )';
+		} else if ( 1 === counter ) {
 			return 'var(--color-charcoal)';
-		} else if (0 === counter) {
-			return 'var(--color-light)';
+		} else if ( 0 === counter ) {
+			return 'var(--color-light )';
 		} else {
-			return 'var(--color-dark)';
+			return 'var(--color-dark )';
 		}
-	}};
+	} };
 	
-	background-color: var(--bgcolor);
-	color: var(--color);
-	flex: ${props => 'home' === props.location ? '33%' : ''};
+	background-color: var(--bgcolor );
+	color: var(--color );
+	flex: ${ props => 'home' === props.location ? '33%' : '' };
 	hyphens: auto;
 	overflow-wrap: break-word;
 	transition: 0.4s ease;
@@ -60,90 +60,90 @@ const ExcerptListItem = styled.li`
 
 	&:hover,
 	&:focus-within {
-		--bgcolor: ${props => {
+		--bgcolor: ${ props => {
 			let counter = props.index % colorCount;
-			if (5 === counter) {
-				return 'var(--color-light)';
-			} else if (4 === counter) {
-				return 'var(--color-blue)';
-			} else if (3 === counter) {
-				return 'var(--color-lt-gray)';
-			} else if (2 === counter) {
-				return 'var(--color-dark-gray)';
-			} else if (1 === counter) {
+			if ( 5 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 4 === counter ) {
+				return 'var(--color-blue )';
+			} else if ( 3 === counter ) {
+				return 'var(--color-lt-gray )';
+			} else if ( 2 === counter ) {
+				return 'var(--color-dark-gray )';
+			} else if ( 1 === counter ) {
 				return 'var(--color-charcoal)';
-			} else if (0 === counter) {
-				return 'var(--color-light)';
+			} else if ( 0 === counter ) {
+				return 'var(--color-light )';
 			} else {
-				return 'var(--color-lt-blue)';
+				return 'var(--color-lt-blue )';
 			}
-		}};
-		--color: ${props => {
+		} };
+		--color: ${ props => {
 			let counter = props.index % colorCount;
-			if (5 === counter) {
-				return 'var(--color-dark-gray)';
-			} else if (4 === counter) {
-				return 'var(--color-light)';
-			} else if (3 === counter) {
-				return 'var(--color-dark)';
-			} else if (2 === counter) {
-				return 'var(--color-light)';
-			} else if (1 === counter) {
-				return 'var(--color-med-gray)';
-			} else if (0 === counter) {
-				return 'var(--color-blue)';
+			if ( 5 === counter ) {
+				return 'var(--color-dark-gray )';
+			} else if ( 4 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 3 === counter ) {
+				return 'var(--color-dark )';
+			} else if ( 2 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 1 === counter ) {
+				return 'var(--color-med-gray )';
+			} else if ( 0 === counter ) {
+				return 'var(--color-blue )';
 			} else {
-				return 'var(--color-dark)';
+				return 'var(--color-dark )';
 			}
-		}};
-		--filter: grayscale(1);
+		} };
+		--filter: grayscale( 1 );
 	}
 
 	& a {
-		--color: ${props => {
+		--color: ${ props => {
 			let counter = props.index % colorCount;
-			if (5 === counter) {
-				return 'var(--color-light)';
-			} else if (4 === counter) {
-				return 'var(--color-blue)';
-			} else if (3 === counter) {
-				return 'var(--color-lt-gray)';
-			} else if (2 === counter) {
-				return 'var(--color-dark-gray)';
-			} else if (1 === counter) {
+			if ( 5 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 4 === counter ) {
+				return 'var(--color-blue )';
+			} else if ( 3 === counter ) {
+				return 'var(--color-lt-gray )';
+			} else if ( 2 === counter ) {
+				return 'var(--color-dark-gray )';
+			} else if ( 1 === counter ) {
 				return 'var(--color-charcoal)';
-			} else if (0 === counter) {
-				return 'var(--color-light)';
+			} else if ( 0 === counter ) {
+				return 'var(--color-light )';
 			} else {
-				return 'var(--color-blue)';
+				return 'var(--color-blue )';
 			}
-		}};
+		} };
 
-		background-color: var(--bgcolor);
-		color: var(--color);
+		background-color: var(--bgcolor );
+		color: var(--color );
 		transition: 0.4s ease;
 	}
 
 	&:hover a,
 	&:focus-within a:focus {
-		--color: ${props => {
+		--color: ${ props => {
 			let counter = props.index % colorCount;
-			if (5 === counter) {
-				return 'var(--color-dark-gray)';
-			} else if (4 === counter) {
-				return 'var(--color-light)';
-			} else if (3 === counter) {
-				return 'var(--color-dark)';
-			} else if (2 === counter) {
-				return 'var(--color-light)';
-			} else if (1 === counter) {
-				return 'var(--color-med-gray)';
-			} else if (0 === counter) {
-				return 'var(--color-blue)';
+			if ( 5 === counter ) {
+				return 'var(--color-dark-gray )';
+			} else if ( 4 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 3 === counter ) {
+				return 'var(--color-dark )';
+			} else if ( 2 === counter ) {
+				return 'var(--color-light )';
+			} else if ( 1 === counter ) {
+				return 'var(--color-med-gray )';
+			} else if ( 0 === counter ) {
+				return 'var(--color-blue )';
 			} else {
-				return 'var(--color-dark)';
+				return 'var(--color-dark )';
 			}
-		}};
+		} };
 	}
 
 	&:focus-within a:focus {
@@ -160,7 +160,7 @@ const ExcerptWrap = styled.div`
 	flex-grow: 1;
 	margin: 0 auto;
 	max-width: 60ch;
-	padding: var(--pad);
+	padding: var(--pad );
 	z-index: 1;
 `;
 
@@ -168,22 +168,22 @@ const ExcerptHead = styled.div`
 	position: relative;
 `;
 
-const ExcerptLink = styled(Link)`
+const ExcerptLink = styled( Link )`
 	display: block;
 `;
 
 const ExcerptImg = styled.div`
 	--height: 7em;
-	--bgImage: url(${props => props.image});
+	--bgImage: url(${ props => props.image } );
 
-	background-image: var(--bgImage);
+	background-image: var(--bgImage );
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: var(--filter);
-	height: var(--height);
+	filter: var(--filter );
+	height: var(--height );
 
-	@media screen and (min-width: 700px) {
+	@media screen and ( min-width: 700px) {
 		--height: 10em;
 	}
 `;
@@ -202,22 +202,22 @@ const ExcerptDate = styled.small`
 const ExcerptContent = styled.div``;
 
 const Flexcerpt = props => {
-	console.log(props.post)
+	console.log( props.post )
 
 	let post = props.post;
 	let image = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0] : false;
-	let imageSource = image.media_details ? getImage(image.media_details.sizes, 'small') : null;
-	let excerptTitle = he.decode(post.title.rendered);
-	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode(post.excerpt.rendered);
+	let imageSource = image.media_details ? getImage( image.media_details.sizes, 'small' ) : null;
+	let excerptTitle = he.decode( post.title.rendered );
+	let excerptContent = post.yoast && 0 !== post.yoast.metadesc.length ? post.yoast.metadesc : he.decode( post.excerpt.rendered );
 	let postDate = new Date( post.date );
 
 	return (
-		<ExcerptListItem className={classNames(props.listItemClass)} location={props.location} index={props.index}>
+		<ExcerptListItem className={ classNames( props.listItemClass ) } location={ props.location } index={ props.index }>
 			{
-				true === props.display.includes('image') ?
+				true === props.display.includes( 'image' ) ?
 					<ExcerptHead>
-						<ExcerptLink to={`/post/${post.slug}`}>
-							<ExcerptImg image={imageSource} />
+						<ExcerptLink to={ `/post/${ post.slug }` }>
+							<ExcerptImg image={ imageSource } />
 						</ExcerptLink>
 					</ExcerptHead>
 					: null
@@ -225,21 +225,21 @@ const Flexcerpt = props => {
 			}	
 			<ExcerptWrap>
 				{
-					true === props.display.includes('cats') && post._embedded['wp:term'] && 1 <= post._embedded['wp:term'][0].length
-						? <Categories cats={post._embedded['wp:term'][0]} />
+					true === props.display.includes( 'cats' ) && post._embedded['wp:term'] && 1 <= post._embedded['wp:term'][0].length
+						? <Categories cats={ post._embedded['wp:term'][0] } />
 						: null
 				}
 				<ExcerptTitle>
-					<ExcerptLink to={`/post/${post.slug}`}>{excerptTitle}</ExcerptLink>
+					<ExcerptLink to={ `/post/${ post.slug }` }>{ excerptTitle }</ExcerptLink>
 				</ExcerptTitle>
 				{
-					true === props.display.includes('date')
-						? <ExcerptDate>Published {postDate.getFullYear() + '.' + (postDate.getMonth() + 1) + '.' + postDate.getDate()}</ExcerptDate>
+					true === props.display.includes( 'date' )
+						? <ExcerptDate>Published { postDate.getFullYear() + '.' + ( postDate.getMonth() + 1 ) + '.' + postDate.getDate() }</ExcerptDate>
 						: null
 				}
 				{
-					true === props.display.includes('content')
-						? <ExcerptContent dangerouslySetInnerHTML={{ __html: excerptContent }} />
+					true === props.display.includes( 'content' )
+						? <ExcerptContent dangerouslySetInnerHTML={ { __html: excerptContent } } />
 						: null
 				}
 			</ExcerptWrap>
@@ -251,7 +251,7 @@ Flexcerpt.propTypes = {
 	post: PropTypes.object,
 	listItemClass: PropTypes.array,
 	display: PropTypes.array, // Options: image, date, content. The Title is always published.
-	index: PropTypes.number
+	index: PropTypes.number,
 };
 
 export default Flexcerpt;

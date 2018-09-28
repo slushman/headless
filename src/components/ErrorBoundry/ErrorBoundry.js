@@ -13,16 +13,16 @@ class ErrorBoundry extends Component {
 		info: null
 	}
 
-	componentDidCatch(error, info) {
-		this.setState({
+	componentDidCatch( error, info ) {
+		this.setState( {
 			hasError: true,
 			error,
 			info
-		});
+		} );
 	}
 	
 	render() {
-		if(this.state.hasError) {
+		if( this.state.hasError ) {
 			return (
 				<ErrorWrap>
 					<ErrorTitle>Oops, something we wrong.</ErrorTitle>

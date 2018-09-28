@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { cachedFetch } from '../../functions';
 
 import Home from './Home';
-import Loading from '../Loading/Loading';
 
 class HomeContainer extends Component {
-
 	state = {
 		posts: [],
 		error: null,
@@ -14,81 +12,70 @@ class HomeContainer extends Component {
 		cats: [],
 		catID: null,
 	}
-
 	componentDidMount() {
-
-		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/categories?per_page=100`, 24 * 60 * 60)
-			.then(response => {
-				if (response.ok) {
+		cachedFetch( `${ process.env.REACT_APP_API }/wp/v2/categories?per_page=100`, 24 * 60 * 60 )
+			.then( response => {
+				if ( response.ok ) {
 					return response.json();
 				} else {
-					this.setState({
+					this.setState( {
 						error: 'Something went wrong...'
-					})
+					} )
 				}
-			})
-			.then(cats => {
-				let homeFeatureCategoryId = cats.filter(cat => {
+			} )
+			.then( cats => {
+				let homeFeatureCategoryId = cats.filter( cat => {
 					return cat.slug === 'home-feature';
-				})
-				this.setState({
+				} )
+				this.setState( {
 					cats,
 					catID: homeFeatureCategoryId[0].id
-				})
-			})
-			.catch(error => this.setState({
+				} )
+			} )
+			.catch( error => this.setState( {
 				error
-			}));
-
-		cachedFetch(`${process.env.REACT_APP_API}/wp/v2/posts?_embed&per_page=100`, 24 * 60 * 60)
-			.then(response => {
-				if (response.ok) {
+			} ) );
+		cachedFetch( `${ process.env.REACT_APP_API }/wp/v2/posts?_embed&per_page=100`, 24 * 60 * 60 )
+			.then( response => {
+				if ( response.ok ) {
 					return response.json();
 				} else {
-					this.setState({
+					this.setState( {
 						error: 'Something went wrong...'
-					})
+					} )
 				}
-			})
-			.then(posts => {
-				this.setState({
+			} )
+			.then( posts => {
+				this.setState( {
 					posts
-				})
+				} )
 				this.getLatest();
 				this.getPosts();
-			})
-			.catch(error => this.setState({
+			} )
+			.catch( error => this.setState( {
 				error
-			}));
-
+			} ) );
 	} // componentDidMount()
-
 	getLatest = () => {
-		let latest = this.state.posts.slice(0, 1);
-		this.setState({ latest: latest })
+		let latest = this.state.posts.slice( 0, 1 );
+		this.setState( { latest: latest } )
 	}
-
 	getPosts = () => {
-		let featured = this.state.posts.filter(post => {
-			return post.categories.includes(this.state.catID); // how to select by category.
-		});
-
-		let showPosts = featured.slice(0, 6);
-
-		this.setState({ showPosts })
+		let featured = this.state.posts.filter( post => {
+			return post.categories.includes( this.state.catID ); // how to select by category.
+		} );
+		let showPosts = featured.slice( 0, 6 );
+		this.setState( { showPosts } )
 	}
-
 	render() {
-		//console.log(this.state)
+		//console.log( this.state )
 		return (
-			1 <= this.state.posts.length
-				? <Home
-					latest={this.state.latest}
-					posts={this.state.showPosts}
-					cats={this.state.cats}
-					{...this.props}
-				/>
-				: <Loading />
+			<Home
+				latest={ this.state.latest }
+				posts={ this.state.showPosts }
+				cats={ this.state.cats }
+				{ ...this.props }
+			/>
 		);
 	}
 }

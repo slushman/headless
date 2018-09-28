@@ -40,13 +40,13 @@ const InputList = styled.ul`
 
 const ContactForm = props => {
 	return (
-		<Form method="POST" name="contact" netlify="true" netlify-honeypot="bot-field" onSubmit={props.handleSubmit}>
+		<Form method="POST" name="contact" netlify="true" netlify-honeypot="bot-field" onSubmit={ props.handleSubmit }>
 			<Fieldset>
 				<Legend>Contact Me</Legend>
 				<InputList>
-					<Input labelText="Name" name="name" onChange={props.handleChange} value={props.name} />
-					<Input labelText="Email" name="email" onChange={props.handleChange} type="email" value={props.email} />
-					<Textarea labelText="Message" name="message" onChange={props.handleChange} value={props.message} />
+					<Input labelText="Name" name="name" onChange={ props.handleChange } value={ props.name } />
+					<Input labelText="Email" name="email" onChange={ props.handleChange } type="email" value={ props.email } />
+					<Textarea labelText="Message" name="message" onChange={ props.handleChange } value={ props.message } />
 					<BotField />
 					<Recaptcha />
 					<Button position="right" labelText="Send" />
